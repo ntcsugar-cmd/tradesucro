@@ -1,0 +1,46 @@
+import clsx from "clsx";
+import { ReactNode } from "react";
+import { Circle } from "lucide-react";
+
+type Status = "success" | "danger" | "warning" | "info" | "neutral" | "pending";
+
+interface StatusBadgeProps {
+  status: Status;
+  children: ReactNode;
+  dot?: boolean;
+  className?: string;
+}
+
+const statusStyles: Record<Status, string> = {
+  success: "bg-success/10 text-success-700 border-success/25",
+  danger: "bg-danger/10 text-danger-700 border-danger/25",
+  warning: "bg-gold/10 text-gold-dim border-gold/25",
+  info: "bg-navy-500/10 text-navy-700 border-navy-500/25",
+  neutral: "bg-gray-100 text-gray-700 border-gray-300",
+  pending: "bg-gray-100 text-gray-600 border-gray-300",
+};
+
+const dotStyles: Record<Status, string> = {
+  success: "text-success",
+  danger: "text-danger",
+  warning: "text-gold",
+  info: "text-navy-500",
+  neutral: "text-gray-500",
+  pending: "text-gray-400",
+};
+
+/** StatusBadge — for order/offer/mill lifecycle states (e.g. "Verified", "Pending review", "Rejected"). */
+export function StatusBadge({ status, children, dot = true, className }: StatusBadgeProps) {
+  return (
+    <span
+      className={clsx(
+        "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-[10.5px] uppercase tracking-widest2",
+        statusStyles[status],
+        className
+      )}
+    >
+      {dot && <Circle size={6} fill="currentColor" className={dotStyles[status]} />}
+      {children}
+    </span>
+  );
+}

@@ -1,0 +1,257 @@
+import {
+  TickerItem,
+  MarketIndex,
+  SellOffer,
+  BuyRequirement,
+  Mill,
+  NewsItem,
+} from "./types";
+
+export const tickerItems: TickerItem[] = [
+  { symbol: "S-30", label: "Sugar S-30, Maharashtra", price: 3842, change: 1.2, direction: "up" },
+  { symbol: "M-30", label: "Sugar M-30, U.P.", price: 3915, change: -0.6, direction: "down" },
+  { symbol: "S-31", label: "Sugar S-31, Karnataka", price: 3798, change: 0.3, direction: "up" },
+  { symbol: "RAW", label: "Raw Sugar, Gujarat", price: 3510, change: 0.0, direction: "flat" },
+  { symbol: "ICUMSA-45", label: "ICUMSA 45, Export Grade", price: 4120, change: 2.1, direction: "up" },
+  { symbol: "M-31", label: "Sugar M-31, U.P.", price: 3877, change: -0.4, direction: "down" },
+  { symbol: "PANELA", label: "Khandsari, Punjab", price: 3620, change: 0.8, direction: "up" },
+];
+
+export const marketIndices: MarketIndex[] = [
+  {
+    grade: "S-30 Grade",
+    region: "Maharashtra Belt",
+    price: 3842,
+    unit: "per quintal",
+    change: 1.2,
+    direction: "up",
+    sparkline: [38, 41, 39, 44, 42, 47, 45, 49],
+  },
+  {
+    grade: "M-30 Grade",
+    region: "Uttar Pradesh Belt",
+    price: 3915,
+    unit: "per quintal",
+    change: -0.6,
+    direction: "down",
+    sparkline: [50, 48, 49, 45, 46, 43, 44, 41],
+  },
+  {
+    grade: "ICUMSA 45",
+    region: "Export Corridor, Kandla",
+    price: 4120,
+    unit: "per quintal",
+    change: 2.1,
+    direction: "up",
+    sparkline: [30, 32, 31, 35, 38, 37, 41, 44],
+  },
+  {
+    grade: "Khandsari",
+    region: "Punjab & Haryana",
+    price: 3620,
+    unit: "per quintal",
+    change: 0.8,
+    direction: "up",
+    sparkline: [40, 39, 42, 41, 43, 42, 45, 46],
+  },
+];
+
+export const sellOffers: SellOffer[] = [
+  {
+    id: "so-1042",
+    mill: "Kaveri Sugar Mills Ltd.",
+    location: "Belagavi, Karnataka",
+    grade: "S-30",
+    quantityMt: 500,
+    price: 3835,
+    postedAgo: "12 min ago",
+    verified: true,
+  },
+  {
+    id: "so-1041",
+    mill: "Triveni Agro Industries",
+    location: "Muzaffarnagar, U.P.",
+    grade: "M-31",
+    quantityMt: 1200,
+    price: 3902,
+    postedAgo: "34 min ago",
+    verified: true,
+  },
+  {
+    id: "so-1039",
+    mill: "Godavari Sugarcane Co.",
+    location: "Kolhapur, Maharashtra",
+    grade: "S-31",
+    quantityMt: 350,
+    price: 3789,
+    postedAgo: "1 hr ago",
+    verified: true,
+  },
+  {
+    id: "so-1036",
+    mill: "Bajaj Refineries Pvt. Ltd.",
+    location: "Lakhimpur Kheri, U.P.",
+    grade: "ICUMSA 45",
+    quantityMt: 800,
+    price: 4105,
+    postedAgo: "2 hr ago",
+    verified: false,
+  },
+  {
+    id: "so-1033",
+    mill: "Shree Renuka Exports",
+    location: "Sangli, Maharashtra",
+    grade: "Raw Sugar",
+    quantityMt: 2000,
+    price: 3498,
+    postedAgo: "3 hr ago",
+    verified: true,
+  },
+];
+
+export const buyRequirements: BuyRequirement[] = [
+  {
+    id: "br-2091",
+    buyer: "Nestlé Confectionery Div.",
+    location: "Pune, Maharashtra",
+    grade: "S-30",
+    quantityMt: 600,
+    targetPrice: 3820,
+    postedAgo: "8 min ago",
+    urgent: true,
+  },
+  {
+    id: "br-2088",
+    buyer: "Britannia Ingredients",
+    location: "Kolkata, West Bengal",
+    grade: "M-30",
+    quantityMt: 900,
+    targetPrice: 3890,
+    postedAgo: "27 min ago",
+    urgent: false,
+  },
+  {
+    id: "br-2085",
+    buyer: "Al Manar Trading LLC",
+    location: "Kandla Port, Gujarat",
+    grade: "ICUMSA 45",
+    quantityMt: 3000,
+    targetPrice: 4090,
+    postedAgo: "55 min ago",
+    urgent: true,
+  },
+  {
+    id: "br-2081",
+    buyer: "Haldiram Snacks Pvt. Ltd.",
+    location: "Nagpur, Maharashtra",
+    grade: "S-31",
+    quantityMt: 450,
+    targetPrice: 3775,
+    postedAgo: "1 hr ago",
+    urgent: false,
+  },
+  {
+    id: "br-2078",
+    buyer: "Parle Products Ltd.",
+    location: "Bengaluru, Karnataka",
+    grade: "M-31",
+    quantityMt: 700,
+    targetPrice: 3885,
+    postedAgo: "2 hr ago",
+    urgent: false,
+  },
+];
+
+export const mills: Mill[] = [
+  {
+    id: "m-01",
+    name: "Kaveri Sugar Mills Ltd.",
+    location: "Belagavi, Karnataka",
+    capacityTpd: 8500,
+    grades: ["S-30", "S-31"],
+    established: 1974,
+    rating: 4.8,
+  },
+  {
+    id: "m-02",
+    name: "Triveni Agro Industries",
+    location: "Muzaffarnagar, U.P.",
+    capacityTpd: 12000,
+    grades: ["M-30", "M-31"],
+    established: 1982,
+    rating: 4.7,
+  },
+  {
+    id: "m-03",
+    name: "Godavari Sugarcane Co.",
+    location: "Kolhapur, Maharashtra",
+    capacityTpd: 9200,
+    grades: ["S-30", "S-31", "L-30"],
+    established: 1968,
+    rating: 4.9,
+  },
+  {
+    id: "m-04",
+    name: "Shree Renuka Exports",
+    location: "Sangli, Maharashtra",
+    capacityTpd: 15000,
+    grades: ["ICUMSA 45", "ICUMSA 100"],
+    established: 1990,
+    rating: 4.6,
+  },
+  {
+    id: "m-05",
+    name: "Bajaj Refineries Pvt. Ltd.",
+    location: "Lakhimpur Kheri, U.P.",
+    capacityTpd: 10500,
+    grades: ["ICUMSA 45", "M-30"],
+    established: 1978,
+    rating: 4.5,
+  },
+];
+
+export const newsItems: NewsItem[] = [
+  {
+    id: "n-1",
+    category: "Policy",
+    headline: "Government reviews sugar export quota ahead of new crushing season",
+    summary:
+      "The food ministry is weighing a revised export ceiling as mills report higher cane yields across Maharashtra and Karnataka.",
+    date: "9 Jul 2026",
+    readMins: 4,
+  },
+  {
+    id: "n-2",
+    category: "Markets",
+    headline: "Domestic sugar prices firm up on festive-season demand",
+    summary:
+      "S-30 and M-30 grades gained through the week as bulk buyers front-loaded orders before the monsoon logistics window narrows.",
+    date: "8 Jul 2026",
+    readMins: 3,
+  },
+  {
+    id: "n-3",
+    category: "Trade",
+    headline: "Kandla exports rise as ICUMSA 45 demand strengthens from West Asia",
+    summary:
+      "Export-grade shipments from Gujarat ports climbed for a third straight month, led by buyers in the UAE and Saudi Arabia.",
+    date: "6 Jul 2026",
+    readMins: 5,
+  },
+  {
+    id: "n-4",
+    category: "Weather",
+    headline: "Above-average rainfall in cane belts lifts yield outlook for 2026–27",
+    summary:
+      "Meteorological data points to a stronger cane crop across U.P. and Maharashtra, easing concerns about tight domestic supply.",
+    date: "3 Jul 2026",
+    readMins: 3,
+  },
+];
+
+export const stats = [
+  { value: 1240, suffix: "+", label: "Verified sugar mills" },
+  { value: 18600, suffix: "+", label: "Metric tonnes traded weekly" },
+  { value: 96, suffix: "%", label: "Offers matched within 48h" },
+  { value: 27, suffix: "", label: "States & export corridors" },
+];
