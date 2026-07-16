@@ -16,7 +16,7 @@ export interface MasterDataOption {
 
 export interface Product extends MasterDataOption {
   /** Broad classification, useful for grouping/filtering in future UI. */
-  category: "cane" | "refined" | "pharma" | "packing" | "raw" | "imported" | "beet";
+  category: "cane" | "refined" | "pharma" | "packing" | "raw" | "imported" | "beet" | "brown" | "cube" | "liquid" | "bura";
 }
 
 export interface PackagingOption extends MasterDataOption {

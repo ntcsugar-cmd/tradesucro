@@ -5,6 +5,7 @@ import type { LucideIcon } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardBody } from "@/components/cards/Card";
 import { IconButton } from "@/components/ui/IconButton";
 import { EmptyState } from "@/components/ui/EmptyState";
+import { MillNameScroll } from "@/components/common";
 import type { WatchlistItem, WatchTargetType } from "@/lib/types/smartMatch";
 
 const TYPE_META: Record<WatchTargetType, { label: string; icon: LucideIcon }> = {
@@ -36,13 +37,13 @@ export function WatchlistPanel({ items, onRemove }: WatchlistPanelProps) {
               const meta = TYPE_META[item.targetType];
               const Icon = meta.icon;
               return (
-                <li key={item.id} className="flex items-center justify-between py-3 first:pt-0 last:pb-0">
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gold/10 text-gold-dim">
+                <li key={item.id} className="flex items-center justify-between py-3 first:pt-0 last:pb-0 gap-3">
+                  <div className="flex items-center gap-3 min-w-0 flex-1">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold-dim">
                       <Icon size={14} />
                     </span>
-                    <div>
-                      <p className="text-[13px] font-medium text-charcoal">{item.targetLabel}</p>
+                    <div className="min-w-0 flex-1">
+                      <MillNameScroll name={item.targetLabel} className="text-[13px] font-medium text-charcoal" />
                       <p className="text-[11px] text-ink-faint mt-0.5">{meta.label} · Following since {new Date(item.createdAt).toLocaleDateString("en-IN", { dateStyle: "medium" })}</p>
                     </div>
                   </div>

@@ -34,6 +34,7 @@ import {
   Calculator,
   Scale,
   Trophy,
+  Tags,
   User,
   LogOut,
 } from "lucide-react";
@@ -97,6 +98,7 @@ const ICONS: Record<string, LucideIcon> = {
   Calculator,
   Scale,
   Trophy,
+  Tags,
 };
 
 /**

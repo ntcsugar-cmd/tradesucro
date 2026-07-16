@@ -26,8 +26,37 @@ export type RequirementStatus = "draft" | "active" | "expired" | "fulfilled" | "
  * every Grade dropdown must import QUALITY_GRADES rather than
  * hardcoding its own list.
  */
-export type QualityGrade = "M-30" | "S-30" | "L-30" | "M-31" | "S-31" | "L-31" | "ICUMSA 45" | "ICUMSA 100" | "ICUMSA 150" | "ICUMSA 600-1200";
-export const QUALITY_GRADES: QualityGrade[] = ["M-30", "S-30", "L-30", "M-31", "S-31", "L-31", "ICUMSA 45", "ICUMSA 100", "ICUMSA 150", "ICUMSA 600-1200"];
+export type QualityGrade =
+  | "M-30"
+  | "S-30"
+  | "L-30"
+  | "M1-30"
+  | "S1-30"
+  | "M-31"
+  | "S-31"
+  | "L-31"
+  | "DUST"
+  | "RODI"
+  | "ICUMSA 45"
+  | "ICUMSA 100"
+  | "ICUMSA 150"
+  | "ICUMSA 600-1200";
+export const QUALITY_GRADES: QualityGrade[] = [
+  "M-30",
+  "S-30",
+  "L-30",
+  "M1-30",
+  "S1-30",
+  "M-31",
+  "S-31",
+  "L-31",
+  "DUST",
+  "RODI",
+  "ICUMSA 45",
+  "ICUMSA 100",
+  "ICUMSA 150",
+  "ICUMSA 600-1200",
+];
 
 /** Lightweight company info attached to every listing — not the full CompanyProfile (that's the logged-in user's own company only). */
 export interface CompanySummary {

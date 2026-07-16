@@ -1,5 +1,7 @@
 import { Badge } from "@/components/common/Badge";
 import { TextInput } from "@/components/forms/Input";
+import { Select } from "@/components/forms/Select";
+import { SEASON_OPTIONS, type Season } from "@/lib/master-data/seasons";
 import type { MillOfferStatus } from "@/lib/types/millOffer";
 import { MILL_OFFER_STATUS_OPTIONS } from "@/lib/types/millOffer";
 
@@ -8,7 +10,8 @@ interface OfferInformationSectionProps {
   status: MillOfferStatus;
   offerDate: string;
   validTill: string;
-  onChange: (patch: { offerDate?: string; validTill?: string }) => void;
+  season: Season;
+  onChange: (patch: { offerDate?: string; validTill?: string; season?: Season }) => void;
   errors?: Partial<Record<"offerDate" | "validTill", string>>;
   readOnly?: boolean;
 }
@@ -26,6 +29,7 @@ export function OfferInformationSection({
   status,
   offerDate,
   validTill,
+  season,
   onChange,
   errors = {},
   readOnly = false,
@@ -64,6 +68,13 @@ export function OfferInformationSection({
           value={validTill}
           onChange={(e) => onChange({ validTill: e.target.value })}
           error={errors.validTill}
+          disabled={readOnly}
+        />
+        <Select
+          label="Season"
+          defaultValue={season}
+          options={SEASON_OPTIONS}
+          onChange={(e) => onChange({ season: e.target.value as Season })}
           disabled={readOnly}
         />
       </div>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Phone, MessageCircle, Star, ShieldCheck } from "lucide-react";
 import { Card, CardBody } from "@/components/cards/Card";
+import { MillNameScroll } from "@/components/common";
 import { CategoryBadge, TrustScoreDisplay } from "./ContactBadges";
 import { getMasterStateLabel } from "@/lib/utils/marketplaceLabels";
 import { formatQuantityMt } from "@/lib/utils/format";
@@ -24,11 +25,12 @@ export function ContactCard({ contact, onToggleFavorite }: ContactCardProps) {
       <CardBody className="p-4">
         <Link href={`/contacts/${contact.id}`} className="block">
           <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0">
-              <p className="flex items-center gap-1.5 text-[14px] font-semibold text-charcoal truncate">
-                {contact.companyName}
-                {contact.verificationStatus === "verified" && <ShieldCheck size={13} className="text-success shrink-0" />}
-              </p>
+            <div className="min-w-0 flex-1">
+              <MillNameScroll
+                name={contact.companyName}
+                className="text-[14px] font-semibold text-charcoal"
+                prefix={contact.verificationStatus === "verified" ? <ShieldCheck size={13} className="order-last shrink-0 text-success" /> : undefined}
+              />
               <p className="text-[12px] text-ink-faint mt-0.5">
                 {contact.contactPerson} · {contact.city}, {getMasterStateLabel(contact.state)}
               </p>

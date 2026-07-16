@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ShieldCheck, Phone, MessageCircle, Truck } from "lucide-react";
 import { Card, CardBody } from "@/components/cards/Card";
+import { MillNameScroll } from "@/components/common";
 import { formatINR } from "@/lib/utils/format";
 
 interface MobileOfferCardProps {
@@ -24,11 +25,12 @@ export function MobileOfferCard({ millName, grade, productLabel, price, freight,
       <CardBody className="p-4">
         <Link href={href} className="block">
           <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0">
-              <p className="flex items-center gap-1.5 text-[14px] font-semibold text-charcoal truncate">
-                {millName}
-                {verified && <ShieldCheck size={13} className="text-success shrink-0" />}
-              </p>
+            <div className="min-w-0 flex-1">
+              <MillNameScroll
+                name={millName}
+                className="text-[14px] font-semibold text-charcoal"
+                prefix={verified ? <ShieldCheck size={13} className="order-last shrink-0 text-success" /> : undefined}
+              />
               <p className="text-[12px] text-ink-faint mt-0.5">
                 {productLabel} · {grade}
               </p>

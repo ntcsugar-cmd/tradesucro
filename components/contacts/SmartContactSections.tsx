@@ -7,6 +7,7 @@ import type { LucideIcon } from "lucide-react";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { CategoryBadge, TrustScoreDisplay } from "./ContactBadges";
+import { MillNameScroll } from "@/components/common";
 import { contactService } from "@/services/contact.service";
 import type { Contact } from "@/lib/types/contact";
 
@@ -78,10 +79,11 @@ export function SmartContactSections() {
         <div className="flex gap-3 overflow-x-auto pb-1 -mx-4 px-4 sm:mx-0 sm:px-0">
           {contacts.map((c) => (
             <Link key={c.id} href={`/contacts/${c.id}`} className="shrink-0 w-56 rounded-sm border border-line bg-white p-3.5 hover:border-gold/40 hover:shadow-card transition-all">
-              <p className="flex items-center gap-1.5 text-[13.5px] font-medium text-charcoal truncate">
-                {c.companyName}
-                {c.verificationStatus === "verified" && <ShieldCheck size={12} className="text-success shrink-0" />}
-              </p>
+              <MillNameScroll
+                name={c.companyName}
+                className="text-[13.5px] font-medium text-charcoal"
+                prefix={c.verificationStatus === "verified" ? <ShieldCheck size={12} className="order-last shrink-0 text-success" /> : undefined}
+              />
               <p className="text-[11px] text-ink-faint mt-0.5 truncate">{c.contactPerson}</p>
               <div className="mt-2.5 flex items-center justify-between">
                 <CategoryBadge category={c.category} />

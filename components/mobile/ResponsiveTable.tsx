@@ -16,6 +16,10 @@ interface ResponsiveTableProps<T> {
   emptyTitle?: string;
   emptyDescription?: string;
   pageSize?: number;
+  /** Desktop-only enterprise table features (mobile already gets its own card view) — see DataTable for details. */
+  enableColumnVisibility?: boolean;
+  enableExport?: boolean;
+  exportFilename?: string;
 }
 
 /**
@@ -34,6 +38,9 @@ export function ResponsiveTable<T>({
   emptyTitle = "Nothing here yet",
   emptyDescription,
   pageSize = 12,
+  enableColumnVisibility = false,
+  enableExport = false,
+  exportFilename,
 }: ResponsiveTableProps<T>) {
   const isMobile = useIsMobile();
 
@@ -48,6 +55,9 @@ export function ResponsiveTable<T>({
         onRowClick={onRowClick}
         emptyTitle={emptyTitle}
         emptyDescription={emptyDescription}
+        enableColumnVisibility={enableColumnVisibility}
+        enableExport={enableExport}
+        exportFilename={exportFilename}
       />
     );
   }

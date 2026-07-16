@@ -34,6 +34,13 @@ export const DASHBOARD_NAV: DashboardNavSection[] = [
     items: [{ label: "Dashboard", href: "/dashboard", icon: "LayoutDashboard" }],
   },
   {
+    title: "Master Data",
+    items: [
+      { label: "Product Master", href: "/admin/products", icon: "Package" },
+      { label: "Grade Master", href: "/admin/grades", icon: "Tags" },
+    ],
+  },
+  {
     title: "Marketplace",
     items: [
       { label: "Buy Sugar", href: "/marketplace/buy", icon: "ShoppingCart" },

@@ -21,12 +21,14 @@ import { OfferPreview } from "./OfferPreview";
 
 import { millOfferService } from "@/services/millOffer.service";
 import { toMillOfferDraft } from "@/lib/utils/millOfferDraft";
+import { DEFAULT_SEASON } from "@/lib/master-data/seasons";
 import type { MillOffer, MillOfferDraft } from "@/lib/types/millOffer";
 import type { Mill } from "@/types/master-data";
 
 const EMPTY_DRAFT: MillOfferDraft = {
   offerDate: new Date().toISOString().slice(0, 10),
   validTill: "",
+  season: DEFAULT_SEASON,
   millId: "",
   millName: "",
   state: "",
@@ -200,6 +202,7 @@ export function MillOfferForm({ mode, initialOffer }: MillOfferFormProps) {
               status={initialOffer?.status ?? "draft"}
               offerDate={data.offerDate}
               validTill={data.validTill}
+              season={data.season}
               onChange={(p) => setData((prev) => ({ ...prev, ...p }))}
               readOnly={readOnly}
             />

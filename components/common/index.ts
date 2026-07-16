@@ -2,3 +2,4 @@
 export * from "./Badge";
 export * from "./PriceDelta";
 export * from "./PriceUnitToggle";
+export * from "./MillNameScroll";

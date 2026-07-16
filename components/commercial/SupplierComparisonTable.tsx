@@ -1,6 +1,7 @@
 import { Trophy, ShieldCheck, Star } from "lucide-react";
 import { DataTable, type DataTableColumn } from "@/components/tables/DataTable";
 import { MatchScoreBadge } from "@/components/market-match";
+import { MillNameScroll } from "@/components/common";
 import { getProductLabel, getMasterStateLabel } from "@/lib/utils/marketplaceLabels";
 import { formatINR } from "@/lib/utils/format";
 import type { SupplierComparisonRow } from "@/lib/types/commercial";
@@ -17,13 +18,23 @@ export function SupplierComparisonTable({ rows, loading = false }: SupplierCompa
     {
       key: "overallRank",
       header: "Rank",
+      frozen: true,
+      alwaysVisible: true,
       render: (r) => (
         <span className="flex items-center gap-1.5 font-mono">
           {r.overallRank <= 3 && <Trophy size={12} className={RANK_TONE[r.overallRank - 1]} />}#{r.overallRank}
         </span>
       ),
     },
-    { key: "supplierName", header: "Supplier", render: (r) => <span className="flex items-center gap-1.5 font-medium">{r.supplierName}<ShieldCheck size={12} className="text-success" /></span> },
+    {
+      key: "supplierName",
+      header: "Supplier",
+      frozen: true,
+      resizable: true,
+      alwaysVisible: true,
+      className: "max-w-[200px]",
+      render: (r) => <MillNameScroll name={r.supplierName} prefix={<ShieldCheck size={12} className="shrink-0 text-success" />} />,
+    },
     { key: "state", header: "State", render: (r) => getMasterStateLabel(r.state) },
     { key: "grade", header: "Grade", render: (r) => <span className="font-mono">{getProductLabel(r.product)} · {r.grade}</span> },
     { key: "exMillPrice", header: "Ex-Mill", align: "right", render: (r) => <span className="font-mono">{formatINR(r.exMillPrice)}</span> },

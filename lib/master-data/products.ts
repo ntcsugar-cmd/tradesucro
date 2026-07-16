@@ -15,4 +15,8 @@ export const PRODUCTS: Product[] = [
   { value: "raw-sugar", label: "Raw Sugar", category: "raw" },
   { value: "imported-sugar", label: "Imported Sugar", category: "imported" },
   { value: "beet-sugar", label: "Beet Sugar", category: "beet" },
+  { value: "brown-sugar", label: "Brown Sugar", category: "brown" },
+  { value: "cube-sugar", label: "Cube Sugar", category: "cube" },
+  { value: "liquid-sugar", label: "Liquid Sugar", category: "liquid" },
+  { value: "bura-sugar", label: "Bura Sugar", category: "bura" },
 ];

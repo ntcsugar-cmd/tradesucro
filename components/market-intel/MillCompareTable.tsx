@@ -1,4 +1,5 @@
 import { StatusBadge } from "@/components/ui/StatusBadge";
+import { MillNameScroll } from "@/components/common";
 import { getMasterStateLabel, getPaymentTermLabel } from "@/lib/utils/marketplaceLabels";
 import { formatINR } from "@/lib/utils/format";
 import type { MillPriceEntry } from "@/lib/types/marketIntelligence";
@@ -29,8 +30,8 @@ export function MillCompareTable({ entries }: MillCompareTableProps) {
           <tr>
             <th className="text-left py-2.5 pr-4 text-[11px] font-mono uppercase tracking-widest2 text-ink-faint w-32">Metric</th>
             {entries.map((e) => (
-              <th key={e.id} className="text-left py-2.5 px-4 border-l border-line font-medium text-[13px] text-charcoal">
-                {e.millName}
+              <th key={e.id} className="text-left py-2.5 px-4 border-l border-line font-medium text-[13px] text-charcoal w-44 max-w-[176px]">
+                <MillNameScroll name={e.millName} />
               </th>
             ))}
           </tr>

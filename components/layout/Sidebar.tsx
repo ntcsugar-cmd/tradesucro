@@ -64,12 +64,16 @@ export function Sidebar({
       <div className={clsx("flex items-center border-b border-white/10", collapsed && !isDrawer ? "justify-center px-0 py-5" : "justify-between px-4 py-5")}>
         {header}
         {isDrawer && (
-          <IconButton variant="ghost" size="sm" aria-label="Close menu" onClick={onCloseDrawer}>
-            <X size={18} />
-          </IconButton>
-        )}
+  <IconButton
+    variant="ghost-dark"
+    size="sm"
+    aria-label="Close menu"
+    onClick={onCloseDrawer}
+  >
+    <X size={18} />
+  </IconButton>
+)}
       </div>
-
       <nav className="flex-1 overflow-y-auto py-4 px-3 space-y-6">
         {sections.map((section, i) => (
           <div key={section.title ?? i}>

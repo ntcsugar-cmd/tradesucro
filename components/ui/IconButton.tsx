@@ -1,7 +1,13 @@
 import { ButtonHTMLAttributes, forwardRef } from "react";
 import clsx from "clsx";
 
-type Variant = "primary" | "secondary" | "outline" | "ghost" | "danger";
+type Variant =
+  | "primary"
+  | "secondary"
+  | "outline"
+  | "ghost"
+  | "ghost-dark"
+  | "danger";
 type Size = "sm" | "md" | "lg";
 
 interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -14,9 +20,14 @@ interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const variantStyles: Record<Variant, string> = {
   primary: "bg-gold text-white hover:bg-gold-bright",
   secondary: "bg-charcoal text-white hover:bg-charcoal-soft",
-  outline: "bg-transparent text-charcoal border border-charcoal/20 hover:border-charcoal/40",
-  ghost: "bg-transparent text-charcoal hover:bg-charcoal/5",
-  danger: "bg-danger text-white hover:bg-danger-600",
+  outline:
+    "bg-transparent text-charcoal border border-charcoal/20 hover:border-charcoal/40",
+  ghost:
+    "bg-transparent text-charcoal hover:bg-charcoal/5",
+  "ghost-dark":
+    "bg-transparent text-white hover:bg-white/10",
+  danger:
+    "bg-danger text-white hover:bg-danger-600",
 };
 
 const sizeStyles: Record<Size, string> = {

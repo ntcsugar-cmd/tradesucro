@@ -4,6 +4,7 @@ import { PACKAGING } from "@/lib/master-data/packaging";
 import { UNITS } from "@/lib/master-data/units";
 import { PAYMENT_TERMS } from "@/lib/master-data/paymentTerms";
 import { DISPATCH_TERMS } from "@/lib/master-data/dispatchTerms";
+import { SEASONS, DEFAULT_SEASON } from "@/lib/master-data/seasons";
 import { QUALITY_GRADES } from "@/lib/types/marketplace";
 import type {
   MillOffer,
@@ -101,6 +102,7 @@ function generateOffers(count: number): MillOffer[] {
       offerNumber: `MO-2026-${String(10000 + i).slice(1)}`,
       offerDate,
       validTill,
+      season: i % 5 === 0 ? SEASONS[i % SEASONS.length] : DEFAULT_SEASON,
       status,
       millId: mill.id,
       millName: mill.name,
@@ -221,6 +223,7 @@ function matchesFilters(offer: MillOffer, filters: MillOfferFilters): boolean {
   if (filters.emdRequired != null && offer.paymentTerms.emdRequired !== filters.emdRequired) return false;
   if (filters.product && !offer.products.some((p) => p.product === filters.product)) return false;
   if (filters.grade && !offer.products.some((p) => p.grade === filters.grade)) return false;
+  if (filters.season && offer.season !== filters.season) return false;
   if (filters.dateFrom && new Date(offer.offerDate) < new Date(filters.dateFrom)) return false;
   if (filters.dateTo && new Date(offer.offerDate) > new Date(filters.dateTo)) return false;
   if (filters.search) {

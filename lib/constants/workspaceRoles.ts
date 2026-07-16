@@ -111,8 +111,8 @@ export const WORKSPACE_ROLE_PERMISSIONS: Record<WorkspaceRole, WorkspacePermissi
     actions: ["inventory.manage", "receipts.issue"],
   },
   admin: {
-    menus: ["Workspace", "Mill Offers", "Tender Management", "Mill Operations", "Insights", ...COMMON_MENUS],
-    routePrefixes: ["/admin-dashboard", ...COMMON_ROUTES, "/mill-offers", "/tenders", "/mill-profile", "/inventory", "/dispatch-calendar", "/price-board", "/reports", "/dashboard"],
+    menus: ["Workspace", "Master Data", "Mill Offers", "Tender Management", "Mill Operations", "Insights", ...COMMON_MENUS],
+    routePrefixes: ["/admin-dashboard", "/admin", ...COMMON_ROUTES, "/mill-offers", "/tenders", "/mill-profile", "/inventory", "/dispatch-calendar", "/price-board", "/reports", "/dashboard"],
     dashboardWidgets: ["adminStats", "verificationQueue", "disputeQueue", "notifications"],
     actions: ["organizations.approve", "listings.moderate", "disputes.resolve", "platform.configure"],
   },

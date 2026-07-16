@@ -1,4 +1,5 @@
 import type { QualityGrade } from "./marketplace";
+import type { Season } from "@/lib/master-data/seasons";
 
 /**
  * Mill Offer Management Types
@@ -73,6 +74,7 @@ export interface MillOffer {
   offerNumber: string;
   offerDate: string;
   validTill: string;
+  season: Season;
   status: MillOfferStatus;
 
   millId: string;
@@ -113,6 +115,7 @@ export interface MillOfferFilters {
   state?: string;
   product?: string;
   grade?: QualityGrade;
+  season?: Season;
   status?: MillOfferStatus;
   emdRequired?: boolean;
   dateFrom?: string;
