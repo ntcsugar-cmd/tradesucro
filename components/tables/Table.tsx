@@ -4,7 +4,7 @@ import clsx from "clsx";
 
 export function Table({ className, children, ...props }: HTMLAttributes<HTMLTableElement>) {
   return (
-    <div className="w-full overflow-x-auto border border-line">
+    <div className="w-full overflow-x-auto border border-line dark:border-white/10">
       <table className={clsx("w-full border-collapse text-left", className)} {...props}>
         {children}
       </table>
@@ -14,7 +14,7 @@ export function Table({ className, children, ...props }: HTMLAttributes<HTMLTabl
 
 export function THead({ className, children, ...props }: HTMLAttributes<HTMLTableSectionElement>) {
   return (
-    <thead className={clsx("bg-charcoal/[0.03]", className)} {...props}>
+    <thead className={clsx("bg-charcoal/[0.03] dark:bg-white/[0.04]", className)} {...props}>
       {children}
     </thead>
   );
@@ -22,7 +22,7 @@ export function THead({ className, children, ...props }: HTMLAttributes<HTMLTabl
 
 export function TBody({ className, children, ...props }: HTMLAttributes<HTMLTableSectionElement>) {
   return (
-    <tbody className={clsx("divide-y divide-line", className)} {...props}>
+    <tbody className={clsx("divide-y divide-line dark:divide-white/10", className)} {...props}>
       {children}
     </tbody>
   );
@@ -34,7 +34,7 @@ export function TR({
   ...props
 }: HTMLAttributes<HTMLTableRowElement>) {
   return (
-    <tr className={clsx("hover:bg-gold/[0.04] transition-colors", className)} {...props}>
+    <tr className={clsx("hover:bg-gold/[0.04] dark:hover:bg-gold/[0.08] transition-colors", className)} {...props}>
       {children}
     </tr>
   );
@@ -51,7 +51,7 @@ export function TH({ className, sortable, sortDirection, onSort, children, ...pr
   return (
     <th
       className={clsx(
-        "px-5 py-3 font-mono text-[11px] uppercase tracking-widest2 text-ink-faint font-medium",
+        "px-5 py-3 font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 font-medium",
         className
       )}
       {...props}
@@ -60,7 +60,7 @@ export function TH({ className, sortable, sortDirection, onSort, children, ...pr
         <button
           type="button"
           onClick={onSort}
-          className="flex items-center gap-1.5 hover:text-charcoal transition-colors"
+          className="flex items-center gap-1.5 hover:text-charcoal dark:hover:text-white transition-colors"
         >
           {children}
           {sortDirection === "asc" ? (
@@ -80,7 +80,7 @@ export function TH({ className, sortable, sortDirection, onSort, children, ...pr
 
 export function TD({ className, children, ...props }: TdHTMLAttributes<HTMLTableCellElement>) {
   return (
-    <td className={clsx("px-5 py-4 text-[13.5px] text-charcoal align-middle", className)} {...props}>
+    <td className={clsx("px-5 py-4 text-[13.5px] text-charcoal dark:text-white align-middle", className)} {...props}>
       {children}
     </td>
   );

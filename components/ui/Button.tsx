@@ -43,12 +43,12 @@ const variantStyles: Record<Variant, string> = {
   gold: "bg-gold text-white hover:bg-gold-bright active:bg-gold-dim shadow-button",
   secondary: "bg-charcoal text-white hover:bg-charcoal-soft",
   charcoal: "bg-charcoal text-white hover:bg-charcoal-soft",
-  outline: "bg-transparent text-charcoal border border-charcoal/20 hover:border-charcoal/40",
-  ghost: "bg-transparent text-charcoal hover:bg-charcoal/5",
+  outline: "bg-transparent text-charcoal border border-charcoal/20 hover:border-charcoal/40 dark:text-white dark:border-white/20 dark:hover:border-white/40",
+  ghost: "bg-transparent text-charcoal hover:bg-charcoal/5 dark:text-white dark:hover:bg-white/5",
   danger: "bg-danger text-white hover:bg-danger-600 active:bg-danger-700",
   success: "bg-success text-white hover:bg-success-600 active:bg-success-700",
   /** Bordered, muted-label control — for secondary chrome like a nav search trigger. */
-  subtle: "bg-transparent text-ink-soft border border-line hover:border-charcoal/30 hover:text-charcoal",
+  subtle: "bg-transparent text-ink-soft border border-line hover:border-charcoal/30 hover:text-charcoal dark:text-white/60 dark:border-white/15 dark:hover:border-white/30 dark:hover:text-white",
   /** Same role as "outline", tuned for placement on a dark (charcoal) surface. */
   "outline-dark": "bg-transparent text-white/60 border border-white/15 hover:border-gold/50 hover:text-gold-bright",
   /** Same role as "ghost", tuned for placement on a dark (charcoal) surface — e.g. the sidebar collapse toggle. */

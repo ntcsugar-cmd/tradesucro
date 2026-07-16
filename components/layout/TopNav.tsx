@@ -69,7 +69,10 @@ export function TopNav({
   ];
 
   return (
-    <header className="flex h-16 items-center justify-between border-b border-line dark:border-white/10 bg-white dark:bg-charcoal px-4 sm:px-6">
+    <header
+      className="flex min-h-16 items-center justify-between border-b border-line dark:border-white/10 bg-white dark:bg-charcoal px-4 sm:px-6"
+      style={{ paddingTop: "env(safe-area-inset-top)" }}
+    >
       <div className="flex items-center gap-3">
         {onMenuClick && (
           <IconButton variant="ghost" size="md" aria-label="Open menu" className="lg:hidden" onClick={onMenuClick}>

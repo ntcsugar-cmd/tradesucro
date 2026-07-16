@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { Alert } from "@/components/ui/Alert";
 import { NumberInput, TextInput } from "@/components/forms/Input";
 import { Select } from "@/components/forms/Select";
-import { ProductSelect } from "@/components/master-data";
+import { ProductSelect, SearchableMillPicker } from "@/components/master-data";
 import { QUALITY_GRADES } from "@/lib/types/marketplace";
 import { traderPurchaseService } from "@/services/traderPurchase.service";
 import { computePurchaseFinancials } from "@/lib/types/traderWorkspace";
@@ -130,8 +130,15 @@ export function PurchaseForm() {
                 <h2 className="font-display text-lg font-medium text-charcoal">Purchase Details</h2>
                 <div className="mt-5 grid sm:grid-cols-2 gap-5">
                   <TextInput label="Purchase Date" type="date" value={data.purchaseDate} onChange={(e) => set("purchaseDate", e.target.value)} />
-                  <TextInput label="Supplier" value={data.supplier} onChange={(e) => set("supplier", e.target.value)} />
-                  <TextInput label="Mill" value={data.mill} onChange={(e) => set("mill", e.target.value)} />
+                  <SearchableMillPicker
+                    label="Mill"
+                    placeholder="Search and select a mill"
+                    onSelect={(mill) => {
+                      set("mill", mill.name);
+                      set("supplier", mill.name);
+                    }}
+                  />
+                  <TextInput label="Supplier" helperText="Auto-filled from the selected mill — edit if the supplier differs (e.g. a distributor)." value={data.supplier} onChange={(e) => set("supplier", e.target.value)} />
                   <TextInput label="Broker" helperText="Optional" value={data.broker} onChange={(e) => set("broker", e.target.value)} />
 
                   <ProductSelect label="Product" defaultValue={data.product} onChange={(e) => set("product", e.target.value)} />

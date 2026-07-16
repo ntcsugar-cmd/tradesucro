@@ -4,9 +4,9 @@ import clsx from "clsx";
 type Variant =
   | "primary"
   | "secondary"
-  | "outline"
   | "ghost"
   | "ghost-dark"
+  | "outline"
   | "danger";
 type Size = "sm" | "md" | "lg";
 
@@ -16,16 +16,22 @@ interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** Required — icon buttons must be labeled for assistive tech. */
   "aria-label": string;
 }
-
 const variantStyles: Record<Variant, string> = {
-  primary: "bg-gold text-white hover:bg-gold-bright",
-  secondary: "bg-charcoal text-white hover:bg-charcoal-soft",
-  outline:
-    "bg-transparent text-charcoal border border-charcoal/20 hover:border-charcoal/40",
+  primary:
+    "bg-gold text-white hover:bg-gold-bright",
+
+  secondary:
+    "bg-charcoal text-white hover:bg-charcoal-soft",
+
   ghost:
     "bg-transparent text-charcoal hover:bg-charcoal/5",
+
   "ghost-dark":
-    "bg-transparent text-white hover:bg-white/10",
+    "bg-transparent text-white hover:bg-charcoal-soft border border-charcoal/30",
+
+  outline:
+    "bg-transparent text-charcoal border border-charcoal/20 hover:border-charcoal/40",
+
   danger:
     "bg-danger text-white hover:bg-danger-600",
 };

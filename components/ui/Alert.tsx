@@ -18,23 +18,23 @@ interface AlertProps {
 const variantConfig: Record<AlertVariant, { icon: LucideIcon; classes: string; iconClass: string }> = {
   success: {
     icon: CheckCircle2,
-    classes: "bg-success/[0.06] border-success/25",
-    iconClass: "text-success-700",
+    classes: "bg-success/[0.06] border-success/25 dark:bg-success/[0.12] dark:border-success/35",
+    iconClass: "text-success-700 dark:text-success-300",
   },
   warning: {
     icon: AlertTriangle,
-    classes: "bg-gold/[0.06] border-gold/25",
-    iconClass: "text-gold-dim",
+    classes: "bg-gold/[0.06] border-gold/25 dark:bg-gold/[0.12] dark:border-gold/35",
+    iconClass: "text-gold-dim dark:text-gold-bright",
   },
   danger: {
     icon: XCircle,
-    classes: "bg-danger/[0.06] border-danger/25",
-    iconClass: "text-danger-700",
+    classes: "bg-danger/[0.06] border-danger/25 dark:bg-danger/[0.12] dark:border-danger/35",
+    iconClass: "text-danger-700 dark:text-danger-300",
   },
   info: {
     icon: Info,
-    classes: "bg-navy-500/[0.06] border-navy-500/25",
-    iconClass: "text-navy-700",
+    classes: "bg-navy-500/[0.06] border-navy-500/25 dark:bg-navy-500/[0.15] dark:border-navy-500/40",
+    iconClass: "text-navy-700 dark:text-navy-200",
   },
 };
 
@@ -49,14 +49,14 @@ export function Alert({ variant = "info", title, children, dismissible = false, 
     <div className={clsx("flex gap-3 rounded-sm border p-4", classes, className)} role="alert">
       <Icon size={18} className={clsx("shrink-0 mt-0.5", iconClass)} />
       <div className="flex-1 min-w-0">
-        {title && <p className="text-[13.5px] font-semibold text-charcoal">{title}</p>}
-        <div className={clsx("text-[13px] text-ink-soft leading-relaxed", title && "mt-0.5")}>{children}</div>
+        {title && <p className="text-[13.5px] font-semibold text-charcoal dark:text-white">{title}</p>}
+        <div className={clsx("text-[13px] text-ink-soft dark:text-white/60 leading-relaxed", title && "mt-0.5")}>{children}</div>
       </div>
       {dismissible && (
         <button
           onClick={() => setVisible(false)}
           aria-label="Dismiss alert"
-          className="shrink-0 text-ink-faint hover:text-charcoal transition-colors"
+          className="shrink-0 text-ink-faint hover:text-charcoal dark:text-white/40 dark:hover:text-white transition-colors"
         >
           <X size={16} />
         </button>

@@ -213,7 +213,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   return (
     <ToastProvider>
-      <div className="flex h-screen overflow-hidden bg-paper dark:bg-charcoal-soft">
+      <div className="flex h-screen overflow-hidden bg-paper dark:bg-charcoal">
         {/* Desktop persistent sidebar */}
         {!isMobile && (
           <Sidebar

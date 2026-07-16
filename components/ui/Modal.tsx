@@ -63,24 +63,24 @@ export function Modal({ open, onClose, title, description, size = "md", children
             exit={{ opacity: 0, y: 8, scale: 0.98 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
             className={clsx(
-              "relative w-full bg-white rounded-sm shadow-modal max-h-[90vh] overflow-y-auto",
+              "relative w-full bg-white dark:bg-charcoal-soft dark:border dark:border-white/10 rounded-sm shadow-modal max-h-[90vh] overflow-y-auto",
               sizeStyles[size]
             )}
           >
             {(title || description) && (
-              <div className="flex items-start justify-between gap-4 p-6 border-b border-line">
+              <div className="flex items-start justify-between gap-4 p-6 border-b border-line dark:border-white/10">
                 <div>
                   {title && (
-                    <h2 id="modal-title" className="font-display text-xl font-medium text-charcoal">
+                    <h2 id="modal-title" className="font-display text-xl font-medium text-charcoal dark:text-white">
                       {title}
                     </h2>
                   )}
-                  {description && <p className="mt-1 text-[13px] text-ink-soft">{description}</p>}
+                  {description && <p className="mt-1 text-[13px] text-ink-soft dark:text-white/50">{description}</p>}
                 </div>
                 <button
                   onClick={onClose}
                   aria-label="Close dialog"
-                  className="shrink-0 text-ink-faint hover:text-charcoal transition-colors"
+                  className="shrink-0 text-ink-faint hover:text-charcoal dark:text-white/40 dark:hover:text-white transition-colors"
                 >
                   <X size={18} />
                 </button>
@@ -89,7 +89,7 @@ export function Modal({ open, onClose, title, description, size = "md", children
 
             <div className="p-6">{children}</div>
 
-            {footer && <div className="flex items-center justify-end gap-3 p-6 border-t border-line">{footer}</div>}
+            {footer && <div className="flex items-center justify-end gap-3 p-6 border-t border-line dark:border-white/10">{footer}</div>}
           </motion.div>
         </div>
       )}

@@ -42,3 +42,20 @@ export function formatQuantityMt(value: number): string {
 export function formatPercent(value: number): string {
   return `${Math.abs(value).toFixed(1)}%`;
 }
+
+/**
+ * Compact Indian currency (e.g. ₹91.6 Lakh, ₹2.3 Cr). Large rupee
+ * figures (Inventory Value, Today's Profit) overflow fixed-width
+ * dashboard cards when shown as a full grouped number — this is the
+ * fix, applied at the formatting layer so every card that needs it
+ * calls one function rather than each hand-rolling its own threshold
+ * logic. Values under 1 Lakh are shown in full (compacting a 4-digit
+ * number reads as evasive, not concise).
+ */
+export function formatCompactINR(value: number): string {
+  const abs = Math.abs(value);
+  const sign = value < 0 ? "-" : "";
+  if (abs >= 1_00_00_000) return `${sign}₹${(abs / 1_00_00_000).toFixed(abs >= 10_00_00_000 ? 0 : 1)} Cr`;
+  if (abs >= 1_00_000) return `${sign}₹${(abs / 1_00_000).toFixed(abs >= 10_00_000 ? 0 : 1)} Lakh`;
+  return formatINR(value);
+}

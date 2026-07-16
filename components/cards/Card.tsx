@@ -19,8 +19,8 @@ export function Card({ padding = "md", interactive = false, className, children,
   return (
     <div
       className={clsx(
-        "bg-white border border-line rounded-sm",
-        interactive && "transition-all hover:border-gold/40 hover:shadow-card cursor-pointer",
+        "bg-white border border-line rounded-sm dark:bg-charcoal-soft dark:border-white/10",
+        interactive && "transition-all hover:border-gold/40 hover:shadow-card cursor-pointer dark:hover:border-gold/40",
         paddingStyles[padding],
         className
       )}
@@ -41,7 +41,7 @@ export function CardHeader({ className, children, ...props }: HTMLAttributes<HTM
 
 export function CardTitle({ className, children, ...props }: HTMLAttributes<HTMLHeadingElement>) {
   return (
-    <h3 className={clsx("font-body font-semibold text-[15px] text-charcoal", className)} {...props}>
+    <h3 className={clsx("font-body font-semibold text-[15px] text-charcoal dark:text-white", className)} {...props}>
       {children}
     </h3>
   );
@@ -49,7 +49,7 @@ export function CardTitle({ className, children, ...props }: HTMLAttributes<HTML
 
 export function CardDescription({ className, children, ...props }: HTMLAttributes<HTMLParagraphElement>) {
   return (
-    <p className={clsx("text-xs text-ink-faint mt-1", className)} {...props}>
+    <p className={clsx("text-xs text-ink-faint dark:text-white/40 mt-1", className)} {...props}>
       {children}
     </p>
   );
@@ -65,7 +65,7 @@ export function CardBody({ className, children, ...props }: HTMLAttributes<HTMLD
 
 export function CardFooter({ className, children, ...props }: HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={clsx("mt-5 pt-4 border-t border-line flex items-center justify-between", className)} {...props}>
+    <div className={clsx("mt-5 pt-4 border-t border-line dark:border-white/10 flex items-center justify-between", className)} {...props}>
       {children}
     </div>
   );

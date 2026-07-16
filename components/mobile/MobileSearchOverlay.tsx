@@ -73,7 +73,7 @@ export function MobileSearchOverlay({ open, onClose, onSearch, placeholder = "Se
           transition={{ duration: 0.15 }}
           className="fixed inset-0 z-modal flex flex-col bg-white dark:bg-charcoal-soft"
         >
-          <div className="flex items-center gap-2 px-4 py-3 border-b border-line shrink-0">
+          <div className="flex items-center gap-2 px-4 py-3 border-b border-line shrink-0" style={{ paddingTop: "calc(env(safe-area-inset-top) + 12px)" }}>
             <button type="button" onClick={onClose} aria-label="Close search" className="flex h-9 w-9 items-center justify-center rounded-full text-ink-faint active:bg-charcoal/[0.06]">
               <ArrowLeft size={19} />
             </button>

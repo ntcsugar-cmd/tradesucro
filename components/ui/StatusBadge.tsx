@@ -12,12 +12,12 @@ interface StatusBadgeProps {
 }
 
 const statusStyles: Record<Status, string> = {
-  success: "bg-success/10 text-success-700 border-success/25",
-  danger: "bg-danger/10 text-danger-700 border-danger/25",
-  warning: "bg-gold/10 text-gold-dim border-gold/25",
-  info: "bg-navy-500/10 text-navy-700 border-navy-500/25",
-  neutral: "bg-gray-100 text-gray-700 border-gray-300",
-  pending: "bg-gray-100 text-gray-600 border-gray-300",
+  success: "bg-success/10 text-success-700 border-success/25 dark:bg-success/20 dark:text-success-300 dark:border-success/35",
+  danger: "bg-danger/10 text-danger-700 border-danger/25 dark:bg-danger/20 dark:text-danger-300 dark:border-danger/35",
+  warning: "bg-gold/10 text-gold-dim border-gold/25 dark:bg-gold/20 dark:text-gold-bright dark:border-gold/35",
+  info: "bg-navy-500/10 text-navy-700 border-navy-500/25 dark:bg-navy-500/25 dark:text-navy-200 dark:border-navy-500/40",
+  neutral: "bg-gray-100 text-gray-700 border-gray-300 dark:bg-white/10 dark:text-white/70 dark:border-white/15",
+  pending: "bg-gray-100 text-gray-600 border-gray-300 dark:bg-white/10 dark:text-white/60 dark:border-white/15",
 };
 
 const dotStyles: Record<Status, string> = {

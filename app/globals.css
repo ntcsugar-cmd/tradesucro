@@ -10,10 +10,10 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-paper text-charcoal font-body antialiased;
+    @apply bg-paper text-charcoal dark:bg-charcoal dark:text-white font-body antialiased;
   }
   ::selection {
-    @apply bg-gold/25 text-charcoal;
+    @apply bg-gold/25 text-charcoal dark:bg-gold/35 dark:text-white;
   }
   :focus-visible {
     outline: 2px solid #B8933D;
