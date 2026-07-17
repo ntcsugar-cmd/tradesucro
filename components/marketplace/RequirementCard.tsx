@@ -16,15 +16,15 @@ export function RequirementCard({ requirement }: RequirementCardProps) {
   return (
     <Link
       href={`/marketplace/requirement/${requirement.id}`}
-      className="block bg-white border border-line p-5 hover:border-gold/40 hover:shadow-card transition-all"
+      className="block bg-white dark:bg-charcoal-soft border border-line dark:border-white/10 p-5 hover:border-gold/40 dark:hover:border-gold/40 hover:shadow-card transition-all"
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="flex items-center gap-1.5">
-            <p className="text-[13.5px] font-semibold text-charcoal truncate">{requirement.company.name}</p>
+            <p className="text-[13.5px] font-semibold text-charcoal dark:text-white truncate">{requirement.company.name}</p>
             {requirement.company.verified === "verified" && <ShieldCheck size={13} className="text-success shrink-0" />}
           </div>
-          <p className="text-xs text-ink-faint mt-0.5">
+          <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">
             {requirement.destination.city}, {getMasterStateLabel(requirement.destination.state)}
           </p>
         </div>
@@ -35,8 +35,8 @@ export function RequirementCard({ requirement }: RequirementCardProps) {
 
       <div className="mt-4 flex items-end justify-between">
         <div>
-          <p className="font-mono text-lg text-charcoal">{getProductLabel(requirement.product)} · {requirement.grade}</p>
-          <p className="text-xs text-ink-faint mt-0.5">{formatQuantityMt(requirement.quantity)} needed · {requirement.season}</p>
+          <p className="font-mono text-lg text-charcoal dark:text-white">{getProductLabel(requirement.product)} · {requirement.grade}</p>
+          <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">{formatQuantityMt(requirement.quantity)} needed · {requirement.season}</p>
         </div>
         <p className="font-mono text-[15px] text-gold-dim">{formatPricePerUnit(requirement.expectedPrice)}</p>
       </div>

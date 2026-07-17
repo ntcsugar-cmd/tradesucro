@@ -16,15 +16,15 @@ export function OfferCard({ offer }: OfferCardProps) {
   return (
     <Link
       href={`/marketplace/offer/${offer.id}`}
-      className="block bg-white border border-line p-5 hover:border-gold/40 hover:shadow-card transition-all"
+      className="block bg-white dark:bg-charcoal-soft border border-line dark:border-white/10 p-5 hover:border-gold/40 dark:hover:border-gold/40 hover:shadow-card transition-all"
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="flex items-center gap-1.5">
-            <p className="text-[13.5px] font-semibold text-charcoal truncate">{offer.company.name}</p>
+            <p className="text-[13.5px] font-semibold text-charcoal dark:text-white truncate">{offer.company.name}</p>
             {offer.company.verified === "verified" && <ShieldCheck size={13} className="text-success shrink-0" />}
           </div>
-          <p className="text-xs text-ink-faint mt-0.5">
+          <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">
             {offer.dispatchFrom.city}, {getMasterStateLabel(offer.dispatchFrom.state)}
           </p>
         </div>
@@ -35,8 +35,8 @@ export function OfferCard({ offer }: OfferCardProps) {
 
       <div className="mt-4 flex items-end justify-between">
         <div>
-          <p className="font-mono text-lg text-charcoal">{getProductLabel(offer.product)} · {offer.grade}</p>
-          <p className="text-xs text-ink-faint mt-0.5">{formatQuantityMt(offer.quantity)} available · {offer.season}</p>
+          <p className="font-mono text-lg text-charcoal dark:text-white">{getProductLabel(offer.product)} · {offer.grade}</p>
+          <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">{formatQuantityMt(offer.quantity)} available · {offer.season}</p>
         </div>
         <p className="font-mono text-[15px] text-gold-dim">{formatPricePerUnit(offer.price)}</p>
       </div>

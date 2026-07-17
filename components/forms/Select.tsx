@@ -32,13 +32,13 @@ const sizeStyles = {
 
 const variantStyles = {
   default:
-    "border bg-white text-charcoal focus:border-gold/60 focus:ring-2 focus:ring-gold/15",
-  ghost: "border-none focus:ring-0",
+    "border bg-white text-charcoal focus:border-gold/60 focus:ring-2 focus:ring-gold/15 dark:bg-white/5 dark:text-white dark:focus:border-gold/50 dark:focus:ring-gold/10",
+  ghost: "border-none focus:ring-0 text-charcoal dark:text-white",
   dark: "border border-white/10 bg-white/5 text-white focus:border-gold/50 focus:ring-2 focus:ring-gold/10",
 };
 
 const chevronColor = {
-  default: "text-ink-faint",
+  default: "text-ink-faint dark:text-white/40",
   ghost: "text-current opacity-60",
   dark: "text-white/35",
 };
@@ -72,13 +72,13 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     return (
       <div className="w-full">
         {label && (
-          <label htmlFor={selectId} className="block text-[13px] font-medium text-charcoal mb-1.5">
+          <label htmlFor={selectId} className="block text-[13px] font-medium text-charcoal dark:text-white mb-1.5">
             {label}
           </label>
         )}
         <div className="relative flex items-center">
           {leadingIcon && (
-            <span className={clsx("absolute left-3.5 pointer-events-none z-10", variant === "default" ? "text-ink-faint" : "text-current opacity-60")}>
+            <span className={clsx("absolute left-3.5 pointer-events-none z-10", variant === "default" ? "text-ink-faint dark:text-white/40" : "text-current opacity-60")}>
               {leadingIcon}
             </span>
           )}
@@ -90,7 +90,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
             className={clsx(
               "w-full appearance-none rounded-sm font-body outline-none transition-colors",
               variantStyles[variant],
-              variant === "default" && (error ? "border-danger/60" : "border-line"),
+              variant === "default" && (error ? "border-danger/60" : "border-line dark:border-white/15"),
               leadingIcon && "pl-10",
               sizeStyles[size],
               className
@@ -114,11 +114,11 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           />
         </div>
         {error ? (
-          <p className="mt-1.5 flex items-center gap-1 text-xs text-danger">
+          <p className="mt-1.5 flex items-center gap-1 text-xs text-danger dark:text-danger-300">
             <AlertCircle size={12} /> {error}
           </p>
         ) : helperText ? (
-          <p className="mt-1.5 text-xs text-ink-faint">{helperText}</p>
+          <p className="mt-1.5 text-xs text-ink-faint dark:text-white/40">{helperText}</p>
         ) : null}
       </div>
     );

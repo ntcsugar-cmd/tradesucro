@@ -52,9 +52,9 @@ export function WorkspaceSwitcher() {
       </Button>
 
       {menu.isOpen && (
-        <div role="menu" className="absolute right-0 top-full mt-2 w-72 rounded-sm border border-line bg-white shadow-modal py-1.5 z-dropdown">
-          <div className="px-3.5 py-2.5 border-b border-line">
-            <p className="font-mono text-[10px] uppercase tracking-widest2 text-ink-faint">Switch Workspace</p>
+        <div role="menu" className="absolute right-0 top-full mt-2 w-72 rounded-sm border border-line dark:border-white/10 bg-white dark:bg-charcoal-soft shadow-modal py-1.5 z-dropdown">
+          <div className="px-3.5 py-2.5 border-b border-line dark:border-white/10">
+            <p className="font-mono text-[10px] uppercase tracking-widest2 text-ink-faint dark:text-white/40">Switch Workspace</p>
           </div>
           <div className="py-1">
             {workspaces.map((w) => {
@@ -65,25 +65,25 @@ export function WorkspaceSwitcher() {
                   key={w.id}
                   role="menuitem"
                   onClick={() => handleSwitch(w.id)}
-                  className="flex w-full items-center gap-3 px-3.5 py-2.5 text-left hover:bg-charcoal/[0.04] transition-colors"
+                  className="flex w-full items-center gap-3 px-3.5 py-2.5 text-left hover:bg-charcoal/[0.04] dark:hover:bg-white/5 transition-colors"
                 >
                   <span className="text-lg">{wMeta.emoji}</span>
                   <span className="flex-1 min-w-0">
-                    <span className="block text-[13px] font-medium text-charcoal truncate">{wMeta.label}</span>
-                    <span className="block text-xs text-ink-faint truncate">{w.companyName}</span>
+                    <span className="block text-[13px] font-medium text-charcoal dark:text-white truncate">{wMeta.label}</span>
+                    <span className="block text-xs text-ink-faint dark:text-white/40 truncate">{w.companyName}</span>
                   </span>
                   {active && <Check size={15} className="text-gold-dim shrink-0" />}
                 </button>
               );
             })}
           </div>
-          <div className="border-t border-line pt-1">
+          <div className="border-t border-line dark:border-white/10 pt-1">
             <button
               onClick={() => {
                 menu.close();
                 router.push("/workspaces");
               }}
-              className="flex w-full items-center gap-2.5 px-3.5 py-2.5 text-left text-[13px] text-ink-soft hover:bg-charcoal/[0.04] hover:text-charcoal transition-colors"
+              className="flex w-full items-center gap-2.5 px-3.5 py-2.5 text-left text-[13px] text-ink-soft dark:text-white/60 hover:bg-charcoal/[0.04] dark:hover:bg-white/5 hover:text-charcoal dark:hover:text-white transition-colors"
             >
               <LayoutGrid size={15} /> View all workspaces
             </button>

@@ -9,3 +9,4 @@ export * from "./StateSelect";
 export * from "./CitySelect";
 export * from "./MillSelect";
 export * from "./SearchableMillPicker";
+export * from "./MultiMillPicker";

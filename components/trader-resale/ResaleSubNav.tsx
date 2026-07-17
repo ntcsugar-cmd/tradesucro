@@ -25,7 +25,7 @@ export function ResaleSubNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="mb-8 flex items-center gap-1 overflow-x-auto rounded-sm border border-line bg-charcoal/[0.02] p-1.5">
+    <nav className="mb-8 flex items-center gap-1 overflow-x-auto rounded-sm border border-line dark:border-white/10 bg-charcoal/[0.02] dark:bg-white/[0.03] p-1.5">
       {RESALE_SUB_NAV.map(({ label, href, icon: Icon }) => {
         const active = href === "/trader" ? pathname === "/trader" : pathname.startsWith(href);
         return (
@@ -33,7 +33,7 @@ export function ResaleSubNav() {
             key={href}
             href={href}
             className={`flex shrink-0 items-center gap-1.5 rounded-sm px-3.5 py-2 text-[13px] font-medium transition-colors ${
-              active ? "bg-white text-charcoal shadow-card" : "text-ink-faint hover:text-charcoal"
+              active ? "bg-white dark:bg-charcoal-soft text-charcoal dark:text-white shadow-card" : "text-ink-faint dark:text-white/40 hover:text-charcoal dark:hover:text-white"
             }`}
           >
             <Icon size={14} className={active ? "text-gold-dim" : ""} /> {label}

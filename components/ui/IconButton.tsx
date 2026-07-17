@@ -16,6 +16,7 @@ interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** Required — icon buttons must be labeled for assistive tech. */
   "aria-label": string;
 }
+
 const variantStyles: Record<Variant, string> = {
   primary:
     "bg-gold text-white hover:bg-gold-bright",

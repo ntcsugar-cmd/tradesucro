@@ -11,7 +11,7 @@ import { Modal } from "@/components/ui/Modal";
 import { Textarea } from "@/components/forms/Textarea";
 import { NumberInput, TextInput } from "@/components/forms/Input";
 import { Select } from "@/components/forms/Select";
-import { ProductSelect, UnitSelect, StateSelect, CitySelect, PaymentTermSelect } from "@/components/master-data";
+import { ProductSelect, UnitSelect, StateSelect, CitySelect, PaymentTermSelect, MultiMillPicker } from "@/components/master-data";
 
 import { marketplaceService } from "@/services/marketplace.service";
 import { getProductLabel, getMasterStateLabel, getUnitLabel, getPaymentTermLabel } from "@/lib/utils/marketplaceLabels";
@@ -25,6 +25,7 @@ interface FormState {
   product: string;
   grade: QualityGrade | "";
   season: Season;
+  preferredMillIds: string[];
   quantity: string;
   unit: string;
   state: string;
@@ -39,6 +40,7 @@ const INITIAL: FormState = {
   product: "",
   grade: "",
   season: DEFAULT_SEASON,
+  preferredMillIds: [],
   quantity: "",
   unit: "mt",
   state: "",
@@ -74,6 +76,7 @@ export function RequirementForm() {
     return {
       product: form.product,
       grade: form.grade as QualityGrade,
+      preferredMillIds: form.preferredMillIds,
       season: form.season,
       quantity: Number(form.quantity) || 0,
       unit: form.unit,
@@ -115,6 +118,8 @@ export function RequirementForm() {
               <Select label="Season" defaultValue={form.season} options={SEASON_OPTIONS} onChange={(e) => set("season", e.target.value as Season)} />
             </div>
 
+            <MultiMillPicker value={form.preferredMillIds} onChange={(millIds) => set("preferredMillIds", millIds)} />
+
             <div className="grid sm:grid-cols-2 gap-5">
               <NumberInput label="Required quantity" unit="MT" placeholder="300" onChange={(e) => set("quantity", e.target.value)} />
               <UnitSelect label="Unit" defaultValue={form.unit} onChange={(e) => set("unit", e.target.value)} />
@@ -152,7 +157,10 @@ export function RequirementForm() {
       <Modal open={previewOpen} onClose={() => setPreviewOpen(false)} title="Preview buy requirement" size="lg">
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <p className="font-display text-xl text-charcoal">{getProductLabel(form.product)} · {form.grade} · {form.season}</p>
+            <p className="font-display text-xl text-charcoal dark:text-white">{getProductLabel(form.product)} · {form.grade} · {form.season}</p>
+            <p className="text-xs text-ink-faint dark:text-white/40 mt-1">
+              {form.preferredMillIds.length === 0 ? "Open to All Mills" : `Routed to ${form.preferredMillIds.length} selected mill(s)`}
+            </p>
             <p className="font-mono text-lg text-gold-dim">{formatPricePerUnit(Number(form.expectedPrice) || 0)}</p>
           </div>
           <dl className="grid sm:grid-cols-2 gap-x-6 gap-y-2 text-[13px] pt-3 border-t border-line">

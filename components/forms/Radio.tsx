@@ -22,6 +22,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
             id={radioId}
             className={clsx(
               "peer h-[18px] w-[18px] appearance-none rounded-full border border-charcoal/25 bg-white transition-colors",
+              "dark:border-white/25 dark:bg-white/5",
               "checked:border-[5.5px] checked:border-gold",
               "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold",
               "disabled:opacity-40 disabled:cursor-not-allowed",
@@ -32,8 +33,8 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
         </span>
         {(label || description) && (
           <span>
-            {label && <span className="block text-[13.5px] font-medium text-charcoal">{label}</span>}
-            {description && <span className="block text-xs text-ink-faint mt-0.5">{description}</span>}
+            {label && <span className="block text-[13.5px] font-medium text-charcoal dark:text-white">{label}</span>}
+            {description && <span className="block text-xs text-ink-faint dark:text-white/40 mt-0.5">{description}</span>}
           </span>
         )}
       </label>
@@ -74,7 +75,7 @@ export function RadioGroup({
 
   return (
     <fieldset>
-      {legend && <legend className="text-[13px] font-medium text-charcoal mb-2.5">{legend}</legend>}
+      {legend && <legend className="text-[13px] font-medium text-charcoal dark:text-white mb-2.5">{legend}</legend>}
       <div className={clsx("flex gap-4", orientation === "vertical" ? "flex-col" : "flex-row flex-wrap")}>
         {options.map((opt) => (
           <Radio

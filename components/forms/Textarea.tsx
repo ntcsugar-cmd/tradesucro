@@ -11,7 +11,7 @@ interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 
 const variantStyles = {
   default:
-    "border bg-white text-charcoal placeholder:text-ink-faint focus:border-gold/60 focus:ring-2 focus:ring-gold/15",
+    "border bg-white text-charcoal placeholder:text-ink-faint focus:border-gold/60 focus:ring-2 focus:ring-gold/15 dark:bg-white/5 dark:text-white dark:placeholder:text-white/30 dark:focus:border-gold/50 dark:focus:ring-gold/10",
   dark: "border border-white/10 bg-white/5 text-white placeholder:text-white/30 focus:border-gold/50 focus:ring-2 focus:ring-gold/10",
 };
 
@@ -28,7 +28,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     return (
       <div className="w-full">
         {label && (
-          <label htmlFor={textareaId} className="block text-[13px] font-medium text-charcoal mb-1.5">
+          <label htmlFor={textareaId} className="block text-[13px] font-medium text-charcoal dark:text-white mb-1.5">
             {label}
           </label>
         )}
@@ -41,17 +41,17 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           className={clsx(
             "w-full rounded-sm font-body text-sm outline-none transition-colors py-2.5 px-3.5 resize-y",
             variantStyles[variant],
-            variant === "default" && (error ? "border-danger/60" : "border-line"),
+            variant === "default" && (error ? "border-danger/60" : "border-line dark:border-white/15"),
             className
           )}
           {...props}
         />
         {error ? (
-          <p id={`${textareaId}-error`} className="mt-1.5 flex items-center gap-1 text-xs text-danger">
+          <p id={`${textareaId}-error`} className="mt-1.5 flex items-center gap-1 text-xs text-danger dark:text-danger-300">
             <AlertCircle size={12} /> {error}
           </p>
         ) : helperText ? (
-          <p id={`${textareaId}-helper`} className="mt-1.5 text-xs text-ink-faint">
+          <p id={`${textareaId}-helper`} className="mt-1.5 text-xs text-ink-faint dark:text-white/40">
             {helperText}
           </p>
         ) : null}

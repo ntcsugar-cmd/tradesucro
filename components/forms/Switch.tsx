@@ -38,7 +38,7 @@ export const ToggleSwitch = forwardRef<HTMLButtonElement, ToggleSwitchProps>(
           "relative inline-flex shrink-0 items-center rounded-full transition-colors duration-200",
           "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold",
           "disabled:opacity-40 disabled:cursor-not-allowed",
-          checked ? "bg-gold" : "bg-charcoal/20",
+          checked ? "bg-gold" : "bg-charcoal/20 dark:bg-white/20",
           trackSize[size],
           className
         )}
@@ -59,8 +59,8 @@ export const ToggleSwitch = forwardRef<HTMLButtonElement, ToggleSwitchProps>(
     return (
       <div className="flex items-start justify-between gap-4">
         <label htmlFor={toggleId} className="cursor-pointer">
-          {label && <span className="block text-[13.5px] font-medium text-charcoal">{label}</span>}
-          {description && <span className="block text-xs text-ink-faint mt-0.5">{description}</span>}
+          {label && <span className="block text-[13.5px] font-medium text-charcoal dark:text-white">{label}</span>}
+          {description && <span className="block text-xs text-ink-faint dark:text-white/40 mt-0.5">{description}</span>}
         </label>
         {switchEl}
       </div>

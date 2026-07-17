@@ -190,14 +190,14 @@ export function DataTable<T>({
               <button
                 type="button"
                 onClick={() => setColumnsMenuOpen((v) => !v)}
-                className="flex items-center gap-1.5 rounded-sm border border-line px-3 py-1.5 text-xs font-medium text-ink-soft hover:text-charcoal hover:border-charcoal/30 transition-colors"
+                className="flex items-center gap-1.5 rounded-sm border border-line dark:border-white/15 px-3 py-1.5 text-xs font-medium text-ink-soft dark:text-white/60 hover:text-charcoal dark:hover:text-white hover:border-charcoal/30 dark:hover:border-white/30 transition-colors"
               >
                 <Columns3 size={13} /> Columns
               </button>
               {columnsMenuOpen && (
                 <>
                   <div className="fixed inset-0 z-dropdown" onClick={() => setColumnsMenuOpen(false)} aria-hidden />
-                  <div className="absolute right-0 top-full z-dropdown mt-1.5 w-56 rounded-sm border border-line bg-white shadow-lg py-1.5 max-h-72 overflow-y-auto">
+                  <div className="absolute right-0 top-full z-dropdown mt-1.5 w-56 rounded-sm border border-line dark:border-white/10 bg-white dark:bg-charcoal-soft shadow-lg py-1.5 max-h-72 overflow-y-auto">
                     {columns
                       .filter((c) => !c.alwaysVisible)
                       .map((c) => {
@@ -207,9 +207,9 @@ export function DataTable<T>({
                             key={c.key}
                             type="button"
                             onClick={() => toggleColumn(c.key)}
-                            className="flex w-full items-center gap-2 px-3 py-2 text-[13px] text-charcoal hover:bg-charcoal/[0.04] text-left"
+                            className="flex w-full items-center gap-2 px-3 py-2 text-[13px] text-charcoal dark:text-white hover:bg-charcoal/[0.04] dark:hover:bg-white/5 text-left"
                           >
-                            <span className={clsx("flex h-4 w-4 items-center justify-center rounded-sm border", visible ? "bg-gold border-gold" : "border-line")}>
+                            <span className={clsx("flex h-4 w-4 items-center justify-center rounded-sm border", visible ? "bg-gold border-gold" : "border-line dark:border-white/20")}>
                               {visible && <Check size={11} className="text-charcoal" />}
                             </span>
                             {c.header}
@@ -225,7 +225,7 @@ export function DataTable<T>({
             <button
               type="button"
               onClick={handleExport}
-              className="flex items-center gap-1.5 rounded-sm border border-line px-3 py-1.5 text-xs font-medium text-ink-soft hover:text-charcoal hover:border-charcoal/30 transition-colors"
+              className="flex items-center gap-1.5 rounded-sm border border-line dark:border-white/15 px-3 py-1.5 text-xs font-medium text-ink-soft dark:text-white/60 hover:text-charcoal dark:hover:text-white hover:border-charcoal/30 dark:hover:border-white/30 transition-colors"
             >
               <Download size={13} /> Export CSV
             </button>
@@ -243,7 +243,7 @@ export function DataTable<T>({
                   sortable={col.sortable}
                   sortDirection={sortKey === col.key ? sortDirection : null}
                   onSort={() => col.sortable && handleSort(col.key)}
-                  className={clsx(col.align && alignClass[col.align], col.frozen && "sticky z-dropdown bg-charcoal/[0.03]")}
+                  className={clsx(col.align && alignClass[col.align], col.frozen && "sticky z-dropdown bg-[#faf9f7] dark:bg-charcoal")}
                   style={{
                     width: colWidths[col.key] ? `${colWidths[col.key]}px` : undefined,
                     left: col.frozen ? `${frozenOffsets[col.key]}px` : undefined,
@@ -282,7 +282,7 @@ export function DataTable<T>({
                   {visibleColumns.map((col) => (
                     <TD
                       key={col.key}
-                      className={clsx(col.align && alignClass[col.align], col.className, col.frozen && "sticky z-dropdown bg-white")}
+                      className={clsx(col.align && alignClass[col.align], col.className, col.frozen && "sticky z-dropdown bg-white dark:bg-charcoal-soft")}
                       style={{
                         width: colWidths[col.key] ? `${colWidths[col.key]}px` : undefined,
                         left: col.frozen ? `${frozenOffsets[col.key]}px` : undefined,

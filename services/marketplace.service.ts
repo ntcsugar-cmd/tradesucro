@@ -151,6 +151,7 @@ function generateRequirements(count: number): MarketplaceRequirement[] {
       quantity: 80 + ((i * 61) % 700),
       unit: unit.value,
       destination: { state: destState.value, city: company.city },
+      preferredMillIds: i % 4 === 0 ? [MILLS[i % MILLS.length].id] : i % 7 === 0 ? [MILLS[i % MILLS.length].id, MILLS[(i + 3) % MILLS.length].id] : [],
       expectedPrice: 3350 + ((i * 41) % 850),
       paymentTerms: paymentTerm.value,
       deliverBy: daysFromNow(5 + (i % 25)),
@@ -201,11 +202,29 @@ function currentCompany(): CompanySummary {
 /* ------------------------------------------------------------------ */
 
 function matchesFilters<
-  T extends { product: string; grade: string; season: string; quantity: number; company: CompanySummary; dispatchDate?: string }
+  T extends {
+    product: string;
+    grade: string;
+    season: string;
+    quantity: number;
+    company: CompanySummary;
+    dispatchDate?: string;
+    millId?: string | null;
+    preferredMillIds?: string[];
+  }
 >(item: T, price: number, location: { state: string; city: string }, filters: MarketplaceFilters): boolean {
   if (filters.product && item.product !== filters.product) return false;
   if (filters.grade && item.grade !== filters.grade) return false;
   if (filters.season && item.season !== filters.season) return false;
+  if (filters.millId) {
+    // Offers: match their own millId. Requirements: match if this mill is in
+    // the preferred list, OR the list is empty ("All Mills" — open to every mill).
+    if (item.millId !== undefined) {
+      if (item.millId !== filters.millId) return false;
+    } else if (item.preferredMillIds !== undefined) {
+      if (item.preferredMillIds.length > 0 && !item.preferredMillIds.includes(filters.millId)) return false;
+    }
+  }
   if (filters.state && location.state !== filters.state) return false;
   if (filters.city && location.city !== filters.city) return false;
   if (filters.minQuantity != null && item.quantity < filters.minQuantity) return false;

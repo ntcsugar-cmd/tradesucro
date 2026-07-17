@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { Checkbox } from "@/components/forms/Checkbox";
 import { NumberInput } from "@/components/forms/Input";
 import { Select } from "@/components/forms/Select";
-import { ProductSelect, StateSelect, CitySelect, CompanyTypeSelect } from "@/components/master-data";
+import { ProductSelect, StateSelect, CitySelect, CompanyTypeSelect, MillSelect } from "@/components/master-data";
 import { QUALITY_GRADES } from "@/lib/types/marketplace";
 import { SEASON_OPTIONS } from "@/lib/master-data/seasons";
 import type { MarketplaceFilters } from "@/lib/types/marketplace";
@@ -72,6 +72,8 @@ export function FilterPanel({ onApply }: FilterPanelProps) {
             options={SEASON_OPTIONS}
             onChange={(e) => set("season", (e.target.value || undefined) as MarketplaceFilters["season"])}
           />
+
+          <MillSelect label="Sugar Mill" size="sm" placeholder="Any mill" onChange={(e) => set("millId", e.target.value || undefined)} />
 
           <StateSelect label="State" size="sm" onChange={(e) => set("state", e.target.value || undefined)} />
 

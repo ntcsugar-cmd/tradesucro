@@ -107,6 +107,8 @@ export interface MarketplaceRequirement {
   quantity: number;
   unit: string;
   destination: DispatchLocation;
+  /** Specific mills this requirement should be routed to. Empty array = "All Mills" (the default — open to any mill). */
+  preferredMillIds: string[];
   expectedPrice: number;
   paymentTerms: string;
   deliverBy: string;
@@ -155,6 +157,7 @@ export interface MarketplaceFilters {
   product?: string;
   grade?: QualityGrade;
   season?: Season;
+  millId?: string;
   state?: string;
   city?: string;
   minQuantity?: number;
