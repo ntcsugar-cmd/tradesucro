@@ -35,6 +35,10 @@ import {
   Scale,
   Trophy,
   Tags,
+  Truck,
+  Route,
+  Flag,
+  BarChart3,
   User,
   LogOut,
 } from "lucide-react";
@@ -99,6 +103,10 @@ const ICONS: Record<string, LucideIcon> = {
   Scale,
   Trophy,
   Tags,
+  Truck,
+  Route,
+  Flag,
+  BarChart3,
 };
 
 /**
@@ -283,7 +291,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </div>
 
         {/* Mobile bottom navigation — replaces the persistent sidebar on small screens; the drawer above remains the "everything else" overflow */}
-        {isMobile && <BottomNav homeHref={workspace?.defaultLandingPage ?? "/dashboard"} alertCount={notificationCount} />}
+        {isMobile && <BottomNav homeHref={workspace?.defaultLandingPage ?? "/dashboard"} alertCount={notificationCount} role={workspace?.role} />}
 
         <MobileSearchOverlay open={mobileSearch.isOpen} onClose={mobileSearch.close} onSearch={() => router.push("/market")} />
 

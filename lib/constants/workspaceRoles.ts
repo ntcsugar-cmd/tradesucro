@@ -99,8 +99,11 @@ export const WORKSPACE_ROLE_PERMISSIONS: Record<WorkspaceRole, WorkspacePermissi
     actions: ["requirements.create", "interest.express"],
   },
   transporter: {
+    // "/transport" is additive here — mirrors the same v1.3 pattern used
+    // for the Trader role ("/transport-dashboard" now redirects into
+    // "/transport"). No permission-checking logic changed.
     menus: ["Workspace", ...COMMON_MENUS],
-    routePrefixes: ["/transport-dashboard", ...COMMON_ROUTES],
+    routePrefixes: ["/transport-dashboard", "/transport", ...COMMON_ROUTES],
     dashboardWidgets: ["quickActions", "notifications"],
     actions: ["transport.quote", "transport.accept", "dispatch.update"],
   },

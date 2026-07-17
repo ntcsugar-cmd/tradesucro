@@ -19,6 +19,7 @@ export * from "./smartMatch";
 export * from "./commercial";
 export * from "./contact";
 export * from "./masterDataAdmin";
+export * from "./transport";
 
 export interface TickerItem {
   symbol: string;

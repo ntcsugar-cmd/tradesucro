@@ -15,7 +15,7 @@ const DEFAULT_LANDING: Record<WorkspaceRole, string> = {
   trader: "/trader-dashboard",
   broker: "/broker-dashboard",
   buyer: "/buyer-dashboard",
-  transporter: "/transport-dashboard",
+  transporter: "/transport",
   warehouse: "/warehouse-dashboard",
   admin: "/admin-dashboard",
 };

@@ -1,5 +1,5 @@
-import { PlaceholderDashboard } from "@/components/workspace";
+import { redirect } from "next/navigation";
 
 export default function TransportDashboardPage() {
-  return <PlaceholderDashboard role="transporter" />;
+  redirect("/transport");
 }
