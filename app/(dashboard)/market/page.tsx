@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, Activity, Map, LineChart, Columns3, BellRing, Newspaper } from "lucide-react";
+import { ArrowUpRight, Activity, Map, LineChart, Columns3, BellRing, Newspaper, Globe2, Ship } from "lucide-react";
 import { Breadcrumb } from "@/components/navigation/Breadcrumb";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardHeader, CardTitle, CardBody } from "@/components/cards/Card";
@@ -7,8 +7,10 @@ import { Grid, GridItem } from "@/components/ui/Grid";
 import { MarketStatsGrid, MarketSearchBar, MarketFeedTimeline, PriceHeatMapGrid } from "@/components/market-intel";
 
 const QUICK_LINKS = [
+  { label: "Global Market", href: "/market/global", icon: Globe2 },
+  { label: "International Market", href: "/market/international", icon: Ship },
+  { label: "India Spot Market", href: "/market/prices", icon: Map },
   { label: "Live Price Board", href: "/market/live", icon: Activity },
-  { label: "Price Heat Map", href: "/market/prices", icon: Map },
   { label: "Market Trends", href: "/market/trends", icon: LineChart },
   { label: "Compare Mills", href: "/market/compare", icon: Columns3 },
   { label: "Smart Alerts", href: "/market/alerts", icon: BellRing },

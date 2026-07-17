@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Package, Tags, ArrowRight } from "lucide-react";
+import { Package, Tags, ArrowRight, Truck, Building2 } from "lucide-react";
 import { Breadcrumb } from "@/components/navigation/Breadcrumb";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardBody } from "@/components/cards/Card";
@@ -7,6 +7,8 @@ import { Card, CardBody } from "@/components/cards/Card";
 const MASTER_DATA_LINKS = [
   { label: "Product Master", description: "The sugar product categories every offer, requirement, and filter draws from.", href: "/admin/products", icon: Package },
   { label: "Grade Master", description: "Every sugar grade traded on TradeSucro, with market classification and product applicability.", href: "/admin/grades", icon: Tags },
+  { label: "Freight Coordination", description: "All freight requests, quote comparison, and quote approval — TradeSucro's transport coordination desk.", href: "/admin/freight", icon: Truck },
+  { label: "Transporter Directory", description: "Every transporter company in TradeSucro's network, their coverage, fleet types, and verification status.", href: "/admin/transporters", icon: Building2 },
 ];
 
 export default function AdminDashboardPage() {

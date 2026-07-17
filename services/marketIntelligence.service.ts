@@ -281,7 +281,7 @@ export const marketIntelligenceService = {
   },
 
   async createAlertRule(rule: Omit<AlertRule, "id" | "createdAt" | "active">): Promise<AlertRule> {
-    const created: AlertRule = { ...rule, id: `alert-${Date.now()}`, active: true, createdAt: new Date().toISOString() };
+    const created: AlertRule = { channels: ["push"], ...rule, id: `alert-${Date.now()}`, active: true, createdAt: new Date().toISOString() };
     writeAlertRules([created, ...readAlertRules()]);
     return delay(created, 400);
   },

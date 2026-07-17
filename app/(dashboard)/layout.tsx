@@ -39,6 +39,8 @@ import {
   Route,
   Flag,
   BarChart3,
+  Globe2,
+  Ship,
   User,
   LogOut,
 } from "lucide-react";
@@ -107,6 +109,8 @@ const ICONS: Record<string, LucideIcon> = {
   Route,
   Flag,
   BarChart3,
+  Globe2,
+  Ship,
 };
 
 /**

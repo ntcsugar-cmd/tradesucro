@@ -2,25 +2,26 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { PackageSearch, Route, ArrowRight } from "lucide-react";
+import { Inbox, Route, ArrowRight } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardHeader, CardTitle, CardBody } from "@/components/cards/Card";
 import { Grid, GridItem } from "@/components/ui/Grid";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { EmptyState } from "@/components/ui/EmptyState";
-import { TransportSubNav, TransportStatsWidget, LoadRequestStatusBadge, TransportDispatchStatusBadge } from "@/components/transport";
+import { TransportSubNav, TransportStatsWidget, TransportDispatchStatusBadge } from "@/components/transport";
 import { transportService } from "@/services/transport.service";
+import { freightService } from "@/services/freight.service";
 import { getProductLabel, getMasterStateLabel } from "@/lib/utils/marketplaceLabels";
-import type { LoadRequest, TransportDispatch } from "@/lib/types/transport";
+import type { FreightInquiry, FreightQuote, TransportDispatch } from "@/lib/types/transport";
 
 export default function TransportDashboardPage() {
   const [loading, setLoading] = useState(true);
-  const [pendingRequests, setPendingRequests] = useState<LoadRequest[]>([]);
+  const [newInquiries, setNewInquiries] = useState<{ inquiry: FreightInquiry; quote: FreightQuote }[]>([]);
   const [activeDispatches, setActiveDispatches] = useState<TransportDispatch[]>([]);
 
   useEffect(() => {
-    Promise.all([transportService.getLoadRequests("pending"), transportService.getDispatches(true)]).then(([requests, dispatches]) => {
-      setPendingRequests(requests.slice(0, 4));
+    Promise.all([freightService.getNewInquiriesForTransporter(), transportService.getDispatches(true)]).then(([inquiries, dispatches]) => {
+      setNewInquiries(inquiries.slice(0, 4));
       setActiveDispatches(dispatches.slice(0, 4));
       setLoading(false);
     });
@@ -29,7 +30,7 @@ export default function TransportDashboardPage() {
   return (
     <>
       <TransportSubNav />
-      <PageHeader title="Transport Dashboard" description="Fleet status, pending requests, and active dispatches at a glance." />
+      <PageHeader title="Transport Dashboard" description="Fleet status, new freight inquiries, and active trips at a glance." />
 
       <div className="mb-8">
         <TransportStatsWidget />
@@ -39,7 +40,7 @@ export default function TransportDashboardPage() {
         <GridItem>
           <Card padding="lg">
             <CardHeader>
-              <CardTitle>Pending Load Requests</CardTitle>
+              <CardTitle>New Freight Inquiries</CardTitle>
               <Link href="/transport/loads" className="flex items-center gap-1 text-xs font-medium text-gold-dim hover:text-gold-bright transition-colors">
                 View all <ArrowRight size={12} />
               </Link>
@@ -51,21 +52,21 @@ export default function TransportDashboardPage() {
                     <Skeleton key={i} className="h-14 w-full" />
                   ))}
                 </div>
-              ) : pendingRequests.length === 0 ? (
-                <EmptyState icon={<PackageSearch size={20} />} title="No pending requests" description="New load requests will appear here." />
+              ) : newInquiries.length === 0 ? (
+                <EmptyState icon={<Inbox size={20} />} title="No new inquiries" description="TradeSucro will broadcast matching freight inquiries here." />
               ) : (
                 <ul className="divide-y divide-line dark:divide-white/10">
-                  {pendingRequests.map((r) => (
-                    <li key={r.id} className="py-3 first:pt-0 last:pb-0">
-                      <div className="flex items-center justify-between gap-2">
+                  {newInquiries.map(({ inquiry }) => (
+                    <li key={inquiry.id} className="py-3 first:pt-0 last:pb-0">
+                      <Link href="/transport/loads" className="flex items-center justify-between gap-2">
                         <div className="min-w-0">
-                          <p className="text-[13px] font-medium text-charcoal dark:text-white truncate">{r.requestedBy}</p>
+                          <p className="text-[13px] font-medium text-charcoal dark:text-white truncate">{inquiry.requestedByCompany}</p>
                           <p className="text-[11.5px] text-ink-faint dark:text-white/40">
-                            {getProductLabel(r.product)} · {getMasterStateLabel(r.pickup.state)} → {getMasterStateLabel(r.delivery.state)}
+                            {getProductLabel(inquiry.product)} · {getMasterStateLabel(inquiry.loading.state)} → {getMasterStateLabel(inquiry.destination.state)}
                           </p>
                         </div>
-                        <LoadRequestStatusBadge status={r.status} />
-                      </div>
+                        <ArrowRight size={14} className="text-ink-faint dark:text-white/40 shrink-0" />
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -77,7 +78,7 @@ export default function TransportDashboardPage() {
         <GridItem>
           <Card padding="lg">
             <CardHeader>
-              <CardTitle>Active Dispatches</CardTitle>
+              <CardTitle>Active Trips</CardTitle>
               <Link href="/transport/dispatches" className="flex items-center gap-1 text-xs font-medium text-gold-dim hover:text-gold-bright transition-colors">
                 View all <ArrowRight size={12} />
               </Link>
@@ -90,7 +91,7 @@ export default function TransportDashboardPage() {
                   ))}
                 </div>
               ) : activeDispatches.length === 0 ? (
-                <EmptyState icon={<Route size={20} />} title="No active dispatches" description="Accepted loads assigned to a vehicle will appear here." />
+                <EmptyState icon={<Route size={20} />} title="No active trips" description="Confirmed freight assigned to a vehicle will appear here." />
               ) : (
                 <ul className="divide-y divide-line dark:divide-white/10">
                   {activeDispatches.map((d) => (

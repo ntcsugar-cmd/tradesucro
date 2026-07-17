@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, ShoppingBag, Building2, Sparkles, BarChart3 } from "lucide-react";
+import { LayoutDashboard, ShoppingBag, Building2, Sparkles, Truck, BarChart3 } from "lucide-react";
 
 const TRADER_SUB_NAV = [
   { label: "Trading Desk", href: "/trader", icon: LayoutDashboard },
   { label: "Purchases", href: "/trader/purchases", icon: ShoppingBag },
   { label: "Suppliers", href: "/trader/suppliers", icon: Building2 },
+  { label: "Freight", href: "/trader/freight", icon: Truck },
   { label: "Opportunities", href: "/trader/opportunities", icon: Sparkles },
   { label: "Analytics", href: "/trader/analytics", icon: BarChart3 },
 ];

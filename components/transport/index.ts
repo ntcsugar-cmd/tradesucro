@@ -5,5 +5,5 @@ export * from "./VehicleTable";
 export * from "./VehicleFormModal";
 export * from "./DriverTable";
 export * from "./DriverFormModal";
-export * from "./LoadRequestCard";
+export * from "./FreightInquiryCard";
 export * from "./DispatchTable";

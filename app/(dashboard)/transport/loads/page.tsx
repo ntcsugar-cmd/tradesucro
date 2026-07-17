@@ -7,18 +7,18 @@ import { Grid, GridItem } from "@/components/ui/Grid";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { useToast } from "@/components/ui/Toast";
-import { TransportSubNav, LoadRequestCard } from "@/components/transport";
-import { transportService } from "@/services/transport.service";
-import type { LoadRequest } from "@/lib/types/transport";
+import { TransportSubNav, FreightInquiryCard } from "@/components/transport";
+import { freightService } from "@/services/freight.service";
+import type { FreightInquiry, FreightQuote } from "@/lib/types/transport";
 
-export default function LoadsPage() {
+export default function NewFreightInquiriesPage() {
   const { toast } = useToast();
-  const [requests, setRequests] = useState<LoadRequest[]>([]);
+  const [rows, setRows] = useState<{ inquiry: FreightInquiry; quote: FreightQuote }[]>([]);
   const [loading, setLoading] = useState(true);
 
   async function load() {
     setLoading(true);
-    setRequests(await transportService.getLoadRequests());
+    setRows(await freightService.getNewInquiriesForTransporter());
     setLoading(false);
   }
 
@@ -26,30 +26,41 @@ export default function LoadsPage() {
     load();
   }, []);
 
-  async function handleRespond(id: string, accept: boolean) {
-    await transportService.respondToLoadRequest(id, accept);
-    toast({ variant: "success", title: accept ? "Load request accepted" : "Load request rejected" });
+  async function handleRespond(quoteId: string, accept: boolean) {
+    await freightService.respondToInquiry(quoteId, accept);
+    if (!accept) {
+      toast({ variant: "success", title: "Inquiry declined" });
+      await load();
+    }
+  }
+
+  async function handleSubmitQuote(quoteId: string, details: { freightAmount: number; vehicleAvailability: string; loadingTime: string; transitTime: string; remarks: string }) {
+    await freightService.submitQuote(quoteId, details);
+    toast({ variant: "success", title: "Quote submitted to TradeSucro" });
     await load();
   }
 
   return (
     <>
       <TransportSubNav />
-      <PageHeader title="Load Requests" description="Incoming transport requests from traders, mills, and buyers — accept or reject each one." />
+      <PageHeader
+        title="New Freight Inquiries"
+        description="Freight inquiries TradeSucro has matched to your coverage area and vehicle types. Accept to submit a quote, or decline."
+      />
 
       {loading ? (
         <Grid cols={1} colsMd={2} colsLg={3} gap="md">
           {Array.from({ length: 6 }).map((_, i) => (
-            <Skeleton key={i} className="h-52 w-full" />
+            <Skeleton key={i} className="h-72 w-full" />
           ))}
         </Grid>
-      ) : requests.length === 0 ? (
-        <EmptyState icon={<PackageSearch size={20} />} title="No load requests" description="New transport requests will appear here." />
+      ) : rows.length === 0 ? (
+        <EmptyState icon={<PackageSearch size={20} />} title="No new inquiries" description="TradeSucro will broadcast matching freight inquiries here as traders post them." />
       ) : (
         <Grid cols={1} colsMd={2} colsLg={3} gap="md">
-          {requests.map((r) => (
-            <GridItem key={r.id}>
-              <LoadRequestCard request={r} onRespond={handleRespond} />
+          {rows.map(({ inquiry, quote }) => (
+            <GridItem key={quote.id}>
+              <FreightInquiryCard inquiry={inquiry} quote={quote} onRespond={handleRespond} onSubmitQuote={handleSubmitQuote} />
             </GridItem>
           ))}
         </Grid>

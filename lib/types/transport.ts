@@ -45,21 +45,81 @@ export interface TransportLocation {
   city: string;
 }
 
-export type LoadRequestStatus = "pending" | "accepted" | "rejected" | "assigned";
+/**
+ * Freight Coordination — the actual business model
+ * ------------------------------------------------------------------
+ * TradeSucro is a coordinator, not a directory: a trader/buyer/mill
+ * posts a Freight Inquiry, TradeSucro's matching engine identifies and
+ * broadcasts it to eligible transporters (by loading state/city and
+ * vehicle type — the "Transport Broadcast" feature), each matched
+ * transporter can accept/decline and submit a FreightQuote, TradeSucro
+ * staff review and approve exactly one quote, and only THEN is that
+ * quote (never the transporter's contact details, never the other
+ * quotes) shared with the requester. Confirming creates a
+ * TransportDispatch for tracking — the existing fleet/dispatch system
+ * below is reused unchanged as the fulfillment layer once a quote is
+ * confirmed.
+ */
 
-export interface LoadRequest {
+/** The broader network of transporter companies TradeSucro coordinates — not just the current user's own fleet. Matching runs against this. */
+export interface TransporterProfile {
+  id: string;
+  companyName: string;
+  coverageStates: string[];
+  vehicleTypes: VehicleType[];
+  rating: number;
+  verified: boolean;
+  /** Links a directory entry to the logged-in transporter workspace it represents, if any — lets "my own" inquiries/quotes be filtered from the shared mock directory. */
+  isCurrentUser?: boolean;
+}
+
+export type FreightInquiryStatus = "broadcasting" | "quotes_received" | "quote_approved" | "confirmed" | "in_transit" | "delivered" | "cancelled";
+
+export interface FreightLoadingLocation {
+  locationType: "mill" | "warehouse" | "city";
+  refName?: string;
+  state: string;
+  city: string;
+}
+
+export interface FreightInquiry {
   id: string;
   requestNumber: string;
-  requestedBy: string;
+  requestedByCompany: string;
+  requestedByRole: "trader" | "buyer" | "mill";
+  loading: FreightLoadingLocation;
+  destination: TransportLocation;
   product: string;
-  grade: QualityGrade;
+  grade: QualityGrade | null;
   quantity: number;
-  pickup: TransportLocation;
-  delivery: TransportLocation;
-  proposedRate: number;
-  pickupDate: string;
-  status: LoadRequestStatus;
+  vehicleTypeRequired: VehicleType;
+  expectedLoadingDate: string;
+  specialInstructions: string;
+  status: FreightInquiryStatus;
+  matchedTransporterIds: string[];
+  approvedQuoteId: string | null;
+  dispatchId: string | null;
   createdAt: string;
+}
+
+export type FreightQuoteResponse = "pending" | "accepted" | "declined";
+export type FreightQuoteAdminStatus = "awaiting_quote" | "pending_review" | "approved" | "not_selected";
+
+export interface FreightQuote {
+  id: string;
+  inquiryId: string;
+  transporterId: string;
+  transporterName: string;
+  transporterRating: number;
+  transporterVerified: boolean;
+  response: FreightQuoteResponse;
+  freightAmount: number | null;
+  vehicleAvailability: string | null;
+  loadingTime: string | null;
+  transitTime: string | null;
+  remarks: string | null;
+  adminStatus: FreightQuoteAdminStatus;
+  submittedAt: string | null;
 }
 
 export type TransportDispatchStatus = "assigned" | "in-transit" | "delivered" | "delayed";
@@ -73,7 +133,7 @@ export interface DispatchStatusEvent {
 export interface TransportDispatch {
   id: string;
   dispatchNumber: string;
-  loadRequestId: string;
+  inquiryId: string;
   vehicleId: string;
   driverId: string;
   product: string;
@@ -94,7 +154,7 @@ export interface TransportDashboardStats {
   availableVehicles: number;
   totalDrivers: number;
   availableDrivers: number;
-  pendingLoadRequests: number;
+  pendingFreightInquiries: number;
   activeDispatches: number;
   completedTripsThisMonth: number;
   earningsThisMonth: number;

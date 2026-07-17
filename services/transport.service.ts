@@ -2,6 +2,7 @@ import { STATES } from "@/lib/master-data/states";
 import { CITIES } from "@/lib/master-data/cities";
 import { PRODUCTS } from "@/lib/master-data/products";
 import { QUALITY_GRADES } from "@/lib/types/marketplace";
+import type { QualityGrade } from "@/lib/types/marketplace";
 import { getMasterStateLabel } from "@/lib/utils/marketplaceLabels";
 import type {
   Vehicle,
@@ -11,8 +12,6 @@ import type {
   Driver,
   DriverDraft,
   DriverStatus,
-  LoadRequest,
-  LoadRequestStatus,
   TransportDispatch,
   TransportDispatchStatus,
   TransportLocation,
@@ -22,7 +21,6 @@ import type {
 
 const VEHICLES_KEY = "tradesucro-transport-vehicles";
 const DRIVERS_KEY = "tradesucro-transport-drivers";
-const LOAD_REQUESTS_KEY = "tradesucro-transport-load-requests";
 const DISPATCHES_KEY = "tradesucro-transport-dispatches";
 const NETWORK_DELAY_MS = 300;
 
@@ -37,7 +35,6 @@ function daysFromNow(days: number): string {
 }
 
 const DRIVER_NAMES = ["Ramesh Yadav", "Suresh Kumar", "Arjun Singh", "Manoj Patil", "Vijay Sharma", "Deepak Rathod", "Ashok Gupta", "Sanjay Mane"];
-const REQUESTER_COMPANIES = ["Triveni Agro Industries", "Godavari Sugarcane Co.", "Bajaj Refineries Pvt. Ltd.", "Kaveri Trading Co.", "Shree Renuka Exports"];
 const VEHICLE_TYPES: VehicleType[] = ["open-truck", "covered-truck", "trailer", "container"];
 
 function pickLocation(seed: number): TransportLocation {
@@ -75,27 +72,6 @@ function seedDrivers(): Driver[] {
   }));
 }
 
-function seedLoadRequests(): LoadRequest[] {
-  return Array.from({ length: 12 }, (_, i) => {
-    const product = PRODUCTS[i % PRODUCTS.length];
-    const grade = QUALITY_GRADES[i % QUALITY_GRADES.length];
-    return {
-      id: `lr-${String(i + 1).padStart(3, "0")}`,
-      requestNumber: `LR-2026-${String(2000 + i).slice(1)}`,
-      requestedBy: REQUESTER_COMPANIES[i % REQUESTER_COMPANIES.length],
-      product: product.value,
-      grade,
-      quantity: 80 + ((i * 53) % 400),
-      pickup: pickLocation(i),
-      delivery: pickLocation(i + 4),
-      proposedRate: 3500 + ((i * 271) % 4500),
-      pickupDate: daysFromNow(2 + (i % 10)),
-      status: (["pending", "pending", "accepted", "assigned", "rejected"] as LoadRequestStatus[])[i % 5],
-      createdAt: daysFromNow(-(i % 6)),
-    };
-  });
-}
-
 function seedDispatches(): TransportDispatch[] {
   return Array.from({ length: 16 }, (_, i) => {
     const product = PRODUCTS[(i + 2) % PRODUCTS.length];
@@ -110,7 +86,7 @@ function seedDispatches(): TransportDispatch[] {
     return {
       id: `disp-${String(i + 1).padStart(3, "0")}`,
       dispatchNumber: `DSP-2026-${String(3000 + i).slice(1)}`,
-      loadRequestId: `lr-${String((i % 12) + 1).padStart(3, "0")}`,
+      inquiryId: `fi-legacy-${String((i % 12) + 1).padStart(3, "0")}`,
       vehicleId: `veh-${String((i % 14) + 1).padStart(3, "0")}`,
       driverId: `drv-${String((i % 8) + 1).padStart(3, "0")}`,
       product: product.value,
@@ -204,19 +180,6 @@ export const transportService = {
     return delay(updated, 300);
   },
 
-  async getLoadRequests(status?: LoadRequestStatus): Promise<LoadRequest[]> {
-    const all = readJSON(LOAD_REQUESTS_KEY, seedLoadRequests);
-    return delay(status ? all.filter((r) => r.status === status) : all);
-  },
-  async respondToLoadRequest(id: string, accept: boolean): Promise<LoadRequest> {
-    const requests = readJSON(LOAD_REQUESTS_KEY, seedLoadRequests);
-    const existing = requests.find((r) => r.id === id);
-    if (!existing) throw new Error("Load request not found.");
-    const updated: LoadRequest = { ...existing, status: accept ? "accepted" : "rejected" };
-    writeJSON(LOAD_REQUESTS_KEY, requests.map((r) => (r.id === id ? updated : r)));
-    return delay(updated, 400);
-  },
-
   async getDispatches(activeOnly = false): Promise<TransportDispatch[]> {
     const all = readJSON(DISPATCHES_KEY, seedDispatches);
     return delay(activeOnly ? all.filter((d) => d.status !== "delivered") : all);
@@ -248,11 +211,11 @@ export const transportService = {
     );
   },
 
-  async getDashboardStats(): Promise<TransportDashboardStats> {
-    const [vehicles, drivers, requests, dispatches] = await Promise.all([
+  /** pendingFreightInquiries is intentionally NOT computed here — see freight.service.ts, which owns all inquiry/quote data. Callers combine both. */
+  async getDashboardStats(): Promise<Omit<TransportDashboardStats, "pendingFreightInquiries">> {
+    const [vehicles, drivers, dispatches] = await Promise.all([
       transportService.getVehicles(),
       transportService.getDrivers(),
-      transportService.getLoadRequests(),
       transportService.getDispatches(),
     ]);
     const thisMonth = new Date().getMonth();
@@ -263,11 +226,50 @@ export const transportService = {
       availableVehicles: vehicles.filter((v) => v.status === "available").length,
       totalDrivers: drivers.length,
       availableDrivers: drivers.filter((d) => d.status === "available").length,
-      pendingLoadRequests: requests.filter((r) => r.status === "pending").length,
       activeDispatches: dispatches.filter((d) => d.status === "in-transit" || d.status === "assigned").length,
       completedTripsThisMonth: completedThisMonth.length,
       earningsThisMonth: completedThisMonth.reduce((sum, d) => sum + d.rate * d.quantity, 0),
     });
+  },
+
+  /** Creates a Dispatch from a confirmed Freight Inquiry + approved Quote — the bridge freight.service.ts calls once a trader confirms transport. Fleet assignment (vehicle/driver) defaults to the first available pair; a real dispatcher would pick explicitly. */
+  async createDispatchFromInquiry(params: {
+    inquiryId: string;
+    product: string;
+    grade: QualityGrade;
+    quantity: number;
+    pickup: TransportLocation;
+    delivery: TransportLocation;
+    rate: number;
+    pickupDate: string;
+  }): Promise<TransportDispatch> {
+    const dispatches = readJSON(DISPATCHES_KEY, seedDispatches);
+    const vehicles = readJSON(VEHICLES_KEY, seedVehicles);
+    const drivers = readJSON(DRIVERS_KEY, seedDrivers);
+    const vehicle = vehicles.find((v) => v.status === "available") ?? vehicles[0];
+    const driver = drivers.find((d) => d.status === "available") ?? drivers[0];
+    const now = new Date().toISOString();
+
+    const dispatch: TransportDispatch = {
+      id: `disp-${Date.now()}`,
+      dispatchNumber: `DSP-2026-${String(dispatches.length + 1).padStart(4, "0")}`,
+      inquiryId: params.inquiryId,
+      vehicleId: vehicle?.id ?? "",
+      driverId: driver?.id ?? "",
+      product: params.product,
+      grade: params.grade,
+      quantity: params.quantity,
+      pickup: params.pickup,
+      delivery: params.delivery,
+      status: "assigned",
+      dispatchedAt: params.pickupDate,
+      estimatedDelivery: new Date(new Date(params.pickupDate).getTime() + 3 * 86400000).toISOString(),
+      actualDelivery: null,
+      rate: params.rate,
+      statusHistory: [{ status: "assigned", timestamp: now, note: "Transport confirmed and assigned by trader." }],
+    };
+    writeJSON(DISPATCHES_KEY, [...dispatches, dispatch]);
+    return delay(dispatch, 400);
   },
 
   async getAnalyticsSummary(): Promise<TransportAnalyticsSummary> {

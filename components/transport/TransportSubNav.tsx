@@ -2,16 +2,17 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Truck, UserRound, PackageSearch, Route, History, BarChart3 } from "lucide-react";
+import { LayoutDashboard, Truck, UserRound, Inbox, FileStack, Route, History, BarChart3 } from "lucide-react";
 
 const TRANSPORT_SUB_NAV = [
   { label: "Dashboard", href: "/transport", icon: LayoutDashboard },
-  { label: "Vehicles", href: "/transport/vehicles", icon: Truck },
+  { label: "New Inquiries", href: "/transport/loads", icon: Inbox },
+  { label: "My Quotations", href: "/transport/quotations", icon: FileStack },
+  { label: "Active Trips", href: "/transport/dispatches", icon: Route },
+  { label: "Completed Trips", href: "/transport/trips", icon: History },
+  { label: "Fleet", href: "/transport/vehicles", icon: Truck },
   { label: "Drivers", href: "/transport/drivers", icon: UserRound },
-  { label: "Loads", href: "/transport/loads", icon: PackageSearch },
-  { label: "Dispatches", href: "/transport/dispatches", icon: Route },
-  { label: "Trips", href: "/transport/trips", icon: History },
-  { label: "Analytics", href: "/transport/analytics", icon: BarChart3 },
+  { label: "Analytics & Earnings", href: "/transport/analytics", icon: BarChart3 },
 ];
 
 /** TransportSubNav — in-module navigation for the Transport Workspace, same pattern as TraderSubNav so the two workspaces feel like one product. */

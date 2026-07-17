@@ -81,7 +81,18 @@ export interface StateHeatMapEntry {
   tenders: number;
 }
 
-export type AlertType = "price_increase" | "price_decrease" | "mill_price_update" | "new_tender" | "offer_closing" | "target_price_reached";
+export type AlertType =
+  | "price_increase"
+  | "price_decrease"
+  | "mill_price_update"
+  | "new_tender"
+  | "offer_closing"
+  | "target_price_reached"
+  | "global_market_change"
+  | "spot_price_change"
+  | "freight_change";
+
+export type AlertChannel = "push" | "email" | "whatsapp";
 
 export interface AlertRule {
   id: string;
@@ -91,6 +102,9 @@ export interface AlertRule {
   millId?: string;
   grade?: QualityGrade;
   targetPrice?: number;
+  /** Threshold for percent-change alerts (e.g. "ICE changes >2%"). */
+  changeThresholdPercent?: number;
+  channels?: AlertChannel[];
   active: boolean;
   createdAt: string;
 }
@@ -120,4 +134,73 @@ export interface MarketSearchResults {
   grades: QualityGrade[];
   tenders: { number: string; millName: string }[];
   offers: { number: string; millName: string }[];
+}
+
+/**
+ * Phase 3 — Sugar Market Intelligence Platform
+ * ------------------------------------------------------------------
+ * See lib/types/marketDataProvider.ts for the source/confidence/
+ * verification metadata every value below is wrapped in.
+ */
+
+/** Section 1 — Global Market: exchange futures, FX, freight/energy benchmarks. */
+export type GlobalInstrumentCategory = "sugar_futures" | "fx" | "energy" | "freight";
+
+export interface GlobalInstrument {
+  id: string;
+  symbol: string;
+  name: string;
+  category: GlobalInstrumentCategory;
+  unit: string;
+  price: number | null;
+  change: number | null;
+  changePercent: number | null;
+  dayHigh: number | null;
+  dayLow: number | null;
+  dailySeries: TrendPoint[];
+  weeklySeries: TrendPoint[];
+}
+
+/** Section 2 — International Physical Market: export/import quotes by origin country. */
+export type PhysicalPriceBasis = "FOB" | "CIF";
+
+export interface InternationalPhysicalQuote {
+  id: string;
+  country: string;
+  basis: PhysicalPriceBasis;
+  currency: string;
+  price: number | null;
+  change: number | null;
+  lastUpdated: string | null;
+}
+
+/** Section 3 — India Spot Market: state rolls up to city-level detail. */
+export interface CitySpotPrice {
+  state: string;
+  city: string;
+  spotPrice: number;
+  priceChange: number;
+  volumeMt: number;
+  activeBuyers: number;
+  activeSellers: number;
+  trend: "up" | "down" | "flat";
+}
+
+export interface StateSpotSummary {
+  state: string;
+  averagePrice: number;
+  priceChange: number;
+  totalVolumeMt: number;
+  cities: CitySpotPrice[];
+}
+
+/** Section 6 — Market Analytics: computed insights over TradeSucro's own data. */
+export interface MarketAnalyticsInsights {
+  topRisingMarkets: { state: string; changePercent: number }[];
+  topFallingMarkets: { state: string; changePercent: number }[];
+  highestDemandState: { state: string; requirementCount: number } | null;
+  highestSupplyState: { state: string; offerCount: number } | null;
+  lowestFreightRoute: { route: string; rate: number } | null;
+  mostActiveMill: { millName: string; offerCount: number } | null;
+  mostActiveTrader: { companyName: string; dealCount: number } | null;
 }

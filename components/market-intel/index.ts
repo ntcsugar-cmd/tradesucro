@@ -5,6 +5,7 @@ export * from "./LivePriceFilterPanel";
 export * from "./MarketSearchBar";
 export * from "./MarketFeedTimeline";
 export * from "./PriceHeatMapGrid";
+export * from "./IndiaSpotMarketGrid";
 export * from "./MillCompareSelector";
 export * from "./MillCompareTable";
 export * from "./AlertRuleForm";
