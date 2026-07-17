@@ -25,7 +25,7 @@ export function SwipeableKPICards({ items }: SwipeableKPICardsProps) {
         <div
           key={item.label}
           className={`shrink-0 w-[42%] min-w-[150px] snap-start rounded-sm p-4 ${
-            item.tone === "dark" ? "bg-charcoal text-white" : "border border-line bg-white text-charcoal"
+            item.tone === "dark" ? "bg-charcoal text-white" : "border border-line dark:border-white/10 bg-white dark:bg-charcoal-soft text-charcoal dark:text-white"
           }`}
         >
           {item.icon && <div className={`mb-2 ${item.tone === "dark" ? "text-white/60" : "text-ink-faint"}`}>{item.icon}</div>}

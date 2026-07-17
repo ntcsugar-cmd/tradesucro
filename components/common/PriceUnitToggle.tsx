@@ -40,7 +40,7 @@ export function PriceUnitToggle({ priceInQtl, onUnitChange, className = "" }: Pr
             type="button"
             onClick={() => handleSelect(u)}
             className={`px-2.5 py-1 text-[11px] font-medium transition-colors ${
-              unit === u ? "bg-charcoal text-white" : "bg-white text-ink-faint hover:text-charcoal"
+              unit === u ? "bg-charcoal text-white" : "bg-white dark:bg-white/5 text-ink-faint dark:text-white/50 hover:text-charcoal dark:hover:text-white"
             }`}
           >
             {u}

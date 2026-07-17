@@ -1,12 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { Phone, MessageCircle, Star, ShieldCheck } from "lucide-react";
+import { Phone, MessageCircle, Star, ShieldCheck, User } from "lucide-react";
 import { Card, CardBody } from "@/components/cards/Card";
 import { MillNameScroll } from "@/components/common";
-import { CategoryBadge, TrustScoreDisplay } from "./ContactBadges";
+import { CategoryBadge } from "./ContactBadges";
 import { getMasterStateLabel } from "@/lib/utils/marketplaceLabels";
-import { formatQuantityMt } from "@/lib/utils/format";
 import { contactService } from "@/services/contact.service";
 import type { Contact } from "@/lib/types/contact";
 
@@ -15,6 +14,13 @@ interface ContactCardProps {
   onToggleFavorite?: (id: string) => void;
 }
 
+/**
+ * ContactCard — a professional business directory listing. Company
+ * identity (name, contact person, business type, location, verified
+ * badge) is the primary content; Call/WhatsApp are small, secondary
+ * icon-only action buttons in the corner, not the visual focus of the
+ * card the way two full-width labeled buttons were before.
+ */
 export function ContactCard({ contact, onToggleFavorite }: ContactCardProps) {
   function logInteraction(type: "call" | "whatsapp", label: string) {
     contactService.recordInteraction(contact.id, type, label);
@@ -23,57 +29,63 @@ export function ContactCard({ contact, onToggleFavorite }: ContactCardProps) {
   return (
     <Card padding="none">
       <CardBody className="p-4">
-        <Link href={`/contacts/${contact.id}`} className="block">
-          <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0 flex-1">
-              <MillNameScroll
-                name={contact.companyName}
-                className="text-[14px] font-semibold text-charcoal"
-                prefix={contact.verificationStatus === "verified" ? <ShieldCheck size={13} className="order-last shrink-0 text-success" /> : undefined}
-              />
-              <p className="text-[12px] text-ink-faint mt-0.5">
-                {contact.contactPerson} · {contact.city}, {getMasterStateLabel(contact.state)}
-              </p>
-            </div>
+        <div className="flex items-start justify-between gap-3">
+          <Link href={`/contacts/${contact.id}`} className="min-w-0 flex-1 block">
+            <MillNameScroll
+              name={contact.companyName}
+              className="text-[14.5px] font-semibold text-charcoal dark:text-white"
+              prefix={contact.verificationStatus === "verified" ? <ShieldCheck size={13} className="order-last shrink-0 text-success" /> : undefined}
+            />
+            <p className="flex items-center gap-1 text-[12px] text-ink-faint dark:text-white/40 mt-1">
+              <User size={11} className="shrink-0" /> {contact.contactPerson}
+            </p>
+          </Link>
+
+          <div className="flex items-center gap-1 shrink-0">
             {onToggleFavorite && (
               <button
                 type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  onToggleFavorite(contact.id);
-                }}
+                onClick={() => onToggleFavorite(contact.id)}
                 aria-label={contact.favorite ? "Remove favorite" : "Add favorite"}
-                className="shrink-0 p-1"
+                className="p-1.5"
               >
-                <Star size={17} className={contact.favorite ? "text-gold-dim fill-gold-dim" : "text-charcoal/20"} />
+                <Star size={17} className={contact.favorite ? "text-gold-dim fill-gold-dim" : "text-charcoal/20 dark:text-white/20"} />
               </button>
             )}
           </div>
+        </div>
 
-          <div className="mt-3 flex flex-wrap items-center gap-2">
-            <CategoryBadge category={contact.category} />
-            <TrustScoreDisplay score={contact.trustScore} />
-            <span className="text-[11px] text-ink-faint">{formatQuantityMt(contact.averageMonthlyVolume)}/mo</span>
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          <CategoryBadge category={contact.category} />
+          <span className="text-[12px] text-ink-soft dark:text-white/50">
+            {contact.city}, {getMasterStateLabel(contact.state)}
+          </span>
+        </div>
+
+        <div className="mt-3.5 pt-3.5 border-t border-line dark:border-white/10 flex items-center justify-between">
+          <Link href={`/contacts/${contact.id}`} className="text-xs font-medium text-gold-dim hover:text-gold-bright transition-colors">
+            View Profile →
+          </Link>
+          <div className="flex items-center gap-1.5">
+            <a
+              href={`tel:${contact.mobile}`}
+              aria-label={`Call ${contact.contactPerson}`}
+              onClick={() => logInteraction("call", `Called ${contact.contactPerson}`)}
+              className="flex h-9 w-9 items-center justify-center rounded-sm border border-charcoal/20 dark:border-white/20 text-charcoal dark:text-white hover:border-charcoal/40 dark:hover:border-white/40 transition-colors"
+            >
+              <Phone size={14} />
+            </a>
+            <a
+              href={`https://wa.me/${contact.whatsapp.replace(/\D/g, "")}`}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`WhatsApp ${contact.contactPerson}`}
+              onClick={() => logInteraction("whatsapp", `WhatsApp to ${contact.contactPerson}`)}
+              className="flex h-9 w-9 items-center justify-center rounded-sm border border-rise/30 text-rise hover:bg-rise/[0.08] transition-colors"
+            >
+              <MessageCircle size={14} />
+            </a>
           </div>
-        </Link>
-
-        <div className="mt-3 grid grid-cols-2 gap-2">
-          <a
-            href={`tel:${contact.mobile}`}
-            onClick={() => logInteraction("call", `Called ${contact.contactPerson}`)}
-            className="flex items-center justify-center gap-1.5 rounded-sm border border-line py-2.5 min-h-[44px] text-[12.5px] font-medium text-charcoal active:bg-charcoal/[0.04]"
-          >
-            <Phone size={14} /> Call
-          </a>
-          <a
-            href={`https://wa.me/${contact.whatsapp.replace(/\D/g, "")}`}
-            target="_blank"
-            rel="noreferrer"
-            onClick={() => logInteraction("whatsapp", `WhatsApp to ${contact.contactPerson}`)}
-            className="flex items-center justify-center gap-1.5 rounded-sm border border-rise/30 bg-rise/[0.06] py-2.5 min-h-[44px] text-[12.5px] font-medium text-rise active:bg-rise/[0.12]"
-          >
-            <MessageCircle size={14} /> WhatsApp
-          </a>
         </div>
       </CardBody>
     </Card>

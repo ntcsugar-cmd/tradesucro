@@ -27,7 +27,7 @@ export function MobileOrderTimeline({ currentStageIndex, cancelled = false, stag
           <li key={stage} className="pl-6 relative">
             <span
               className={`absolute -left-[13px] top-0 flex h-6 w-6 items-center justify-center rounded-full border-2 ${
-                done ? "border-rise bg-rise text-white" : "border-line bg-white text-ink-faint"
+                done ? "border-rise bg-rise text-white" : "border-line dark:border-white/15 bg-white dark:bg-charcoal-soft text-ink-faint dark:text-white/40"
               }`}
             >
               {done ? <Check size={13} /> : <span className="h-1.5 w-1.5 rounded-full bg-current" />}

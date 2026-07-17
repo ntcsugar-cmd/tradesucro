@@ -13,7 +13,7 @@ function intensityClass(price: number, min: number, max: number): string {
   if (ratio > 0.75) return "border-gold bg-gold/[0.08]";
   if (ratio > 0.5) return "border-gold/40 bg-gold/[0.03]";
   if (ratio > 0.25) return "border-line bg-charcoal/[0.015]";
-  return "border-line bg-white";
+  return "border-line dark:border-white/10 bg-white dark:bg-charcoal-soft";
 }
 
 export function PriceHeatMapGrid() {

@@ -59,7 +59,7 @@ export function SmartContactSections() {
             type="button"
             onClick={() => setActive(key)}
             className={`flex shrink-0 items-center gap-1.5 rounded-sm px-3.5 py-2 text-[13px] font-medium transition-colors ${
-              active === key ? "bg-white text-charcoal shadow-card" : "text-ink-faint hover:text-charcoal"
+              active === key ? "bg-white dark:bg-charcoal-soft text-charcoal dark:text-white shadow-card" : "text-ink-faint dark:text-white/40 hover:text-charcoal dark:hover:text-white"
             }`}
           >
             <Icon size={14} className={active === key ? "text-gold-dim" : ""} /> {label}
@@ -78,13 +78,13 @@ export function SmartContactSections() {
       ) : (
         <div className="flex gap-3 overflow-x-auto pb-1 -mx-4 px-4 sm:mx-0 sm:px-0">
           {contacts.map((c) => (
-            <Link key={c.id} href={`/contacts/${c.id}`} className="shrink-0 w-56 rounded-sm border border-line bg-white p-3.5 hover:border-gold/40 hover:shadow-card transition-all">
+            <Link key={c.id} href={`/contacts/${c.id}`} className="shrink-0 w-56 rounded-sm border border-line dark:border-white/10 bg-white dark:bg-charcoal-soft p-3.5 hover:border-gold/40 dark:hover:border-gold/40 hover:shadow-card transition-all">
               <MillNameScroll
                 name={c.companyName}
-                className="text-[13.5px] font-medium text-charcoal"
+                className="text-[13.5px] font-medium text-charcoal dark:text-white"
                 prefix={c.verificationStatus === "verified" ? <ShieldCheck size={12} className="order-last shrink-0 text-success" /> : undefined}
               />
-              <p className="text-[11px] text-ink-faint mt-0.5 truncate">{c.contactPerson}</p>
+              <p className="text-[11px] text-ink-faint dark:text-white/40 mt-0.5 truncate">{c.contactPerson}</p>
               <div className="mt-2.5 flex items-center justify-between">
                 <CategoryBadge category={c.category} />
                 <TrustScoreDisplay score={c.trustScore} />

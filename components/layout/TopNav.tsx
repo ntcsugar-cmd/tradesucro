@@ -100,7 +100,7 @@ export function TopNav({
           variant="ghost"
           size="md"
           aria-label={onSearchClick ? "Search" : "Search — unavailable"}
-          className="sm:hidden dark:text-white/60 dark:hover:bg-white/5"
+          className="sm:hidden"
           onClick={onSearchClick}
         >
           <Search size={17} />
@@ -112,14 +112,13 @@ export function TopNav({
             size="md"
             aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
             onClick={onToggleTheme}
-            className="dark:text-white/60 dark:hover:bg-white/5"
           >
             {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
           </IconButton>
         )}
 
         <div className="relative">
-          <IconButton variant="ghost" size="md" aria-label="Notifications" className="dark:text-white/60 dark:hover:bg-white/5" onClick={onNotificationClick}>
+          <IconButton variant="ghost" size="md" aria-label="Notifications" onClick={onNotificationClick}>
             <Bell size={17} />
           </IconButton>
           {notificationCount > 0 && (

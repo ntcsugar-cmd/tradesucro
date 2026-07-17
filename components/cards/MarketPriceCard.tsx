@@ -26,7 +26,7 @@ export function MarketPriceCard({
   className,
 }: MarketPriceCardProps) {
   return (
-    <div className={clsx("bg-white border border-line p-6 hover:border-gold/40 transition-colors", className)}>
+    <div className={clsx("bg-white dark:bg-charcoal-soft border border-line dark:border-white/10 p-6 hover:border-gold/40 dark:hover:border-gold/40 transition-colors", className)}>
       <div className="flex items-start justify-between">
         <div>
           <p className="font-body font-medium text-[15px] text-charcoal">{grade}</p>

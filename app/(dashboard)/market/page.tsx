@@ -32,7 +32,7 @@ export default function MarketOverviewPage() {
       <Grid cols={2} colsMd={3} colsLg={6} gap="sm" className="mb-8">
         {QUICK_LINKS.map(({ label, href, icon: Icon }) => (
           <GridItem key={href}>
-            <Link href={href} className="flex flex-col items-center gap-2 rounded-sm border border-line bg-white p-4 text-center hover:border-gold/40 hover:shadow-card transition-all">
+            <Link href={href} className="flex flex-col items-center gap-2 rounded-sm border border-line dark:border-white/10 bg-white dark:bg-charcoal-soft p-4 text-center hover:border-gold/40 dark:hover:border-gold/40 hover:shadow-card transition-all">
               <Icon size={18} className="text-gold-dim" />
               <span className="text-[12px] font-medium text-charcoal leading-tight">{label}</span>
             </Link>

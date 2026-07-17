@@ -54,22 +54,22 @@ export const DASHBOARD_NAV: DashboardNavSection[] = [
     items: [
       { label: "Offer Board", href: "/mill-offers", icon: "LayoutList" },
       { label: "Create Offer", href: "/mill-offers/create", icon: "PlusCircle" },
-      { label: "History", href: "/mill-offers/history", icon: "History" },
+      { label: "Offer History", href: "/mill-offers/history", icon: "History" },
     ],
   },
   {
     title: "Tender Management",
     items: [
-      { label: "Tender Board", href: "/tenders", icon: "Gavel" },
-      { label: "Create Tender", href: "/tenders/create", icon: "PlusCircle" },
+      { label: "Basic Tender Board", href: "/tenders", icon: "Gavel" },
+      { label: "Create Basic Tender", href: "/tenders/create", icon: "PlusCircle" },
     ],
   },
   {
     title: "Advanced Tenders",
     items: [
-      { label: "Tender Board", href: "/mill/tenders", icon: "ScrollText" },
-      { label: "Create Tender", href: "/mill/tenders/create", icon: "PlusCircle" },
-      { label: "History", href: "/mill/tenders/history", icon: "History" },
+      { label: "Advanced Tender Board", href: "/mill/tenders", icon: "ScrollText" },
+      { label: "Create Advanced Tender", href: "/mill/tenders/create", icon: "PlusCircle" },
+      { label: "Tender History", href: "/mill/tenders/history", icon: "History" },
     ],
   },
   {
@@ -84,10 +84,10 @@ export const DASHBOARD_NAV: DashboardNavSection[] = [
   {
     title: "Market Intelligence",
     items: [
-      { label: "Overview", href: "/market", icon: "LayoutDashboard" },
+      { label: "Market Overview", href: "/market", icon: "LayoutDashboard" },
       { label: "Live Price Board", href: "/market/live", icon: "Activity" },
       { label: "Smart Match Engine", href: "/market/match-engine", icon: "Sparkles" },
-      { label: "Opportunities", href: "/market/opportunities", icon: "Lightbulb" },
+      { label: "Market Opportunities", href: "/market/opportunities", icon: "Lightbulb" },
       { label: "Watchlist", href: "/market/watchlist", icon: "Star" },
       { label: "Price Heat Map", href: "/market/prices", icon: "Map" },
       { label: "Market Trends", href: "/market/trends", icon: "LineChart" },
@@ -99,9 +99,9 @@ export const DASHBOARD_NAV: DashboardNavSection[] = [
   {
     title: "Commercial Decision Engine",
     items: [
-      { label: "Overview", href: "/commercial", icon: "Calculator" },
+      { label: "Commercial Overview", href: "/commercial", icon: "Calculator" },
       { label: "Parity Engine", href: "/commercial/parity", icon: "Scale" },
-      { label: "Opportunities", href: "/commercial/opportunities", icon: "Trophy" },
+      { label: "Commercial Opportunities", href: "/commercial/opportunities", icon: "Trophy" },
       { label: "Supplier Comparison", href: "/commercial/comparison", icon: "Columns3" },
     ],
   },
