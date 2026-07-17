@@ -25,7 +25,7 @@ const variantStyles: Record<Variant, string> = {
     "bg-charcoal text-white hover:bg-charcoal-soft",
 
   ghost:
-    "bg-transparent text-charcoal hover:bg-charcoal/5",
+    "bg-transparent text-charcoal hover:bg-white/5",
 
   "ghost-dark":
     "bg-transparent text-white hover:bg-charcoal-soft border border-charcoal/30",
