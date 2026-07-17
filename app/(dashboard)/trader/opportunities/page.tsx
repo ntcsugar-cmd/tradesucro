@@ -36,7 +36,7 @@ export default function BuyingOpportunitiesPage() {
 
       <div className="flex items-center gap-1.5 mb-3">
         <Sparkles size={13} className="text-gold-dim" />
-        <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint">Ranked by expected margin</p>
+        <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40">Ranked by expected margin</p>
       </div>
       <BuyingOpportunitiesPanel />
     </>

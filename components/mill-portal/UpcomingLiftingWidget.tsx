@@ -37,14 +37,14 @@ export function UpcomingLiftingWidget() {
           ))}
         </div>
       ) : entries.length === 0 ? (
-        <p className="text-[13px] text-ink-faint italic">No upcoming liftings scheduled.</p>
+        <p className="text-[13px] text-ink-faint dark:text-white/40 italic">No upcoming liftings scheduled.</p>
       ) : (
         <ul className="space-y-3">
           {entries.map((e) => (
             <li key={e.id} className="flex items-center justify-between gap-3">
               <div className="min-w-0">
-                <p className="text-[13px] text-charcoal truncate">{getProductLabel(e.product)} → {e.buyerName}</p>
-                <p className="text-xs text-ink-faint mt-0.5">{formatQuantityMt(e.quantity)} · {e.vehicleNumber}</p>
+                <p className="text-[13px] text-charcoal dark:text-white truncate">{getProductLabel(e.product)} → {e.buyerName}</p>
+                <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">{formatQuantityMt(e.quantity)} · {e.vehicleNumber}</p>
               </div>
               <Badge tone={e.status === "today" ? "gold" : "charcoal"}>
                 {new Date(e.date).toLocaleDateString("en-IN", { day: "2-digit", month: "short" })}

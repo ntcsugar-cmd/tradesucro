@@ -52,21 +52,21 @@ export function PriceHeatMapGrid() {
               same-property utility wins). */}
           <Card padding="none" className="h-full">
             <div className={`h-full rounded-sm border-2 p-5 ${intensityClass(e.averagePrice, min, max)}`}>
-              <p className="font-display text-base text-charcoal">{e.state}</p>
-              <p className="mt-3 font-mono text-2xl text-charcoal">{formatINR(e.averagePrice)}</p>
-              <p className="text-[11px] text-ink-faint mt-0.5">Average price</p>
+              <p className="font-display text-base text-charcoal dark:text-white">{e.state}</p>
+              <p className="mt-3 font-mono text-2xl text-charcoal dark:text-white">{formatINR(e.averagePrice)}</p>
+              <p className="text-[11px] text-ink-faint dark:text-white/40 mt-0.5">Average price</p>
 
-              <div className="mt-4 pt-4 border-t border-line grid grid-cols-2 gap-y-2 text-xs">
-                <span className="text-ink-faint">Highest</span>
-                <span className="text-right font-mono text-charcoal">{formatINR(e.highest)}</span>
-                <span className="text-ink-faint">Lowest</span>
-                <span className="text-right font-mono text-charcoal">{formatINR(e.lowest)}</span>
-                <span className="text-ink-faint">Mills</span>
-                <span className="text-right font-mono text-charcoal">{e.millCount}</span>
-                <span className="text-ink-faint">Offers</span>
-                <span className="text-right font-mono text-charcoal">{e.offers}</span>
-                <span className="text-ink-faint">Tenders</span>
-                <span className="text-right font-mono text-charcoal">{e.tenders}</span>
+              <div className="mt-4 pt-4 border-t border-line dark:border-white/10 grid grid-cols-2 gap-y-2 text-xs">
+                <span className="text-ink-faint dark:text-white/40">Highest</span>
+                <span className="text-right font-mono text-charcoal dark:text-white">{formatINR(e.highest)}</span>
+                <span className="text-ink-faint dark:text-white/40">Lowest</span>
+                <span className="text-right font-mono text-charcoal dark:text-white">{formatINR(e.lowest)}</span>
+                <span className="text-ink-faint dark:text-white/40">Mills</span>
+                <span className="text-right font-mono text-charcoal dark:text-white">{e.millCount}</span>
+                <span className="text-ink-faint dark:text-white/40">Offers</span>
+                <span className="text-right font-mono text-charcoal dark:text-white">{e.offers}</span>
+                <span className="text-ink-faint dark:text-white/40">Tenders</span>
+                <span className="text-right font-mono text-charcoal dark:text-white">{e.tenders}</span>
               </div>
             </div>
           </Card>

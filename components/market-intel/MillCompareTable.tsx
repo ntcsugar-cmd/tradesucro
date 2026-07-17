@@ -10,7 +10,7 @@ interface MillCompareTableProps {
 
 export function MillCompareTable({ entries }: MillCompareTableProps) {
   if (entries.length === 0) {
-    return <p className="text-[13px] text-ink-faint italic">Add mills above to compare them side by side.</p>;
+    return <p className="text-[13px] text-ink-faint dark:text-white/40 italic">Add mills above to compare them side by side.</p>;
   }
 
   const rows: { label: string; render: (e: MillPriceEntry) => React.ReactNode }[] = [
@@ -28,9 +28,9 @@ export function MillCompareTable({ entries }: MillCompareTableProps) {
       <table className="w-full border-collapse min-w-[700px]">
         <thead>
           <tr>
-            <th className="text-left py-2.5 pr-4 text-[11px] font-mono uppercase tracking-widest2 text-ink-faint w-32">Metric</th>
+            <th className="text-left py-2.5 pr-4 text-[11px] font-mono uppercase tracking-widest2 text-ink-faint dark:text-white/40 w-32">Metric</th>
             {entries.map((e) => (
-              <th key={e.id} className="text-left py-2.5 px-4 border-l border-line font-medium text-[13px] text-charcoal w-44 max-w-[176px]">
+              <th key={e.id} className="text-left py-2.5 px-4 border-l border-line dark:border-white/10 font-medium text-[13px] text-charcoal dark:text-white w-44 max-w-[176px]">
                 <MillNameScroll name={e.millName} />
               </th>
             ))}
@@ -38,10 +38,10 @@ export function MillCompareTable({ entries }: MillCompareTableProps) {
         </thead>
         <tbody>
           {rows.map((row) => (
-            <tr key={row.label} className="border-t border-line">
-              <td className="py-2.5 pr-4 text-xs text-ink-faint">{row.label}</td>
+            <tr key={row.label} className="border-t border-line dark:border-white/10">
+              <td className="py-2.5 pr-4 text-xs text-ink-faint dark:text-white/40">{row.label}</td>
               {entries.map((e) => (
-                <td key={e.id} className="py-2.5 px-4 border-l border-line text-[13px]">
+                <td key={e.id} className="py-2.5 px-4 border-l border-line dark:border-white/10 text-[13px]">
                   {row.render(e)}
                 </td>
               ))}

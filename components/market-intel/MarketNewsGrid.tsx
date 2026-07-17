@@ -59,10 +59,10 @@ export function MarketNewsGrid({ category }: MarketNewsGridProps) {
                   <Badge tone="gold">
                     <Icon size={11} /> {meta.label}
                   </Badge>
-                  <span className="text-[11px] text-ink-faint">{item.date}</span>
+                  <span className="text-[11px] text-ink-faint dark:text-white/40">{item.date}</span>
                 </div>
-                <h3 className="mt-3 font-body font-semibold text-[15px] text-charcoal leading-snug">{item.headline}</h3>
-                <p className="mt-2 text-[13px] text-ink-soft leading-relaxed">{item.summary}</p>
+                <h3 className="mt-3 font-body font-semibold text-[15px] text-charcoal dark:text-white leading-snug">{item.headline}</h3>
+                <p className="mt-2 text-[13px] text-ink-soft dark:text-white/50 leading-relaxed">{item.summary}</p>
               </CardBody>
             </Card>
           </GridItem>

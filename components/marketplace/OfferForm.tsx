@@ -162,7 +162,7 @@ export function OfferForm() {
               />
             </div>
 
-            <div className="pt-2 border-t border-line" />
+            <div className="pt-2 border-t border-line dark:border-white/10" />
 
             <div className="grid sm:grid-cols-2 gap-5">
               <StateSelect label="Dispatch from — State" onChange={(e) => { set("state", e.target.value); set("city", ""); }} />
@@ -188,7 +188,7 @@ export function OfferForm() {
             <FileUpload label="Upload images" mockFileName="sugar_stock_photo.jpg" value={logo} onChange={setLogo} helperText="Placeholder only — no real upload" />
           </div>
 
-          <div className="mt-8 pt-6 border-t border-line flex flex-wrap items-center justify-end gap-3">
+          <div className="mt-8 pt-6 border-t border-line dark:border-white/10 flex flex-wrap items-center justify-end gap-3">
             <Button variant="ghost" size="md" loading={saving === "draft"} onClick={() => handleSave("draft")}>
               <Save size={15} /> Save Draft
             </Button>
@@ -205,20 +205,20 @@ export function OfferForm() {
       <Modal open={previewOpen} onClose={() => setPreviewOpen(false)} title="Preview sell offer" size="lg">
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <p className="font-display text-xl text-charcoal">{getProductLabel(form.product)} · {form.grade} · {form.season}</p>
+            <p className="font-display text-xl text-charcoal dark:text-white">{getProductLabel(form.product)} · {form.grade} · {form.season}</p>
             <p className="font-mono text-lg text-gold-dim">{formatPricePerUnit(Number(form.price) || 0)}</p>
           </div>
-          <dl className="grid sm:grid-cols-2 gap-x-6 gap-y-2 text-[13px] pt-3 border-t border-line">
-            <div className="flex justify-between"><dt className="text-ink-faint">Quantity</dt><dd className="text-charcoal">{form.quantity || "—"} {getUnitLabel(form.unit)}</dd></div>
-            <div className="flex justify-between"><dt className="text-ink-faint">Packaging</dt><dd className="text-charcoal">{form.packaging ? getPackagingLabel(form.packaging) : "—"}</dd></div>
-            <div className="flex justify-between"><dt className="text-ink-faint">Dispatch from</dt><dd className="text-charcoal">{form.city}, {getMasterStateLabel(form.state)}</dd></div>
-            <div className="flex justify-between"><dt className="text-ink-faint">Ready stock</dt><dd className="text-charcoal">{form.readyStock ? "Yes" : "No"}</dd></div>
-            <div className="flex justify-between"><dt className="text-ink-faint">Dispatch date</dt><dd className="text-charcoal">{form.dispatchDate || "—"}</dd></div>
-            <div className="flex justify-between"><dt className="text-ink-faint">Payment terms</dt><dd className="text-charcoal">{form.paymentTerms ? getPaymentTermLabel(form.paymentTerms) : "—"}</dd></div>
-            <div className="flex justify-between"><dt className="text-ink-faint">Dispatch terms</dt><dd className="text-charcoal">{form.dispatchTerms ? getDispatchTermLabel(form.dispatchTerms) : "—"}</dd></div>
-            <div className="flex justify-between"><dt className="text-ink-faint">GST</dt><dd className="text-charcoal">{form.gstIncluded ? "Included" : "Excluded"}</dd></div>
+          <dl className="grid sm:grid-cols-2 gap-x-6 gap-y-2 text-[13px] pt-3 border-t border-line dark:border-white/10">
+            <div className="flex justify-between"><dt className="text-ink-faint dark:text-white/40">Quantity</dt><dd className="text-charcoal dark:text-white">{form.quantity || "—"} {getUnitLabel(form.unit)}</dd></div>
+            <div className="flex justify-between"><dt className="text-ink-faint dark:text-white/40">Packaging</dt><dd className="text-charcoal dark:text-white">{form.packaging ? getPackagingLabel(form.packaging) : "—"}</dd></div>
+            <div className="flex justify-between"><dt className="text-ink-faint dark:text-white/40">Dispatch from</dt><dd className="text-charcoal dark:text-white">{form.city}, {getMasterStateLabel(form.state)}</dd></div>
+            <div className="flex justify-between"><dt className="text-ink-faint dark:text-white/40">Ready stock</dt><dd className="text-charcoal dark:text-white">{form.readyStock ? "Yes" : "No"}</dd></div>
+            <div className="flex justify-between"><dt className="text-ink-faint dark:text-white/40">Dispatch date</dt><dd className="text-charcoal dark:text-white">{form.dispatchDate || "—"}</dd></div>
+            <div className="flex justify-between"><dt className="text-ink-faint dark:text-white/40">Payment terms</dt><dd className="text-charcoal dark:text-white">{form.paymentTerms ? getPaymentTermLabel(form.paymentTerms) : "—"}</dd></div>
+            <div className="flex justify-between"><dt className="text-ink-faint dark:text-white/40">Dispatch terms</dt><dd className="text-charcoal dark:text-white">{form.dispatchTerms ? getDispatchTermLabel(form.dispatchTerms) : "—"}</dd></div>
+            <div className="flex justify-between"><dt className="text-ink-faint dark:text-white/40">GST</dt><dd className="text-charcoal dark:text-white">{form.gstIncluded ? "Included" : "Excluded"}</dd></div>
           </dl>
-          {form.remarks && <p className="text-[13px] text-ink-soft pt-3 border-t border-line">{form.remarks}</p>}
+          {form.remarks && <p className="text-[13px] text-ink-soft dark:text-white/50 pt-3 border-t border-line dark:border-white/10">{form.remarks}</p>}
         </div>
       </Modal>
     </>

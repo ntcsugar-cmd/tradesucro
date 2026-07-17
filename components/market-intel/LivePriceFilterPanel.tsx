@@ -40,7 +40,7 @@ export function LivePriceFilterPanel({ onApply }: LivePriceFilterPanelProps) {
     <Card padding="lg">
       <CardBody>
         <div className="flex items-center justify-between mb-4">
-          <p className="text-[13px] font-semibold text-charcoal">Filters</p>
+          <p className="text-[13px] font-semibold text-charcoal dark:text-white">Filters</p>
           <Button variant="ghost" size="sm" onClick={handleClear}>
             <RotateCcw size={13} /> Clear
           </Button>
@@ -51,7 +51,7 @@ export function LivePriceFilterPanel({ onApply }: LivePriceFilterPanelProps) {
           <Select label="Grade" size="sm" placeholder="Any grade" options={GRADE_OPTIONS} onChange={(e) => set("grade", (e.target.value || undefined) as LivePriceFilters["grade"])} />
 
           <div>
-            <p className="text-[13px] font-medium text-charcoal mb-1.5">Price Range (₹)</p>
+            <p className="text-[13px] font-medium text-charcoal dark:text-white mb-1.5">Price Range (₹)</p>
             <div className="grid grid-cols-2 gap-2">
               <NumberInput size="sm" placeholder="Min" onChange={(e) => set("minPrice", e.target.value ? Number(e.target.value) : undefined)} />
               <NumberInput size="sm" placeholder="Max" onChange={(e) => set("maxPrice", e.target.value ? Number(e.target.value) : undefined)} />

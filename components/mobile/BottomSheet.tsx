@@ -48,9 +48,9 @@ export function BottomSheet({ open, onClose, title, children }: BottomSheetProps
             className="relative max-h-[80vh] rounded-t-lg bg-white dark:bg-charcoal-soft flex flex-col"
             style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
           >
-            <div className="flex items-center justify-between px-5 py-4 border-b border-line shrink-0">
+            <div className="flex items-center justify-between px-5 py-4 border-b border-line dark:border-white/10 shrink-0">
               <p className="text-[15px] font-semibold text-charcoal dark:text-white">{title}</p>
-              <button type="button" onClick={onClose} aria-label="Close" className="flex h-8 w-8 items-center justify-center rounded-full text-ink-faint active:bg-charcoal/[0.06]">
+              <button type="button" onClick={onClose} aria-label="Close" className="flex h-8 w-8 items-center justify-center rounded-full text-ink-faint dark:text-white/40 active:bg-charcoal/[0.06]">
                 <X size={18} />
               </button>
             </div>

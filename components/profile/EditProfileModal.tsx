@@ -104,7 +104,7 @@ export function EditProfileModal({ open, onClose, profile, onSave }: EditProfile
           onChange={(e) => setBusinessDescription(e.target.value)}
         />
 
-        <div className="pt-2 border-t border-line" />
+        <div className="pt-2 border-t border-line dark:border-white/10" />
 
         <div className="grid sm:grid-cols-2 gap-5">
           <TextInput label="Contact person" value={contactPerson} onChange={(e) => setContactPerson(e.target.value)} />

@@ -50,9 +50,9 @@ export function PriceRevisionModal({ open, onClose, quote, onSubmit }: PriceRevi
       <div className="space-y-5">
         {error && <Alert variant="danger">{error}</Alert>}
 
-        <div className="flex items-center justify-between rounded-sm border border-line bg-charcoal/[0.02] p-3.5">
-          <span className="text-xs text-ink-faint">Current price</span>
-          <span className="font-mono text-sm text-charcoal">{formatINR(quote.todaysPrice)}</span>
+        <div className="flex items-center justify-between rounded-sm border border-line dark:border-white/10 bg-charcoal/[0.02] p-3.5">
+          <span className="text-xs text-ink-faint dark:text-white/40">Current price</span>
+          <span className="font-mono text-sm text-charcoal dark:text-white">{formatINR(quote.todaysPrice)}</span>
         </div>
 
         <NumberInput label="New Price" unit="₹" placeholder={String(quote.todaysPrice)} value={newPrice} onChange={(e) => setNewPrice(e.target.value)} autoFocus />

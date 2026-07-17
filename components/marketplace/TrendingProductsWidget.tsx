@@ -36,15 +36,15 @@ export function TrendingProductsWidget() {
         <ul className="space-y-3">
           {products.map((p, i) => (
             <li key={p.product} className="flex items-center gap-3">
-              <span className="font-mono text-xs text-ink-faint w-4">{i + 1}</span>
-              <span className="text-[13px] text-charcoal w-20 shrink-0">{p.label}</span>
+              <span className="font-mono text-xs text-ink-faint dark:text-white/40 w-4">{i + 1}</span>
+              <span className="text-[13px] text-charcoal dark:text-white w-20 shrink-0">{p.label}</span>
               <div className="flex-1 h-1.5 rounded-full bg-charcoal/[0.06] overflow-hidden">
                 <div
                   className="h-full bg-gold"
                   style={{ width: `${(p.listingCount / maxCount) * 100}%` }}
                 />
               </div>
-              <span className="font-mono text-xs text-ink-faint w-6 text-right">{p.listingCount}</span>
+              <span className="font-mono text-xs text-ink-faint dark:text-white/40 w-6 text-right">{p.listingCount}</span>
             </li>
           ))}
         </ul>

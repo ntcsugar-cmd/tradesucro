@@ -67,8 +67,8 @@ export function LiveMarketPanel() {
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
-        <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint">Live Market Panel</p>
-        <span className="flex items-center gap-1.5 text-[11px] text-ink-faint">
+        <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40">Live Market Panel</p>
+        <span className="flex items-center gap-1.5 text-[11px] text-ink-faint dark:text-white/40">
           <span className="relative flex h-1.5 w-1.5">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-rise opacity-60" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-rise" />
@@ -83,10 +83,10 @@ export function LiveMarketPanel() {
             {offers.map((o) => (
               <li key={o.id} className="flex items-center justify-between gap-3 py-2.5">
                 <div className="min-w-0">
-                  <p className="text-[13px] text-charcoal truncate">{o.millName}</p>
-                  <p className="text-[11px] text-ink-faint">{getProductLabel(o.product)} &middot; {o.grade}</p>
+                  <p className="text-[13px] text-charcoal dark:text-white truncate">{o.millName}</p>
+                  <p className="text-[11px] text-ink-faint dark:text-white/40">{getProductLabel(o.product)} &middot; {o.grade}</p>
                 </div>
-                <span className="font-mono text-[13px] text-charcoal shrink-0">{formatINR(o.todaysPrice)}</span>
+                <span className="font-mono text-[13px] text-charcoal dark:text-white shrink-0">{formatINR(o.todaysPrice)}</span>
               </li>
             ))}
           </ul>
@@ -99,8 +99,8 @@ export function LiveMarketPanel() {
               return (
                 <li key={c.id} className="flex items-center justify-between gap-3 py-2.5">
                   <div className="min-w-0">
-                    <p className="text-[13px] text-charcoal truncate">{c.millName}</p>
-                    <p className="text-[11px] text-ink-faint">{getMasterStateLabel(c.state)}</p>
+                    <p className="text-[13px] text-charcoal dark:text-white truncate">{c.millName}</p>
+                    <p className="text-[11px] text-ink-faint dark:text-white/40">{getMasterStateLabel(c.state)}</p>
                   </div>
                   <PriceDelta change={change} direction={direction} className="shrink-0" />
                 </li>
@@ -111,7 +111,7 @@ export function LiveMarketPanel() {
 
         <DashboardWidget title="New Tender Notifications">
           {tenders.length === 0 ? (
-            <p className="text-[13px] text-ink-faint italic py-2">No open tenders right now.</p>
+            <p className="text-[13px] text-ink-faint dark:text-white/40 italic py-2">No open tenders right now.</p>
           ) : (
             <ul className="divide-y divide-line -my-1">
               {tenders.map((t) => (
@@ -120,8 +120,8 @@ export function LiveMarketPanel() {
                     <Gavel size={12} />
                   </span>
                   <div className="min-w-0">
-                    <p className="text-[13px] text-charcoal truncate">{t.millName}</p>
-                    <p className="text-[11px] text-ink-faint">{getMasterStateLabel(t.state)}</p>
+                    <p className="text-[13px] text-charcoal dark:text-white truncate">{t.millName}</p>
+                    <p className="text-[11px] text-ink-faint dark:text-white/40">{getMasterStateLabel(t.state)}</p>
                   </div>
                 </li>
               ))}
@@ -133,7 +133,7 @@ export function LiveMarketPanel() {
           <ul className="divide-y divide-line -my-1">
             {trending.map((t) => (
               <li key={t.grade} className="flex items-center justify-between py-2.5">
-                <span className="font-mono text-[13px] text-charcoal">{t.grade}</span>
+                <span className="font-mono text-[13px] text-charcoal dark:text-white">{t.grade}</span>
                 <span className="flex items-center gap-1.5">
                   <Badge tone="verified">
                     <TrendingUp size={10} /> {t.priceUp}
@@ -155,8 +155,8 @@ export function LiveMarketPanel() {
               <TrendingUp size={18} />
             </span>
             <div className="min-w-0">
-              <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint">Highest Price Increase</p>
-              <p className="text-[13.5px] font-medium text-charcoal truncate">{movers.biggestIncrease.millName}</p>
+              <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint dark:text-white/40">Highest Price Increase</p>
+              <p className="text-[13.5px] font-medium text-charcoal dark:text-white truncate">{movers.biggestIncrease.millName}</p>
             </div>
             <p className="ml-auto font-mono text-sm text-rise shrink-0">+{formatINR(movers.biggestIncrease.todaysPrice - movers.biggestIncrease.previousPrice)}</p>
           </div>
@@ -167,8 +167,8 @@ export function LiveMarketPanel() {
               <TrendingDown size={18} />
             </span>
             <div className="min-w-0">
-              <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint">Highest Price Drop</p>
-              <p className="text-[13.5px] font-medium text-charcoal truncate">{movers.biggestDrop.millName}</p>
+              <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint dark:text-white/40">Highest Price Drop</p>
+              <p className="text-[13.5px] font-medium text-charcoal dark:text-white truncate">{movers.biggestDrop.millName}</p>
             </div>
             <p className="ml-auto font-mono text-sm text-fall shrink-0">{formatINR(movers.biggestDrop.todaysPrice - movers.biggestDrop.previousPrice)}</p>
           </div>

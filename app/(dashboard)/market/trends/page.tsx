@@ -64,7 +64,7 @@ export default function MarketTrendsPage() {
                         <Card padding="lg">
                           <CardHeader>
                             <CardTitle>{gt.grade}</CardTitle>
-                            <span className="font-mono text-xs text-ink-faint">{formatINR(gt.points[gt.points.length - 1]?.averagePrice ?? 0)}</span>
+                            <span className="font-mono text-xs text-ink-faint dark:text-white/40">{formatINR(gt.points[gt.points.length - 1]?.averagePrice ?? 0)}</span>
                           </CardHeader>
                           <CardBody>
                             <TrendChart points={gt.points} height={140} />

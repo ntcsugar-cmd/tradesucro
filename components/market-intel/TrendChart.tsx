@@ -10,7 +10,7 @@ interface TrendChartProps {
 /** TrendChart — a readable line+area chart for the Price Movement Graph, built from theme tokens rather than a hardcoded color. */
 export function TrendChart({ points, height = 220 }: TrendChartProps) {
   if (points.length < 2) {
-    return <p className="text-[13px] text-ink-faint italic">Not enough data to chart yet.</p>;
+    return <p className="text-[13px] text-ink-faint dark:text-white/40 italic">Not enough data to chart yet.</p>;
   }
 
   const width = 100;
@@ -37,8 +37,8 @@ export function TrendChart({ points, height = 220 }: TrendChartProps) {
     <div>
       <div className="flex items-end justify-between mb-3">
         <div>
-          <p className="font-mono text-2xl text-charcoal">{formatINR(last.averagePrice)}</p>
-          <p className="text-xs text-ink-faint mt-0.5">
+          <p className="font-mono text-2xl text-charcoal dark:text-white">{formatINR(last.averagePrice)}</p>
+          <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">
             {new Date(first.date).toLocaleDateString("en-IN", { day: "2-digit", month: "short" })} –{" "}
             {new Date(last.date).toLocaleDateString("en-IN", { day: "2-digit", month: "short" })}
           </p>
@@ -60,7 +60,7 @@ export function TrendChart({ points, height = 220 }: TrendChartProps) {
         <path d={linePath} fill="none" stroke={stroke} strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
       </svg>
 
-      <div className="flex justify-between text-[11px] font-mono text-ink-faint mt-2">
+      <div className="flex justify-between text-[11px] font-mono text-ink-faint dark:text-white/40 mt-2">
         <span>{formatINR(min)}</span>
         <span>{formatINR(max)}</span>
       </div>

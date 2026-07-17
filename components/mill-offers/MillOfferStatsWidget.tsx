@@ -51,12 +51,12 @@ export function MillOfferStatsWidget() {
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
             {STAT_ITEMS.map(({ key, label, icon: Icon, format }) => (
-              <div key={key} className="rounded-sm border border-line p-3.5">
+              <div key={key} className="rounded-sm border border-line dark:border-white/10 p-3.5">
                 <Icon size={15} className="text-gold-dim" />
-                <p className="mt-2 font-mono text-xl text-charcoal">
+                <p className="mt-2 font-mono text-xl text-charcoal dark:text-white">
                   {format ? format(stats[key]) : stats[key].toLocaleString("en-IN")}
                 </p>
-                <p className="text-[11px] text-ink-faint mt-0.5 leading-tight">{label}</p>
+                <p className="text-[11px] text-ink-faint dark:text-white/40 mt-0.5 leading-tight">{label}</p>
               </div>
             ))}
           </div>

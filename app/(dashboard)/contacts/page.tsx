@@ -61,7 +61,7 @@ export default function ContactDirectoryPage() {
         </GridItem>
 
         <GridItem span={3}>
-          <p className="text-[13px] text-ink-faint mb-4">{loading ? "Loading…" : `${contacts.length} contacts`}</p>
+          <p className="text-[13px] text-ink-faint dark:text-white/40 mb-4">{loading ? "Loading…" : `${contacts.length} contacts`}</p>
 
           {loading ? (
             <div className="grid sm:grid-cols-2 gap-3">

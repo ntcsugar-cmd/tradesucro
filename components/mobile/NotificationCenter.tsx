@@ -21,11 +21,11 @@ interface DisplayNotification {
 
 const CATEGORY_META: Record<NotificationCenterCategory, { label: string; icon: LucideIcon; tone: string }> = {
   price_change: { label: "Price Change", icon: TrendingUp, tone: "text-gold-dim bg-gold/10" },
-  tender: { label: "Tender", icon: Gavel, tone: "text-charcoal bg-charcoal/[0.06]" },
+  tender: { label: "Tender", icon: Gavel, tone: "text-charcoal dark:text-white bg-charcoal/[0.06] dark:bg-white/10" },
   deal: { label: "Deal", icon: Handshake, tone: "text-rise bg-rise/10" },
   dispatch: { label: "Dispatch", icon: Truck, tone: "text-info-600 bg-info-100" },
   payment: { label: "Payment", icon: Wallet, tone: "text-fall bg-fall/10" },
-  transport: { label: "Transport", icon: Car, tone: "text-ink-soft bg-charcoal/[0.04]" },
+  transport: { label: "Transport", icon: Car, tone: "text-ink-soft dark:text-white/50 bg-charcoal/[0.04] dark:bg-white/10" },
 };
 
 /** Maps existing (unmodified) notification sources onto the 6 target categories. Payment/Transport are fully wired in the UI below but have no producing source yet in the app — real events will slot in here once those modules exist, without any change to this component. */
@@ -88,7 +88,7 @@ export function NotificationCenter({ onClose }: NotificationCenterProps) {
         <button
           type="button"
           onClick={() => setFilter("all")}
-          className={`shrink-0 rounded-full px-3 py-1.5 text-[12px] font-medium ${filter === "all" ? "bg-charcoal text-white" : "bg-charcoal/[0.05] text-ink-soft"}`}
+          className={`shrink-0 rounded-full px-3 py-1.5 text-[12px] font-medium ${filter === "all" ? "bg-charcoal text-white" : "bg-charcoal/[0.05] text-ink-soft dark:text-white/50"}`}
         >
           All
         </button>
@@ -102,7 +102,7 @@ export function NotificationCenter({ onClose }: NotificationCenterProps) {
               onClick={() => setFilter(cat)}
               disabled={!has}
               className={`shrink-0 rounded-full px-3 py-1.5 text-[12px] font-medium whitespace-nowrap ${
-                filter === cat ? "bg-charcoal text-white" : has ? "bg-charcoal/[0.05] text-ink-soft" : "bg-charcoal/[0.02] text-ink-faint/40"
+                filter === cat ? "bg-charcoal text-white" : has ? "bg-charcoal/[0.05] dark:bg-white/10 text-ink-soft dark:text-white/50" : "bg-charcoal/[0.02] dark:bg-white/5 text-ink-faint/40 dark:text-white/20"
               }`}
             >
               {meta.label}
@@ -119,13 +119,13 @@ export function NotificationCenter({ onClose }: NotificationCenterProps) {
             const meta = CATEGORY_META[n.category];
             const Icon = meta.icon;
             return (
-              <li key={n.id} onClick={onClose} className={`flex items-start gap-3 rounded-sm border p-3.5 ${n.read ? "border-line" : "border-gold/30 bg-gold/[0.04]"}`}>
+              <li key={n.id} onClick={onClose} className={`flex items-start gap-3 rounded-sm border p-3.5 ${n.read ? "border-line dark:border-white/10" : "border-gold/30 bg-gold/[0.04]"}`}>
                 <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${meta.tone}`}>
                   <Icon size={16} />
                 </span>
                 <div className="min-w-0">
-                  <p className="text-[13px] font-medium text-charcoal">{n.title}</p>
-                  <p className="text-xs text-ink-faint mt-0.5">{n.description}</p>
+                  <p className="text-[13px] font-medium text-charcoal dark:text-white">{n.title}</p>
+                  <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">{n.description}</p>
                 </div>
               </li>
             );

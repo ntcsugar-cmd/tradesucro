@@ -23,8 +23,8 @@ export function DealPipelineBoard({ deals }: DealPipelineBoardProps) {
         return (
           <div key={status} className="w-72 shrink-0">
             <div className="flex items-center justify-between mb-3 px-1">
-              <p className="text-[12px] font-semibold text-charcoal">{dealStatusLabel(status)}</p>
-              <span className="font-mono text-[11px] text-ink-faint">{columnDeals.length}</span>
+              <p className="text-[12px] font-semibold text-charcoal dark:text-white">{dealStatusLabel(status)}</p>
+              <span className="font-mono text-[11px] text-ink-faint dark:text-white/40">{columnDeals.length}</span>
             </div>
             <div className="space-y-2.5 min-h-[80px]">
               {columnDeals.map((deal) => (
@@ -37,17 +37,17 @@ export function DealPipelineBoard({ deals }: DealPipelineBoardProps) {
                   onClick={() => router.push(`/deals/${deal.id}`)}
                   onKeyDown={(e) => e.key === "Enter" && router.push(`/deals/${deal.id}`)}
                 >
-                  <p className="font-mono text-[11px] text-ink-faint">{deal.dealNumber}</p>
-                  <p className="text-[13px] font-medium text-charcoal mt-1 truncate">{deal.buyer}</p>
-                  <p className="text-xs text-ink-faint mt-0.5">
+                  <p className="font-mono text-[11px] text-ink-faint dark:text-white/40">{deal.dealNumber}</p>
+                  <p className="text-[13px] font-medium text-charcoal dark:text-white mt-1 truncate">{deal.buyer}</p>
+                  <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">
                     {getProductLabel(deal.product)} · {formatQuantityMt(deal.quantity)}
                   </p>
                   <p className="font-mono text-[13px] text-gold-dim mt-2">{formatINR(deal.totalValue)}</p>
                 </Card>
               ))}
               {columnDeals.length === 0 && (
-                <div className="rounded-sm border border-dashed border-line p-4 text-center">
-                  <p className="text-[11px] text-ink-faint">No deals</p>
+                <div className="rounded-sm border border-dashed border-line dark:border-white/10 p-4 text-center">
+                  <p className="text-[11px] text-ink-faint dark:text-white/40">No deals</p>
                 </div>
               )}
             </div>

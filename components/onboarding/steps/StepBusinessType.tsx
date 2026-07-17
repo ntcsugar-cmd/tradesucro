@@ -13,8 +13,8 @@ interface StepProps {
 export function StepBusinessType({ data, onChange, error }: StepProps) {
   return (
     <div>
-      <h2 className="font-display text-xl font-medium text-charcoal">What best describes your business?</h2>
-      <p className="mt-1.5 text-[13.5px] text-ink-soft">This helps us tailor your marketplace experience.</p>
+      <h2 className="font-display text-xl font-medium text-charcoal dark:text-white">What best describes your business?</h2>
+      <p className="mt-1.5 text-[13.5px] text-ink-soft dark:text-white/50">This helps us tailor your marketplace experience.</p>
 
       <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3">
         {COMPANY_TYPES.map((type) => {
@@ -32,8 +32,8 @@ export function StepBusinessType({ data, onChange, error }: StepProps) {
                   <Check size={12} strokeWidth={3} />
                 </span>
               )}
-              <p className="text-[13.5px] font-semibold text-charcoal pr-6">{type.label}</p>
-              <p className="mt-1 text-xs text-ink-faint leading-relaxed">{type.description}</p>
+              <p className="text-[13.5px] font-semibold text-charcoal dark:text-white pr-6">{type.label}</p>
+              <p className="mt-1 text-xs text-ink-faint dark:text-white/40 leading-relaxed">{type.description}</p>
             </Card>
           );
         })}

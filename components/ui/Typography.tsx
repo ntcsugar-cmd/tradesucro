@@ -24,7 +24,7 @@ export function Heading({ level = 2, as, className, children, ...props }: Headin
   const Tag = as ?? (`h${level}` as ElementType);
   return (
     <Tag
-      className={clsx("font-display text-charcoal", headingStyles[level], className)}
+      className={clsx("font-display text-charcoal dark:text-white", headingStyles[level], className)}
       {...props}
     >
       {children}
@@ -40,7 +40,7 @@ interface SubheadingProps extends HTMLAttributes<HTMLParagraphElement> {
 export function Subheading({ className, children, ...props }: SubheadingProps) {
   return (
     <p
-      className={clsx("font-body text-[15px] sm:text-base text-ink-soft leading-relaxed", className)}
+      className={clsx("font-body text-[15px] sm:text-base text-ink-soft dark:text-white/50 leading-relaxed", className)}
       {...props}
     >
       {children}
@@ -68,7 +68,7 @@ export function Text({ size = "md", muted = false, as, className, children, ...p
   const Tag = as ?? "p";
   return (
     <Tag
-      className={clsx("font-body", textSizes[size], muted ? "text-ink-soft" : "text-charcoal", className)}
+      className={clsx("font-body", textSizes[size], muted ? "text-ink-soft dark:text-white/50" : "text-charcoal dark:text-white", className)}
       {...props}
     >
       {children}
@@ -86,7 +86,7 @@ export function Caption({ uppercase = true, className, children, ...props }: Cap
   return (
     <span
       className={clsx(
-        "font-mono text-[11px] text-ink-faint tracking-wide",
+        "font-mono text-[11px] text-ink-faint dark:text-white/40 tracking-wide",
         uppercase && "uppercase tracking-widest2",
         className
       )}

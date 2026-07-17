@@ -32,10 +32,10 @@ export default function WorkspacesLayout({ children }: { children: React.ReactNo
 
   return (
     <div className="min-h-screen bg-paper grain-surface flex flex-col">
-      <header className="py-6 border-b border-line">
+      <header className="py-6 border-b border-line dark:border-white/10">
         <div className="container-page flex items-center justify-between">
           <Link href="/" className="inline-flex items-baseline gap-2">
-            <span className="font-display text-[20px] font-semibold tracking-tight text-charcoal">TradeSucro</span>
+            <span className="font-display text-[20px] font-semibold tracking-tight text-charcoal dark:text-white">TradeSucro</span>
             <span className="hidden sm:inline font-mono text-[10px] uppercase tracking-widest2 text-gold-dim">Sugar Exchange</span>
           </Link>
           <IconButton variant="ghost" size="md" aria-label="Log out" onClick={handleLogout}>

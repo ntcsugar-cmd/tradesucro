@@ -22,9 +22,9 @@ import type { Deal, DealStatus } from "@/lib/types/deal";
 
 function Row({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-center justify-between py-2.5 border-b border-line last:border-b-0">
-      <span className="text-xs text-ink-faint">{label}</span>
-      <span className="text-[13.5px] text-charcoal font-medium text-right">{value || "—"}</span>
+    <div className="flex items-center justify-between py-2.5 border-b border-line dark:border-white/10 last:border-b-0">
+      <span className="text-xs text-ink-faint dark:text-white/40">{label}</span>
+      <span className="text-[13.5px] text-charcoal dark:text-white font-medium text-right">{value || "—"}</span>
     </div>
   );
 }

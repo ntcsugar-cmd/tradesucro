@@ -19,7 +19,7 @@ export default function CommercialOverviewPage() {
       />
 
       <div className="mb-8">
-        <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-3">Parity Dashboard</p>
+        <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-3">Parity Dashboard</p>
         <ParityDashboardWidget />
       </div>
 
@@ -31,8 +31,8 @@ export default function CommercialOverviewPage() {
                 <span className="flex h-9 w-9 items-center justify-center rounded-sm bg-gold/10 text-gold-dim">
                   <Icon size={17} />
                 </span>
-                <p className="mt-3 text-[14px] font-semibold text-charcoal">{label}</p>
-                <p className="mt-1 text-[13px] text-ink-soft leading-relaxed flex-1">{description}</p>
+                <p className="mt-3 text-[14px] font-semibold text-charcoal dark:text-white">{label}</p>
+                <p className="mt-1 text-[13px] text-ink-soft dark:text-white/50 leading-relaxed flex-1">{description}</p>
                 <span className="mt-3 flex items-center gap-1 text-xs font-medium text-gold-dim">
                   Open <ArrowRight size={12} />
                 </span>
@@ -43,7 +43,7 @@ export default function CommercialOverviewPage() {
       </div>
 
       <div>
-        <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-3">Landed Cost Engine</p>
+        <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-3">Landed Cost Engine</p>
         <LandedCostCalculator />
       </div>
     </>

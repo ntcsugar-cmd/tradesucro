@@ -21,7 +21,7 @@ const BID_STATUS_META = {
 
 export function BidsTable({ bids, canAward, onAward, awarding }: BidsTableProps) {
   if (bids.length === 0) {
-    return <p className="text-[13px] text-ink-faint italic">No bids received yet.</p>;
+    return <p className="text-[13px] text-ink-faint dark:text-white/40 italic">No bids received yet.</p>;
   }
 
   return (
@@ -32,10 +32,10 @@ export function BidsTable({ bids, canAward, onAward, awarding }: BidsTableProps)
           <div key={bid.id} className="flex items-center justify-between gap-4 py-4">
             <div className="min-w-0">
               <div className="flex items-center gap-1.5">
-                <p className="text-[13.5px] font-medium text-charcoal">{bid.bidderName}</p>
+                <p className="text-[13.5px] font-medium text-charcoal dark:text-white">{bid.bidderName}</p>
                 {bid.bidderVerified && <ShieldCheck size={13} className="text-success" />}
               </div>
-              <p className="text-xs text-ink-faint mt-0.5">
+              <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">
                 {formatQuantityMt(bid.bidQuantity)} · Submitted {new Date(bid.submittedAt).toLocaleDateString("en-IN", { day: "2-digit", month: "short" })}
               </p>
             </div>

@@ -209,7 +209,7 @@ export function OnboardingWizard() {
           {isSuccessStep && <StepSuccess onGoToDashboard={handleGoToDashboard} loading={navigating} />}
 
           {!isSuccessStep && (
-            <div className="mt-8 pt-6 border-t border-line flex items-center justify-between">
+            <div className="mt-8 pt-6 border-t border-line dark:border-white/10 flex items-center justify-between">
               <Button variant="ghost" size="md" onClick={handleBack} disabled={step === 1}>
                 <ArrowLeft size={16} /> Back
               </Button>

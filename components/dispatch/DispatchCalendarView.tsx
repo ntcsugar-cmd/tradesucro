@@ -20,21 +20,21 @@ const STATUS_TONE: Record<DispatchStatus, "gold" | "charcoal" | "verified" | "ur
 
 function DispatchRow({ entry }: { entry: DispatchEntry }) {
   return (
-    <div className="flex items-center justify-between gap-4 rounded-sm border border-line p-4">
+    <div className="flex items-center justify-between gap-4 rounded-sm border border-line dark:border-white/10 p-4">
       <div className="flex items-center gap-3 min-w-0">
-        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-sm bg-charcoal/[0.04] text-ink-faint">
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-sm bg-charcoal/[0.04] text-ink-faint dark:text-white/40">
           {entry.status === "delayed" ? <ShieldAlert size={16} className="text-danger" /> : <Truck size={16} />}
         </span>
         <div className="min-w-0">
-          <p className="text-[13.5px] font-medium text-charcoal">
+          <p className="text-[13.5px] font-medium text-charcoal dark:text-white">
             {entry.dispatchNumber} · {getProductLabel(entry.product)} ({entry.grade})
           </p>
-          <p className="text-xs text-ink-faint mt-0.5">
+          <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">
             {formatQuantityMt(entry.quantity)} → {entry.buyerName} · {entry.vehicleNumber} · {entry.transporter}
           </p>
         </div>
       </div>
-      <p className="font-mono text-xs text-ink-faint shrink-0">
+      <p className="font-mono text-xs text-ink-faint dark:text-white/40 shrink-0">
         {new Date(entry.date).toLocaleDateString("en-IN", { day: "2-digit", month: "short" })}
       </p>
     </div>
@@ -58,7 +58,7 @@ export function DispatchCalendarView({ entries }: DispatchCalendarViewProps) {
           <div key={status}>
             <div className="flex items-center gap-2 mb-3">
               <Badge tone={STATUS_TONE[status]}>{STATUS_LABEL[status]}</Badge>
-              <span className="text-xs text-ink-faint">{group.length}</span>
+              <span className="text-xs text-ink-faint dark:text-white/40">{group.length}</span>
             </div>
             <div className="space-y-2.5">
               {group.map((entry) => (

@@ -42,10 +42,10 @@ export function ContactQuickActions({ contact, showViewProfile = false }: Contac
           <Link
             key={label}
             href={href}
-            className="flex flex-col items-center gap-1.5 rounded-sm border border-line py-3 min-h-[64px] justify-center text-center active:bg-charcoal/[0.04]"
+            className="flex flex-col items-center gap-1.5 rounded-sm border border-line dark:border-white/10 py-3 min-h-[64px] justify-center text-center active:bg-charcoal/[0.04]"
           >
             <Icon size={17} className="text-gold-dim" />
-            <span className="text-[11px] font-medium text-charcoal leading-tight px-1">{label}</span>
+            <span className="text-[11px] font-medium text-charcoal dark:text-white leading-tight px-1">{label}</span>
           </Link>
         ))}
       </div>

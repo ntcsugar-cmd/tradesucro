@@ -28,10 +28,10 @@ const REASONS = [
 
 export function WhyChoose() {
   return (
-    <section className="border-b border-line">
+    <section className="border-b border-line dark:border-white/10">
       <div className="container-page py-20">
         <p className="text-eyebrow mb-3">Why TradeSucro</p>
-        <h2 className="font-display text-3xl sm:text-4xl font-medium text-charcoal max-w-lg">
+        <h2 className="font-display text-3xl sm:text-4xl font-medium text-charcoal dark:text-white max-w-lg">
           Built for the trade, not around it
         </h2>
 
@@ -47,10 +47,10 @@ export function WhyChoose() {
               <div className="flex h-11 w-11 items-center justify-center rounded-full border border-gold/30 bg-gold/[0.06]">
                 <reason.icon size={18} className="text-gold-dim" strokeWidth={1.75} />
               </div>
-              <h3 className="mt-5 font-body font-semibold text-[15.5px] text-charcoal">
+              <h3 className="mt-5 font-body font-semibold text-[15.5px] text-charcoal dark:text-white">
                 {reason.title}
               </h3>
-              <p className="mt-2.5 text-[13.5px] leading-relaxed text-ink-soft">{reason.body}</p>
+              <p className="mt-2.5 text-[13.5px] leading-relaxed text-ink-soft dark:text-white/50">{reason.body}</p>
             </motion.div>
           ))}
         </div>

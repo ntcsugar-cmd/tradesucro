@@ -33,7 +33,7 @@ export function PriceUnitToggle({ priceInQtl, onUnitChange, className = "" }: Pr
   return (
     <div className={`inline-flex flex-col items-end gap-1.5 ${className}`}>
       <span className="font-mono text-lg text-gold-dim">{formatPricePerUnit(displayPrice, unit)}</span>
-      <div className="inline-flex rounded-sm border border-line overflow-hidden">
+      <div className="inline-flex rounded-sm border border-line dark:border-white/10 overflow-hidden">
         {PRICE_UNITS.map((u) => (
           <button
             key={u}

@@ -48,7 +48,7 @@ export function MillInformationSection({ millId, state, city, factoryCode, onSel
 
   return (
     <div>
-      <h2 className="font-display text-lg font-medium text-charcoal">Mill Information</h2>
+      <h2 className="font-display text-lg font-medium text-charcoal dark:text-white">Mill Information</h2>
       <div className="mt-5 grid sm:grid-cols-2 gap-5">
         <Select
           label="Sugar Mill"
@@ -60,20 +60,20 @@ export function MillInformationSection({ millId, state, city, factoryCode, onSel
           error={error}
         />
         <div>
-          <p className="text-[13px] font-medium text-charcoal mb-1.5">Factory Code</p>
-          <p className="h-11 flex items-center px-3.5 rounded-sm border border-line bg-charcoal/[0.02] font-mono text-sm text-ink-soft">
+          <p className="text-[13px] font-medium text-charcoal dark:text-white mb-1.5">Factory Code</p>
+          <p className="h-11 flex items-center px-3.5 rounded-sm border border-line dark:border-white/10 bg-charcoal/[0.02] font-mono text-sm text-ink-soft dark:text-white/50">
             {factoryCode || "—"}
           </p>
         </div>
         <div>
-          <p className="text-[13px] font-medium text-charcoal mb-1.5">State</p>
-          <p className="h-11 flex items-center px-3.5 rounded-sm border border-line bg-charcoal/[0.02] text-sm text-ink-soft">
+          <p className="text-[13px] font-medium text-charcoal dark:text-white mb-1.5">State</p>
+          <p className="h-11 flex items-center px-3.5 rounded-sm border border-line dark:border-white/10 bg-charcoal/[0.02] text-sm text-ink-soft dark:text-white/50">
             {state ? getMasterStateLabel(state) : "—"}
           </p>
         </div>
         <div>
-          <p className="text-[13px] font-medium text-charcoal mb-1.5">City</p>
-          <p className="h-11 flex items-center px-3.5 rounded-sm border border-line bg-charcoal/[0.02] text-sm text-ink-soft">
+          <p className="text-[13px] font-medium text-charcoal dark:text-white mb-1.5">City</p>
+          <p className="h-11 flex items-center px-3.5 rounded-sm border border-line dark:border-white/10 bg-charcoal/[0.02] text-sm text-ink-soft dark:text-white/50">
             {city || "—"}
           </p>
         </div>

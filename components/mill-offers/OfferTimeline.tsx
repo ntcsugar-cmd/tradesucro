@@ -32,18 +32,18 @@ export function OfferTimeline({ offerId }: OfferTimelineProps) {
   }
 
   if (revisions.length === 0) {
-    return <p className="text-[13px] text-ink-faint italic">No changes recorded yet.</p>;
+    return <p className="text-[13px] text-ink-faint dark:text-white/40 italic">No changes recorded yet.</p>;
   }
 
   return (
-    <ol className="relative border-l border-line ml-1.5 space-y-5">
+    <ol className="relative border-l border-line dark:border-white/10 ml-1.5 space-y-5">
       {revisions.map((rev, i) => (
         <li key={rev.id} className="pl-5 relative">
           <span className={`absolute -left-[7px] top-1 flex h-3 w-3 items-center justify-center rounded-full ${i === 0 ? "bg-gold" : "bg-charcoal/20"}`}>
             <Circle size={6} fill="white" className="text-white" />
           </span>
-          <p className="text-[13px] font-medium text-charcoal">{rev.fieldsModified.join(", ")}</p>
-          <p className="text-xs text-ink-faint mt-0.5">
+          <p className="text-[13px] font-medium text-charcoal dark:text-white">{rev.fieldsModified.join(", ")}</p>
+          <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">
             Rev {rev.revisionNumber} · {rev.changedBy} · {new Date(rev.changedOn).toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" })}
           </p>
         </li>

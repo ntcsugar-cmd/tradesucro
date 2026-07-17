@@ -41,7 +41,7 @@ export function MasterDataAdminTable<T extends MasterDataRow>({ rows, loading = 
       ),
     },
     { key: "code", header: "Code", render: (r) => <span className="font-mono text-[13px]">{r.code}</span> },
-    { key: "displayName", header: "Display Name", render: (r) => <span className="font-medium text-charcoal">{r.displayName}</span> },
+    { key: "displayName", header: "Display Name", render: (r) => <span className="font-medium text-charcoal dark:text-white">{r.displayName}</span> },
     ...extraColumns,
     { key: "status", header: "Status", render: (r) => <StatusBadge status={r.status === "active" ? "success" : "neutral"}>{r.status === "active" ? "Active" : "Inactive"}</StatusBadge> },
     {

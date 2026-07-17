@@ -41,7 +41,7 @@ export function TraderStatsGrid() {
   return (
     <div className="space-y-6">
       <div>
-        <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-3">Today&rsquo;s Market</p>
+        <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-3">Today&rsquo;s Market</p>
         <Grid cols={2} colsMd={5} gap="md">
           <StatisticsCard label="Market Average" value={formatINR(stats.todaysMarketAverage)} icon={<Scale size={16} />} tone="dark" />
           <StatisticsCard label="Lowest Mill Price" value={formatINR(stats.lowestMillPrice)} icon={<ArrowDown size={16} />} />
@@ -52,7 +52,7 @@ export function TraderStatsGrid() {
       </div>
 
       <div>
-        <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-3">Your Book</p>
+        <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-3">Your Book</p>
         <Grid cols={2} colsMd={5} gap="md">
           <StatisticsCard label="My Active Deals" value={stats.myActiveDeals} icon={<Handshake size={16} />} tone="dark" />
           <StatisticsCard label="Pending Dispatch" value={stats.pendingDispatch} icon={<Truck size={16} />} />

@@ -10,8 +10,8 @@ interface StepProps {
 export function StepCompanyDetails({ data, onChange, errors = {} }: StepProps) {
   return (
     <div>
-      <h2 className="font-display text-xl font-medium text-charcoal">Company details</h2>
-      <p className="mt-1.5 text-[13.5px] text-ink-soft">Your registered business identifiers.</p>
+      <h2 className="font-display text-xl font-medium text-charcoal dark:text-white">Company details</h2>
+      <p className="mt-1.5 text-[13.5px] text-ink-soft dark:text-white/50">Your registered business identifiers.</p>
 
       <div className="mt-6 space-y-5">
         <TextInput

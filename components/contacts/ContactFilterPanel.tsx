@@ -44,7 +44,7 @@ export function ContactFilterPanel({ onApply }: ContactFilterPanelProps) {
     <Card padding="lg">
       <CardBody>
         <div className="flex items-center justify-between mb-4">
-          <p className="text-[13px] font-semibold text-charcoal">Filters</p>
+          <p className="text-[13px] font-semibold text-charcoal dark:text-white">Filters</p>
           <Button variant="ghost" size="sm" onClick={handleClear}>
             <RotateCcw size={13} /> Clear
           </Button>

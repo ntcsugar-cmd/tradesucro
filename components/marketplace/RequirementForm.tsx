@@ -140,7 +140,7 @@ export function RequirementForm() {
             <Textarea label="Remarks" placeholder="Any additional details for sellers…" rows={3} value={form.remarks} onChange={(e) => set("remarks", e.target.value)} />
           </div>
 
-          <div className="mt-8 pt-6 border-t border-line flex flex-wrap items-center justify-end gap-3">
+          <div className="mt-8 pt-6 border-t border-line dark:border-white/10 flex flex-wrap items-center justify-end gap-3">
             <Button variant="ghost" size="md" loading={saving === "draft"} onClick={() => handleSave("draft")}>
               <Save size={15} /> Save Draft
             </Button>
@@ -163,13 +163,13 @@ export function RequirementForm() {
             </p>
             <p className="font-mono text-lg text-gold-dim">{formatPricePerUnit(Number(form.expectedPrice) || 0)}</p>
           </div>
-          <dl className="grid sm:grid-cols-2 gap-x-6 gap-y-2 text-[13px] pt-3 border-t border-line">
-            <div className="flex justify-between"><dt className="text-ink-faint">Quantity</dt><dd className="text-charcoal">{form.quantity || "—"} {getUnitLabel(form.unit)}</dd></div>
-            <div className="flex justify-between"><dt className="text-ink-faint">Destination</dt><dd className="text-charcoal">{form.city}, {getMasterStateLabel(form.state)}</dd></div>
-            <div className="flex justify-between"><dt className="text-ink-faint">Payment terms</dt><dd className="text-charcoal">{form.paymentTerms ? getPaymentTermLabel(form.paymentTerms) : "—"}</dd></div>
-            <div className="flex justify-between"><dt className="text-ink-faint">Delivery by</dt><dd className="text-charcoal">{form.deliverBy || "—"}</dd></div>
+          <dl className="grid sm:grid-cols-2 gap-x-6 gap-y-2 text-[13px] pt-3 border-t border-line dark:border-white/10">
+            <div className="flex justify-between"><dt className="text-ink-faint dark:text-white/40">Quantity</dt><dd className="text-charcoal dark:text-white">{form.quantity || "—"} {getUnitLabel(form.unit)}</dd></div>
+            <div className="flex justify-between"><dt className="text-ink-faint dark:text-white/40">Destination</dt><dd className="text-charcoal dark:text-white">{form.city}, {getMasterStateLabel(form.state)}</dd></div>
+            <div className="flex justify-between"><dt className="text-ink-faint dark:text-white/40">Payment terms</dt><dd className="text-charcoal dark:text-white">{form.paymentTerms ? getPaymentTermLabel(form.paymentTerms) : "—"}</dd></div>
+            <div className="flex justify-between"><dt className="text-ink-faint dark:text-white/40">Delivery by</dt><dd className="text-charcoal dark:text-white">{form.deliverBy || "—"}</dd></div>
           </dl>
-          {form.remarks && <p className="text-[13px] text-ink-soft pt-3 border-t border-line">{form.remarks}</p>}
+          {form.remarks && <p className="text-[13px] text-ink-soft dark:text-white/50 pt-3 border-t border-line dark:border-white/10">{form.remarks}</p>}
         </div>
       </Modal>
     </>

@@ -227,7 +227,7 @@ export function MillOfferForm({ mode, initialOffer }: MillOfferFormProps) {
             <AttachmentsSection data={data.attachments} onChange={(p) => patch("attachments", { ...data.attachments, ...p })} readOnly={readOnly} />
           </div>
 
-          <div className="mt-8 pt-6 border-t border-line flex flex-wrap items-center justify-end gap-3">
+          <div className="mt-8 pt-6 border-t border-line dark:border-white/10 flex flex-wrap items-center justify-end gap-3">
             {mode === "edit" && initialOffer?.status === "published" && (
               <Button variant="danger" size="md" loading={saving === "withdraw"} onClick={handleWithdraw}>
                 <Ban size={15} /> Withdraw Offer

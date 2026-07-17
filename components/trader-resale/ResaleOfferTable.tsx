@@ -19,11 +19,11 @@ export function ResaleOfferTable({ offers, loading = false }: ResaleOfferTablePr
 
   const columns: DataTableColumn<ResaleOffer>[] = [
     { key: "offerNumber", header: "Offer No", render: (o) => <span className="font-mono text-xs">{o.offerNumber}</span> },
-    { key: "lotNumber", header: "Lot", render: (o) => <span className="font-mono text-xs text-ink-faint">{o.lotNumber}</span> },
+    { key: "lotNumber", header: "Lot", render: (o) => <span className="font-mono text-xs text-ink-faint dark:text-white/40">{o.lotNumber}</span> },
     { key: "grade", header: "Grade", render: (o) => <span className="font-mono">{getProductLabel(o.product)} · {o.grade}</span> },
     { key: "offeredQuantity", header: "Quantity", align: "right", render: (o) => <span className="font-mono">{formatQuantityMt(o.offeredQuantity)}</span> },
-    { key: "averageCost", header: "Avg. Cost", align: "right", render: (o) => <span className="font-mono text-ink-faint">{formatINR(o.averageCost)}</span> },
-    { key: "sellingPrice", header: "Selling Price", align: "right", render: (o) => <span className="font-mono text-charcoal">{formatINR(o.sellingPrice)}</span> },
+    { key: "averageCost", header: "Avg. Cost", align: "right", render: (o) => <span className="font-mono text-ink-faint dark:text-white/40">{formatINR(o.averageCost)}</span> },
+    { key: "sellingPrice", header: "Selling Price", align: "right", render: (o) => <span className="font-mono text-charcoal dark:text-white">{formatINR(o.sellingPrice)}</span> },
     {
       key: "margin",
       header: "Margin",

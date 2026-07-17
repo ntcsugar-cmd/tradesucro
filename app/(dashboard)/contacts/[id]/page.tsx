@@ -21,9 +21,9 @@ import type { Contact } from "@/lib/types/contact";
 
 function Row({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-center justify-between py-2.5 border-b border-line last:border-b-0">
-      <span className="text-xs text-ink-faint">{label}</span>
-      <span className="text-[13.5px] text-charcoal font-medium text-right">{value || "—"}</span>
+    <div className="flex items-center justify-between py-2.5 border-b border-line dark:border-white/10 last:border-b-0">
+      <span className="text-xs text-ink-faint dark:text-white/40">{label}</span>
+      <span className="text-[13.5px] text-charcoal dark:text-white font-medium text-right">{value || "—"}</span>
     </div>
   );
 }
@@ -104,7 +104,7 @@ export default function ContactProfilePage() {
                 <CardTitle>Preferences</CardTitle>
               </CardHeader>
               <CardBody>
-                <p className="text-xs text-ink-faint mb-2">Preferred Sugar Grades</p>
+                <p className="text-xs text-ink-faint dark:text-white/40 mb-2">Preferred Sugar Grades</p>
                 <div className="flex flex-wrap gap-1.5 mb-4">
                   {contact.preferredGrades.map((g) => (
                     <Badge key={g} tone="gold">
@@ -112,7 +112,7 @@ export default function ContactProfilePage() {
                     </Badge>
                   ))}
                 </div>
-                <p className="text-xs text-ink-faint mb-2">Preferred Regions</p>
+                <p className="text-xs text-ink-faint dark:text-white/40 mb-2">Preferred Regions</p>
                 <div className="flex flex-wrap gap-1.5">
                   {contact.preferredRegions.map((r) => (
                     <Badge key={r} tone="charcoal">
@@ -129,7 +129,7 @@ export default function ContactProfilePage() {
                   <CardTitle>Notes</CardTitle>
                 </CardHeader>
                 <CardBody>
-                  <p className="text-[13.5px] text-ink-soft leading-relaxed">{contact.notes}</p>
+                  <p className="text-[13.5px] text-ink-soft dark:text-white/50 leading-relaxed">{contact.notes}</p>
                 </CardBody>
               </Card>
             )}

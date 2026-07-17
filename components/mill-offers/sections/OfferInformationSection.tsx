@@ -38,17 +38,17 @@ export function OfferInformationSection({
 
   return (
     <div>
-      <h2 className="font-display text-lg font-medium text-charcoal">Offer Information</h2>
+      <h2 className="font-display text-lg font-medium text-charcoal dark:text-white">Offer Information</h2>
       <div className="mt-5 grid sm:grid-cols-2 gap-5">
         <div>
-          <p className="text-[13px] font-medium text-charcoal mb-1.5">Offer Number</p>
-          <p className="h-11 flex items-center px-3.5 rounded-sm border border-line bg-charcoal/[0.02] font-mono text-sm text-ink-soft">
+          <p className="text-[13px] font-medium text-charcoal dark:text-white mb-1.5">Offer Number</p>
+          <p className="h-11 flex items-center px-3.5 rounded-sm border border-line dark:border-white/10 bg-charcoal/[0.02] font-mono text-sm text-ink-soft dark:text-white/50">
             {offerNumber ?? "Assigned automatically on save"}
           </p>
         </div>
         <div>
-          <p className="text-[13px] font-medium text-charcoal mb-1.5">Offer Status</p>
-          <div className="h-11 flex items-center px-3.5 rounded-sm border border-line bg-charcoal/[0.02]">
+          <p className="text-[13px] font-medium text-charcoal dark:text-white mb-1.5">Offer Status</p>
+          <div className="h-11 flex items-center px-3.5 rounded-sm border border-line dark:border-white/10 bg-charcoal/[0.02]">
             <Badge tone={status === "published" ? "verified" : status === "cancelled" || status === "expired" ? "urgent" : "charcoal"}>
               {statusLabel}
             </Badge>

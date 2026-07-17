@@ -15,7 +15,7 @@ export function PaymentDispatchSection({ payment, dispatch, onChangePayment, onC
   return (
     <div className="space-y-10">
       <div>
-        <h2 className="font-display text-lg font-medium text-charcoal">Payment Terms</h2>
+        <h2 className="font-display text-lg font-medium text-charcoal dark:text-white">Payment Terms</h2>
         <div className="mt-5 space-y-5">
           <div className="grid sm:grid-cols-2 gap-5">
             <NumberInput label="Advance %" unit="%" value={payment.advancePercent || ""} disabled={readOnly} onChange={(e) => onChangePayment({ advancePercent: Number(e.target.value) || 0 })} />
@@ -31,7 +31,7 @@ export function PaymentDispatchSection({ payment, dispatch, onChangePayment, onC
       </div>
 
       <div>
-        <h2 className="font-display text-lg font-medium text-charcoal">Dispatch Terms</h2>
+        <h2 className="font-display text-lg font-medium text-charcoal dark:text-white">Dispatch Terms</h2>
         <div className="mt-5 space-y-5">
           <div className="grid sm:grid-cols-2 gap-5">
             <TextInput label="Dispatch Start" type="date" value={dispatch.dispatchStart} disabled={readOnly} onChange={(e) => onChangeDispatch({ dispatchStart: e.target.value })} />

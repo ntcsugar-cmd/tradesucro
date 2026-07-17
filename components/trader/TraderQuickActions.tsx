@@ -16,7 +16,7 @@ export function TraderQuickActions() {
     <Card padding="lg">
       <CardHeader>
         <CardTitle>Quick Actions</CardTitle>
-        <span className="text-xs text-ink-faint">Jump straight into the next step</span>
+        <span className="text-xs text-ink-faint dark:text-white/40">Jump straight into the next step</span>
       </CardHeader>
       <CardBody className="flex flex-wrap gap-2.5">
         {ACTIONS.map(({ label, href, icon: Icon, variant }) => (

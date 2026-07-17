@@ -21,9 +21,9 @@ import type { ResaleOffer } from "@/lib/types/traderResale";
 
 function Row({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-center justify-between py-2.5 border-b border-line last:border-b-0">
-      <span className="text-xs text-ink-faint">{label}</span>
-      <span className="text-[13.5px] text-charcoal font-medium text-right">{value || "—"}</span>
+    <div className="flex items-center justify-between py-2.5 border-b border-line dark:border-white/10 last:border-b-0">
+      <span className="text-xs text-ink-faint dark:text-white/40">{label}</span>
+      <span className="text-[13.5px] text-charcoal dark:text-white font-medium text-right">{value || "—"}</span>
     </div>
   );
 }
@@ -122,15 +122,15 @@ export default function ResaleOfferDetailsPage() {
           <Card padding="lg" className={marginPositive ? "ring-1 ring-rise/20" : "ring-1 ring-fall/20"}>
             <CardBody>
               <div className="flex items-center justify-between">
-                <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint">Expected Margin</p>
+                <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40">Expected Margin</p>
                 {marginPositive ? <TrendingUp size={14} className="text-rise" /> : <TrendingDown size={14} className="text-fall" />}
               </div>
               <p className={`font-mono text-2xl mt-1 ${marginPositive ? "text-rise" : "text-fall"}`}>{marginPct.toFixed(1)}%</p>
-              <p className="text-[11px] text-ink-faint mt-1">
+              <p className="text-[11px] text-ink-faint dark:text-white/40 mt-1">
                 {formatPricePerUnit(offer.sellingPrice - offer.averageCost)} × {formatQuantityMt(offer.offeredQuantity)}
               </p>
-              <div className="mt-4 pt-4 border-t border-line">
-                <p className="text-[11px] text-ink-faint">Total Expected Profit</p>
+              <div className="mt-4 pt-4 border-t border-line dark:border-white/10">
+                <p className="text-[11px] text-ink-faint dark:text-white/40">Total Expected Profit</p>
                 <p className={`font-mono text-lg mt-1 ${marginPositive ? "text-rise" : "text-fall"}`}>
                   {formatINR((offer.sellingPrice - offer.averageCost) * offer.offeredQuantity)}
                 </p>

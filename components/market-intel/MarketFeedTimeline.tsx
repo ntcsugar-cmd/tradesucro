@@ -60,10 +60,10 @@ export function MarketFeedTimeline({ limit = 40 }: MarketFeedTimelineProps) {
               <Icon size={14} />
             </span>
             <div className="min-w-0">
-              <p className="text-[13px] text-charcoal">
+              <p className="text-[13px] text-charcoal dark:text-white">
                 <span className="font-medium">{EVENT_LABEL[e.type]}</span> — {e.description}
               </p>
-              <p className="text-xs text-ink-faint mt-0.5">
+              <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">
                 {getMasterStateLabel(e.state)} · {new Date(e.timestamp).toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" })}
               </p>
             </div>

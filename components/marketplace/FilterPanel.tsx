@@ -48,7 +48,7 @@ export function FilterPanel({ onApply }: FilterPanelProps) {
     <Card padding="lg">
       <CardBody>
         <div className="flex items-center justify-between mb-4">
-          <p className="text-[13px] font-semibold text-charcoal">Filters</p>
+          <p className="text-[13px] font-semibold text-charcoal dark:text-white">Filters</p>
           <Button variant="ghost" size="sm" onClick={handleClear}>
             <RotateCcw size={13} /> Clear
           </Button>
@@ -85,7 +85,7 @@ export function FilterPanel({ onApply }: FilterPanelProps) {
           />
 
           <div>
-            <p className="text-[13px] font-medium text-charcoal mb-1.5">Quantity (MT)</p>
+            <p className="text-[13px] font-medium text-charcoal dark:text-white mb-1.5">Quantity (MT)</p>
             <div className="grid grid-cols-2 gap-2">
               <NumberInput
                 size="sm"
@@ -101,7 +101,7 @@ export function FilterPanel({ onApply }: FilterPanelProps) {
           </div>
 
           <div>
-            <p className="text-[13px] font-medium text-charcoal mb-1.5">Price range (₹)</p>
+            <p className="text-[13px] font-medium text-charcoal dark:text-white mb-1.5">Price range (₹)</p>
             <div className="grid grid-cols-2 gap-2">
               <NumberInput
                 size="sm"

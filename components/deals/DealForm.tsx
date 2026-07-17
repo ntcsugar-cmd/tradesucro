@@ -181,7 +181,7 @@ export function DealForm({ mode, initialDeal }: DealFormProps) {
         </div>
 
         {!readOnly && (
-          <div className="mt-8 pt-6 border-t border-line flex items-center justify-end gap-3">
+          <div className="mt-8 pt-6 border-t border-line dark:border-white/10 flex items-center justify-end gap-3">
             <Button variant="primary" size="md" loading={saving} onClick={handleSave}>
               <Save size={15} /> {mode === "create" ? "Create Deal" : "Save Changes"}
             </Button>

@@ -18,15 +18,15 @@ export function CompanySummaryCard({ company }: CompanySummaryCardProps) {
           <div className="flex items-start gap-3">
             <CompanyLogoPlaceholder name={company.name} size="md" />
             <div>
-              <p className="text-[14.5px] font-semibold text-charcoal">{company.name}</p>
-              <p className="text-xs text-ink-faint mt-0.5">{getCompanyTypeLabel(company.businessType)}</p>
+              <p className="text-[14.5px] font-semibold text-charcoal dark:text-white">{company.name}</p>
+              <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">{getCompanyTypeLabel(company.businessType)}</p>
             </div>
           </div>
           <VerificationBadge status={company.verified} />
         </div>
 
-        <div className="mt-4 flex items-center justify-between pt-4 border-t border-line">
-          <span className="flex items-center gap-1.5 text-xs text-ink-soft">
+        <div className="mt-4 flex items-center justify-between pt-4 border-t border-line dark:border-white/10">
+          <span className="flex items-center gap-1.5 text-xs text-ink-soft dark:text-white/50">
             <MapPin size={13} /> {company.city}
           </span>
           {company.rating > 0 && (

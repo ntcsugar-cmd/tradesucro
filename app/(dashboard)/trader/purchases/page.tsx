@@ -67,7 +67,7 @@ export default function PurchaseRegisterPage() {
           <PurchaseFilterPanel onApply={setFilters} />
         </GridItem>
         <GridItem span={3}>
-          <p className="text-[13px] text-ink-faint mb-4">{loading ? "Loading…" : `${purchases.length} purchases`}</p>
+          <p className="text-[13px] text-ink-faint dark:text-white/40 mb-4">{loading ? "Loading…" : `${purchases.length} purchases`}</p>
           <PurchaseTable purchases={purchases} loading={loading} />
         </GridItem>
       </Grid>

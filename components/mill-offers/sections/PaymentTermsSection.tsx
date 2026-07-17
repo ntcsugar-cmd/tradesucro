@@ -15,7 +15,7 @@ interface PaymentTermsSectionProps {
 export function PaymentTermsSection({ data, onChange, errors = {}, readOnly = false }: PaymentTermsSectionProps) {
   return (
     <div>
-      <h2 className="font-display text-lg font-medium text-charcoal">Payment Terms</h2>
+      <h2 className="font-display text-lg font-medium text-charcoal dark:text-white">Payment Terms</h2>
       <div className="mt-5 space-y-5">
         <div className="grid sm:grid-cols-2 gap-5">
           <PaymentTermSelect

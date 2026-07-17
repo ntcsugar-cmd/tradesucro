@@ -16,7 +16,7 @@ export function PriceHistoryTable({ revisions, loading = false }: PriceHistoryTa
       key: "difference",
       header: "Difference",
       render: (r) => (
-        <span className={`font-mono ${r.difference > 0 ? "text-rise" : r.difference < 0 ? "text-fall" : "text-ink-faint"}`}>
+        <span className={`font-mono ${r.difference > 0 ? "text-rise" : r.difference < 0 ? "text-fall" : "text-ink-faint dark:text-white/40"}`}>
           {r.difference > 0 ? "+" : ""}{formatINR(r.difference)}
         </span>
       ),

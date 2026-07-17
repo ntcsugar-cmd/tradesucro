@@ -46,7 +46,7 @@ function OffersListContent() {
 
         <GridItem span={3}>
           <div className="flex items-center justify-between mb-4">
-            <p className="text-[13px] text-ink-faint">{loading ? "Loading…" : `${offers.length} offers`}</p>
+            <p className="text-[13px] text-ink-faint dark:text-white/40">{loading ? "Loading…" : `${offers.length} offers`}</p>
             <SortSelect value={filters.sort ?? "newest"} onChange={(sort) => setFilters((f) => ({ ...f, sort }))} />
           </div>
 

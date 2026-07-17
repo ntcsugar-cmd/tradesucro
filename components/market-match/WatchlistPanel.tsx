@@ -26,7 +26,7 @@ export function WatchlistPanel({ items, onRemove }: WatchlistPanelProps) {
     <Card padding="lg">
       <CardHeader>
         <CardTitle>Your Watchlist</CardTitle>
-        <span className="text-xs text-ink-faint">{items.length} followed</span>
+        <span className="text-xs text-ink-faint dark:text-white/40">{items.length} followed</span>
       </CardHeader>
       <CardBody>
         {items.length === 0 ? (
@@ -43,8 +43,8 @@ export function WatchlistPanel({ items, onRemove }: WatchlistPanelProps) {
                       <Icon size={14} />
                     </span>
                     <div className="min-w-0 flex-1">
-                      <MillNameScroll name={item.targetLabel} className="text-[13px] font-medium text-charcoal" />
-                      <p className="text-[11px] text-ink-faint mt-0.5">{meta.label} · Following since {new Date(item.createdAt).toLocaleDateString("en-IN", { dateStyle: "medium" })}</p>
+                      <MillNameScroll name={item.targetLabel} className="text-[13px] font-medium text-charcoal dark:text-white" />
+                      <p className="text-[11px] text-ink-faint dark:text-white/40 mt-0.5">{meta.label} · Following since {new Date(item.createdAt).toLocaleDateString("en-IN", { dateStyle: "medium" })}</p>
                     </div>
                   </div>
                   <IconButton variant="ghost" size="sm" aria-label={`Unfollow ${item.targetLabel}`} onClick={() => onRemove(item.id)}>

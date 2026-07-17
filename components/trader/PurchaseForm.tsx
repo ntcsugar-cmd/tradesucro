@@ -47,8 +47,8 @@ function emptyDraft(): PurchaseDraft {
 function SummaryRow({ label, value, muted = false }: { label: string; value: string; muted?: boolean }) {
   return (
     <div className="flex items-center justify-between py-1.5">
-      <span className="text-xs text-ink-faint">{label}</span>
-      <span className={`font-mono text-[13px] ${muted ? "text-ink-soft" : "text-charcoal"}`}>{value}</span>
+      <span className="text-xs text-ink-faint dark:text-white/40">{label}</span>
+      <span className={`font-mono text-[13px] ${muted ? "text-ink-soft dark:text-white/50" : "text-charcoal dark:text-white"}`}>{value}</span>
     </div>
   );
 }
@@ -120,14 +120,14 @@ export function PurchaseForm() {
 
             <div className="space-y-8">
               <div>
-                <h2 className="font-display text-lg font-medium text-charcoal">Purchase Source</h2>
+                <h2 className="font-display text-lg font-medium text-charcoal dark:text-white">Purchase Source</h2>
                 <div className="mt-5">
                   <Select label="Source" defaultValue={data.source} options={SOURCE_OPTIONS} onChange={(e) => set("source", e.target.value as PurchaseSource)} />
                 </div>
               </div>
 
               <div>
-                <h2 className="font-display text-lg font-medium text-charcoal">Purchase Details</h2>
+                <h2 className="font-display text-lg font-medium text-charcoal dark:text-white">Purchase Details</h2>
                 <div className="mt-5 grid sm:grid-cols-2 gap-5">
                   <TextInput label="Purchase Date" type="date" value={data.purchaseDate} onChange={(e) => set("purchaseDate", e.target.value)} />
                   <SearchableMillPicker
@@ -150,7 +150,7 @@ export function PurchaseForm() {
               </div>
 
               <div>
-                <h2 className="font-display text-lg font-medium text-charcoal">Costs</h2>
+                <h2 className="font-display text-lg font-medium text-charcoal dark:text-white">Costs</h2>
                 <div className="mt-5 grid sm:grid-cols-2 gap-5">
                   <NumberInput label="Taxes" unit="₹" value={data.taxes || ""} onChange={(e) => set("taxes", Number(e.target.value) || 0)} />
                   <NumberInput label="Freight" unit="₹" value={data.freight || ""} onChange={(e) => set("freight", Number(e.target.value) || 0)} />
@@ -160,14 +160,14 @@ export function PurchaseForm() {
               </div>
 
               <div>
-                <h2 className="font-display text-lg font-medium text-charcoal">Margin Projection</h2>
+                <h2 className="font-display text-lg font-medium text-charcoal dark:text-white">Margin Projection</h2>
                 <div className="mt-5">
                   <NumberInput label="Expected Selling Price" unit="₹" value={data.expectedSellingPrice || ""} onChange={(e) => set("expectedSellingPrice", Number(e.target.value) || 0)} />
                 </div>
               </div>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-line flex flex-wrap items-center justify-end gap-3">
+            <div className="mt-8 pt-6 border-t border-line dark:border-white/10 flex flex-wrap items-center justify-end gap-3">
               <Button variant="ghost" size="md" loading={saving === "draft"} onClick={() => handleSave("draft")}>
                 <Save size={15} /> Save Draft
               </Button>
@@ -183,7 +183,7 @@ export function PurchaseForm() {
       <div className="lg:sticky lg:top-24">
         <Card padding="lg" className={marginPositive ? "ring-1 ring-rise/20" : "ring-1 ring-fall/20"}>
           <CardBody>
-            <p className="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-4">
+            <p className="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-4">
               <Calculator size={12} /> Live Summary
             </p>
 
@@ -191,28 +191,28 @@ export function PurchaseForm() {
             <SummaryRow label="Rate" value={formatINR(data.rate)} muted />
             <SummaryRow label="Base Value" value={formatINR(data.quantity * data.rate)} muted />
 
-            <div className="my-3 border-t border-line" />
+            <div className="my-3 border-t border-line dark:border-white/10" />
 
             <SummaryRow label="Taxes" value={formatINR(data.taxes)} muted />
             <SummaryRow label="Freight" value={formatINR(data.freight)} muted />
             <SummaryRow label="Insurance" value={formatINR(data.insurance)} muted />
             <SummaryRow label="Brokerage" value={formatINR(data.brokerage)} muted />
 
-            <div className="my-3 border-t border-line" />
+            <div className="my-3 border-t border-line dark:border-white/10" />
 
             <div className="flex items-center justify-between py-1.5">
-              <span className="text-[13px] font-medium text-charcoal">Total Cost</span>
-              <span className="font-mono text-[15px] font-semibold text-charcoal">{formatINR(totalCost)}</span>
+              <span className="text-[13px] font-medium text-charcoal dark:text-white">Total Cost</span>
+              <span className="font-mono text-[15px] font-semibold text-charcoal dark:text-white">{formatINR(totalCost)}</span>
             </div>
             <SummaryRow label="Landed Rate / QTL" value={formatPricePerUnit(landedRate)} />
 
             <div className={`mt-5 rounded-sm border p-4 ${marginPositive ? "border-rise/30 bg-rise/[0.05]" : "border-fall/30 bg-fall/[0.05]"}`}>
               <div className="flex items-center justify-between">
-                <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint">Expected Margin</p>
+                <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint dark:text-white/40">Expected Margin</p>
                 {marginPositive ? <ArrowUpRight size={14} className="text-rise" /> : <ArrowDownRight size={14} className="text-fall" />}
               </div>
               <p className={`font-mono text-2xl mt-1 ${marginPositive ? "text-rise" : "text-fall"}`}>{formatINR(expectedMargin)}</p>
-              <p className="text-[11px] text-ink-faint mt-1">
+              <p className="text-[11px] text-ink-faint dark:text-white/40 mt-1">
                 at expected sell of {data.expectedSellingPrice ? formatPricePerUnit(data.expectedSellingPrice) : "—"}
               </p>
             </div>

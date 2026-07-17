@@ -48,7 +48,7 @@ export default function MatchEnginePage() {
 
             {hasRun && (
               <div>
-                <p className="text-[13px] text-ink-faint mb-4">{running ? "Scoring candidates…" : `${candidates.length} ranked matches`}</p>
+                <p className="text-[13px] text-ink-faint dark:text-white/40 mb-4">{running ? "Scoring candidates…" : `${candidates.length} ranked matches`}</p>
                 <MatchCandidateTable candidates={candidates} loading={running} />
               </div>
             )}

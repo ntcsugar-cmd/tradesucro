@@ -41,7 +41,7 @@ export function TrustScoreDisplay({ score }: { score: number }) {
   return (
     <span className="flex items-center gap-1">
       <Star size={12} className="text-gold-dim fill-gold-dim" />
-      <span className="font-mono text-[12.5px] text-charcoal">{score.toFixed(1)}</span>
+      <span className="font-mono text-[12.5px] text-charcoal dark:text-white">{score.toFixed(1)}</span>
     </span>
   );
 }

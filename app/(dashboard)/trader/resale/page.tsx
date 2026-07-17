@@ -42,7 +42,7 @@ export default function ResaleOfferBoardPage() {
 
       <div className="flex items-center gap-2 mb-6">
         <Tag size={13} className="text-gold-dim" />
-        <p className="text-[13px] text-ink-faint">{loading ? "Loading…" : `${activeCount} active offers · ${offers.length} total`}</p>
+        <p className="text-[13px] text-ink-faint dark:text-white/40">{loading ? "Loading…" : `${activeCount} active offers · ${offers.length} total`}</p>
       </div>
 
       <div className="mb-6 max-w-md">

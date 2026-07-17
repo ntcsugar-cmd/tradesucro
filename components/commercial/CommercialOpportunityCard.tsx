@@ -30,12 +30,12 @@ export function CommercialOpportunityCard({ opportunity }: { opportunity: Commer
         <Badge tone="gold">
           <Icon size={11} /> {meta.label}
         </Badge>
-        <p className="mt-3 text-[14px] font-semibold text-charcoal leading-snug">{opportunity.title}</p>
-        <p className="mt-1.5 text-[13px] text-ink-soft leading-relaxed flex-1">{opportunity.description}</p>
-        <div className="mt-4 pt-4 border-t border-line flex items-center justify-between">
+        <p className="mt-3 text-[14px] font-semibold text-charcoal dark:text-white leading-snug">{opportunity.title}</p>
+        <p className="mt-1.5 text-[13px] text-ink-soft dark:text-white/50 leading-relaxed flex-1">{opportunity.description}</p>
+        <div className="mt-4 pt-4 border-t border-line dark:border-white/10 flex items-center justify-between">
           <div>
-            <p className="font-mono text-lg text-charcoal">{formatValue(opportunity)}</p>
-            <p className="text-[11px] text-ink-faint mt-0.5">{opportunity.meta}</p>
+            <p className="font-mono text-lg text-charcoal dark:text-white">{formatValue(opportunity)}</p>
+            <p className="text-[11px] text-ink-faint dark:text-white/40 mt-0.5">{opportunity.meta}</p>
           </div>
           <Link href={opportunity.href} className="text-xs font-medium text-gold-dim hover:text-gold-bright transition-colors">
             View Offer →

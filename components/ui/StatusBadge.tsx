@@ -21,12 +21,12 @@ const statusStyles: Record<Status, string> = {
 };
 
 const dotStyles: Record<Status, string> = {
-  success: "text-success",
-  danger: "text-danger",
-  warning: "text-gold",
-  info: "text-navy-500",
-  neutral: "text-gray-500",
-  pending: "text-gray-400",
+  success: "text-success dark:text-success-300",
+  danger: "text-danger dark:text-danger-300",
+  warning: "text-gold dark:text-gold-bright",
+  info: "text-navy-500 dark:text-navy-200",
+  neutral: "text-gray-500 dark:text-white/50",
+  pending: "text-gray-400 dark:text-white/40",
 };
 
 /** StatusBadge — for order/offer/mill lifecycle states (e.g. "Verified", "Pending review", "Rejected"). */

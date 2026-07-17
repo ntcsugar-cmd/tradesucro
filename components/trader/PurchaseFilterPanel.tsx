@@ -44,8 +44,8 @@ export function PurchaseFilterPanel({ onApply }: PurchaseFilterPanelProps) {
     <Card padding="lg">
       <CardBody>
         <div className="flex items-center justify-between mb-4">
-          <p className="flex items-center gap-1.5 text-[13px] font-semibold text-charcoal">
-            <SlidersHorizontal size={13} className="text-ink-faint" /> Filters
+          <p className="flex items-center gap-1.5 text-[13px] font-semibold text-charcoal dark:text-white">
+            <SlidersHorizontal size={13} className="text-ink-faint dark:text-white/40" /> Filters
           </p>
           <Button variant="ghost" size="sm" onClick={handleClear}>
             <RotateCcw size={13} /> Clear

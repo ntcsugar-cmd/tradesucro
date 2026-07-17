@@ -210,7 +210,7 @@ export function DataTable<T>({
                             className="flex w-full items-center gap-2 px-3 py-2 text-[13px] text-charcoal dark:text-white hover:bg-charcoal/[0.04] dark:hover:bg-white/5 text-left"
                           >
                             <span className={clsx("flex h-4 w-4 items-center justify-center rounded-sm border", visible ? "bg-gold border-gold" : "border-line dark:border-white/20")}>
-                              {visible && <Check size={11} className="text-charcoal" />}
+                              {visible && <Check size={11} className="text-charcoal dark:text-white" />}
                             </span>
                             {c.header}
                           </button>

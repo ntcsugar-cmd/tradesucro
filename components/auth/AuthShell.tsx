@@ -22,12 +22,12 @@ export function AuthShell({ eyebrow, title, description, children, footer, wide 
       <Card padding="lg" className="shadow-card">
         <CardBody>
           {eyebrow && <p className="text-eyebrow mb-3">{eyebrow}</p>}
-          <h1 className="font-display text-2xl font-medium text-charcoal">{title}</h1>
-          {description && <p className="mt-2 text-[13.5px] text-ink-soft leading-relaxed">{description}</p>}
+          <h1 className="font-display text-2xl font-medium text-charcoal dark:text-white">{title}</h1>
+          {description && <p className="mt-2 text-[13.5px] text-ink-soft dark:text-white/50 leading-relaxed">{description}</p>}
           <div className="mt-7">{children}</div>
         </CardBody>
       </Card>
-      {footer && <div className="mt-6 text-center text-[13px] text-ink-soft">{footer}</div>}
+      {footer && <div className="mt-6 text-center text-[13px] text-ink-soft dark:text-white/50">{footer}</div>}
     </div>
   );
 }

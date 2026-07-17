@@ -52,7 +52,7 @@ export function SmartContactSections() {
 
   return (
     <div>
-      <div className="flex items-center gap-1 overflow-x-auto rounded-sm border border-line bg-charcoal/[0.02] p-1.5 mb-4">
+      <div className="flex items-center gap-1 overflow-x-auto rounded-sm border border-line dark:border-white/10 bg-charcoal/[0.02] p-1.5 mb-4">
         {SECTIONS.map(({ key, label, icon: Icon }) => (
           <button
             key={key}

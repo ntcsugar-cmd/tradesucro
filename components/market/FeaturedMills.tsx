@@ -7,12 +7,12 @@ import { formatNumber } from "@/lib/utils/format";
 
 export function FeaturedMills() {
   return (
-    <section id="mills" className="border-b border-line bg-charcoal/[0.02]">
+    <section id="mills" className="border-b border-line dark:border-white/10 bg-charcoal/[0.02]">
       <div className="container-page py-20">
         <div className="flex items-end justify-between mb-10">
           <div>
             <p className="text-eyebrow mb-3">Featured Mills</p>
-            <h2 className="font-display text-3xl sm:text-4xl font-medium text-charcoal">
+            <h2 className="font-display text-3xl sm:text-4xl font-medium text-charcoal dark:text-white">
               Mills trusted across the trade
             </h2>
           </div>
@@ -26,10 +26,10 @@ export function FeaturedMills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="snap-start shrink-0 w-[280px] bg-paper border border-line p-6 hover:border-gold/40 hover:shadow-card transition-all"
+              className="snap-start shrink-0 w-[280px] bg-paper border border-line dark:border-white/10 p-6 hover:border-gold/40 hover:shadow-card transition-all"
             >
               <div className="flex items-center justify-between">
-                <span className="font-mono text-[10px] uppercase tracking-widest2 text-ink-faint">
+                <span className="font-mono text-[10px] uppercase tracking-widest2 text-ink-faint dark:text-white/40">
                   Est. {mill.established}
                 </span>
                 <span className="flex items-center gap-1 text-xs font-mono text-gold-dim">
@@ -38,20 +38,20 @@ export function FeaturedMills() {
                 </span>
               </div>
 
-              <h3 className="mt-4 font-display text-lg font-medium text-charcoal leading-snug">
+              <h3 className="mt-4 font-display text-lg font-medium text-charcoal dark:text-white leading-snug">
                 {mill.name}
               </h3>
 
-              <p className="mt-1.5 flex items-center gap-1.5 text-xs text-ink-faint">
+              <p className="mt-1.5 flex items-center gap-1.5 text-xs text-ink-faint dark:text-white/40">
                 <MapPin size={12} /> {mill.location}
               </p>
 
-              <div className="mt-5 pt-5 border-t border-line flex items-center justify-between">
+              <div className="mt-5 pt-5 border-t border-line dark:border-white/10 flex items-center justify-between">
                 <div>
-                  <p className="text-[10px] font-mono uppercase tracking-widest2 text-ink-faint">
+                  <p className="text-[10px] font-mono uppercase tracking-widest2 text-ink-faint dark:text-white/40">
                     Capacity
                   </p>
-                  <p className="font-mono text-sm text-charcoal mt-0.5">
+                  <p className="font-mono text-sm text-charcoal dark:text-white mt-0.5">
                     {formatNumber(mill.capacityTpd)} TPD
                   </p>
                 </div>

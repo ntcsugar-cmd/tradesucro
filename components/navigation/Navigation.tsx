@@ -14,7 +14,7 @@ export function NavLink({ active = false, icon, badge, className, children, ...p
     <a
       className={clsx(
         "flex items-center gap-2.5 text-[13.5px] font-medium transition-colors",
-        active ? "text-charcoal" : "text-ink-soft hover:text-charcoal",
+        active ? "text-charcoal dark:text-white" : "text-ink-soft dark:text-white/50 hover:text-charcoal dark:hover:text-white",
         className
       )}
       aria-current={active ? "page" : undefined}

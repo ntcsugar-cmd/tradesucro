@@ -23,17 +23,17 @@ export function BusinessDetailsSection({ profile }: BusinessDetailsSectionProps)
       <CardBody>
         <div className="grid sm:grid-cols-2 gap-5">
           <div>
-            <p className="text-[11px] text-ink-faint">Annual turnover</p>
-            <p className="text-[13.5px] text-charcoal mt-0.5">{rangeLabel(ANNUAL_TURNOVER_RANGES, businessDetails.annualTurnover)}</p>
+            <p className="text-[11px] text-ink-faint dark:text-white/40">Annual turnover</p>
+            <p className="text-[13.5px] text-charcoal dark:text-white mt-0.5">{rangeLabel(ANNUAL_TURNOVER_RANGES, businessDetails.annualTurnover)}</p>
           </div>
           <div>
-            <p className="text-[11px] text-ink-faint">Monthly trading volume</p>
-            <p className="text-[13.5px] text-charcoal mt-0.5">{rangeLabel(MONTHLY_TRADING_VOLUME_RANGES, businessDetails.monthlyTradingVolume)}</p>
+            <p className="text-[11px] text-ink-faint dark:text-white/40">Monthly trading volume</p>
+            <p className="text-[13.5px] text-charcoal dark:text-white mt-0.5">{rangeLabel(MONTHLY_TRADING_VOLUME_RANGES, businessDetails.monthlyTradingVolume)}</p>
           </div>
         </div>
 
         <div className="mt-5">
-          <p className="text-[11px] text-ink-faint mb-2">States served</p>
+          <p className="text-[11px] text-ink-faint dark:text-white/40 mb-2">States served</p>
           {businessDetails.statesServed.length > 0 ? (
             <div className="flex flex-wrap gap-1.5">
               {businessDetails.statesServed.map((s) => (
@@ -43,12 +43,12 @@ export function BusinessDetailsSection({ profile }: BusinessDetailsSectionProps)
               ))}
             </div>
           ) : (
-            <p className="text-[13px] text-ink-faint italic">None specified</p>
+            <p className="text-[13px] text-ink-faint dark:text-white/40 italic">None specified</p>
           )}
         </div>
 
         <div className="mt-5">
-          <p className="text-[11px] text-ink-faint mb-2">Products handled</p>
+          <p className="text-[11px] text-ink-faint dark:text-white/40 mb-2">Products handled</p>
           {businessDetails.productsHandled.length > 0 ? (
             <div className="flex flex-wrap gap-1.5">
               {businessDetails.productsHandled.map((p) => (
@@ -58,7 +58,7 @@ export function BusinessDetailsSection({ profile }: BusinessDetailsSectionProps)
               ))}
             </div>
           ) : (
-            <p className="text-[13px] text-ink-faint italic">None specified</p>
+            <p className="text-[13px] text-ink-faint dark:text-white/40 italic">None specified</p>
           )}
         </div>
       </CardBody>

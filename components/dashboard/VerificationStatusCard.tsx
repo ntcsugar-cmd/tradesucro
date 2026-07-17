@@ -49,13 +49,13 @@ export function VerificationStatusCard() {
           <div className="grid grid-cols-2 gap-x-4 gap-y-3">
             {LABELS.map(({ key, label }) => (
               <div key={key} className="flex items-center justify-between">
-                <span className="text-[13px] text-ink-soft">{label}</span>
+                <span className="text-[13px] text-ink-soft dark:text-white/50">{label}</span>
                 <VerificationBadge status={profile.verification[key]} />
               </div>
             ))}
           </div>
         ) : (
-          <p className="text-[13px] text-ink-faint italic">Complete onboarding to start verification.</p>
+          <p className="text-[13px] text-ink-faint dark:text-white/40 italic">Complete onboarding to start verification.</p>
         )}
       </CardBody>
     </Card>

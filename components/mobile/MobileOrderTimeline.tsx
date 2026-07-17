@@ -19,7 +19,7 @@ export function MobileOrderTimeline({ currentStageIndex, cancelled = false, stag
   }
 
   return (
-    <ol className="relative ml-2 border-l-2 border-line space-y-6">
+    <ol className="relative ml-2 border-l-2 border-line dark:border-white/10 space-y-6">
       {STAGES.map((stage, i) => {
         const done = i <= currentStageIndex;
         const isCurrent = i === currentStageIndex;
@@ -32,8 +32,8 @@ export function MobileOrderTimeline({ currentStageIndex, cancelled = false, stag
             >
               {done ? <Check size={13} /> : <span className="h-1.5 w-1.5 rounded-full bg-current" />}
             </span>
-            <p className={`text-[14px] ${isCurrent ? "font-semibold text-charcoal" : done ? "font-medium text-charcoal" : "text-ink-faint"}`}>{stage}</p>
-            {stageDates?.[stage] && <p className="text-[11px] text-ink-faint mt-0.5">{stageDates[stage]}</p>}
+            <p className={`text-[14px] ${isCurrent ? "font-semibold text-charcoal dark:text-white" : done ? "font-medium text-charcoal dark:text-white" : "text-ink-faint dark:text-white/40"}`}>{stage}</p>
+            {stageDates?.[stage] && <p className="text-[11px] text-ink-faint dark:text-white/40 mt-0.5">{stageDates[stage]}</p>}
           </li>
         );
       })}

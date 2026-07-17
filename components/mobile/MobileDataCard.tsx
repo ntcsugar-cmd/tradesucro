@@ -35,8 +35,8 @@ export function MobileDataCard({ title, subtitle, badge, fields, footer, onClick
       <CardBody className="p-4">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <p className="text-[14px] font-semibold text-charcoal truncate">{title}</p>
-            {subtitle && <p className="text-[12px] text-ink-faint mt-0.5 truncate">{subtitle}</p>}
+            <p className="text-[14px] font-semibold text-charcoal dark:text-white truncate">{title}</p>
+            {subtitle && <p className="text-[12px] text-ink-faint dark:text-white/40 mt-0.5 truncate">{subtitle}</p>}
           </div>
           {badge && <div className="shrink-0">{badge}</div>}
         </div>
@@ -44,8 +44,8 @@ export function MobileDataCard({ title, subtitle, badge, fields, footer, onClick
         <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2">
           {primary.map((f) => (
             <div key={f.label}>
-              <dt className="text-[11px] text-ink-faint">{f.label}</dt>
-              <dd className="text-[13px] font-medium text-charcoal mt-0.5">{f.value}</dd>
+              <dt className="text-[11px] text-ink-faint dark:text-white/40">{f.label}</dt>
+              <dd className="text-[13px] font-medium text-charcoal dark:text-white mt-0.5">{f.value}</dd>
             </div>
           ))}
         </dl>
@@ -53,11 +53,11 @@ export function MobileDataCard({ title, subtitle, badge, fields, footer, onClick
         {secondary.length > 0 && (
           <>
             {expanded && (
-              <dl className="mt-2 grid grid-cols-2 gap-x-4 gap-y-2 pt-2 border-t border-line">
+              <dl className="mt-2 grid grid-cols-2 gap-x-4 gap-y-2 pt-2 border-t border-line dark:border-white/10">
                 {secondary.map((f) => (
                   <div key={f.label}>
-                    <dt className="text-[11px] text-ink-faint">{f.label}</dt>
-                    <dd className="text-[13px] font-medium text-charcoal mt-0.5">{f.value}</dd>
+                    <dt className="text-[11px] text-ink-faint dark:text-white/40">{f.label}</dt>
+                    <dd className="text-[13px] font-medium text-charcoal dark:text-white mt-0.5">{f.value}</dd>
                   </div>
                 ))}
               </dl>
@@ -75,7 +75,7 @@ export function MobileDataCard({ title, subtitle, badge, fields, footer, onClick
           </>
         )}
 
-        {footer && <div className="mt-3 pt-3 border-t border-line">{footer}</div>}
+        {footer && <div className="mt-3 pt-3 border-t border-line dark:border-white/10">{footer}</div>}
       </CardBody>
     </Card>
   );

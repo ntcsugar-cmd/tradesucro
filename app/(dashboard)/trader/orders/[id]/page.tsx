@@ -36,9 +36,9 @@ function timelineStageIndex(status: OrderStatus): number {
 
 function Row({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-center justify-between py-2.5 border-b border-line last:border-b-0">
-      <span className="text-xs text-ink-faint">{label}</span>
-      <span className="text-[13.5px] text-charcoal font-medium text-right">{value || "—"}</span>
+    <div className="flex items-center justify-between py-2.5 border-b border-line dark:border-white/10 last:border-b-0">
+      <span className="text-xs text-ink-faint dark:text-white/40">{label}</span>
+      <span className="text-[13.5px] text-charcoal dark:text-white font-medium text-right">{value || "—"}</span>
     </div>
   );
 }
@@ -108,7 +108,7 @@ export default function CustomerOrderDetailsPage() {
       {isMobile && (
         <Card padding="lg" className="mb-6">
           <CardBody>
-            <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-4">Order Timeline</p>
+            <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-4">Order Timeline</p>
             <MobileOrderTimeline currentStageIndex={timelineStageIndex(order.status)} cancelled={order.status === "cancelled"} />
           </CardBody>
         </Card>
@@ -139,14 +139,14 @@ export default function CustomerOrderDetailsPage() {
         <GridItem span={1}>
           <Card padding="lg" className={order.grossMargin >= 0 ? "ring-1 ring-rise/20" : "ring-1 ring-fall/20"}>
             <CardBody>
-              <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-3">Financials</p>
+              <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-3">Financials</p>
               <Row label="Cost of Goods" value={formatINR(order.costOfGoods)} />
               <div className="flex items-center justify-between py-2.5">
-                <span className="text-[13px] font-medium text-charcoal">Total Value</span>
-                <span className="font-mono text-[15px] font-semibold text-charcoal">{formatINR(order.totalValue)}</span>
+                <span className="text-[13px] font-medium text-charcoal dark:text-white">Total Value</span>
+                <span className="font-mono text-[15px] font-semibold text-charcoal dark:text-white">{formatINR(order.totalValue)}</span>
               </div>
               <div className={`mt-3 rounded-sm border p-3.5 ${order.grossMargin >= 0 ? "border-rise/30 bg-rise/[0.05]" : "border-fall/30 bg-fall/[0.05]"}`}>
-                <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint">Gross Margin</p>
+                <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint dark:text-white/40">Gross Margin</p>
                 <p className={`font-mono text-xl mt-1 ${order.grossMargin >= 0 ? "text-rise" : "text-fall"}`}>{formatINR(order.grossMargin)}</p>
               </div>
             </CardBody>

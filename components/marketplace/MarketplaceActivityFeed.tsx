@@ -37,8 +37,8 @@ export function MarketplaceActivityFeed() {
                 <Activity size={13} />
               </span>
               <div className="min-w-0">
-                <p className="text-[13px] text-charcoal leading-snug">{item.title}</p>
-                <p className="text-xs text-ink-faint mt-0.5">{item.timestamp}</p>
+                <p className="text-[13px] text-charcoal dark:text-white leading-snug">{item.title}</p>
+                <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">{item.timestamp}</p>
               </div>
             </li>
           ))}

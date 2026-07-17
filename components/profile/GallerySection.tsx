@@ -40,12 +40,12 @@ export function GallerySection({ profile, onChangeGallery }: GallerySectionProps
         </Button>
       </CardHeader>
       <CardBody>
-        <p className="text-[11px] text-ink-faint mb-3">Logo</p>
+        <p className="text-[11px] text-ink-faint dark:text-white/40 mb-3">Logo</p>
         <CompanyLogoPlaceholder name={profile.companyName || "Company"} size="lg" className="mb-6" />
 
-        <p className="text-[11px] text-ink-faint mb-3">Photos</p>
+        <p className="text-[11px] text-ink-faint dark:text-white/40 mb-3">Photos</p>
         {profile.galleryImageFileNames.length === 0 ? (
-          <div className="flex items-center gap-2 rounded-sm border border-dashed border-line p-6 text-ink-faint">
+          <div className="flex items-center gap-2 rounded-sm border border-dashed border-line dark:border-white/10 p-6 text-ink-faint dark:text-white/40">
             <ImageOff size={16} />
             <span className="text-[13px]">No photos added yet — mill yard, warehouse, or office photos help build trust.</span>
           </div>
@@ -54,9 +54,9 @@ export function GallerySection({ profile, onChangeGallery }: GallerySectionProps
             {profile.galleryImageFileNames.map((name, i) => (
               <div
                 key={`${name}-${i}`}
-                className="relative aspect-square rounded-sm bg-charcoal/[0.06] border border-line flex items-center justify-center"
+                className="relative aspect-square rounded-sm bg-charcoal/[0.06] border border-line dark:border-white/10 flex items-center justify-center"
               >
-                <span className="text-[11px] text-ink-faint text-center px-2 truncate">{name}</span>
+                <span className="text-[11px] text-ink-faint dark:text-white/40 text-center px-2 truncate">{name}</span>
                 <IconButton
                   variant="ghost"
                   size="sm"

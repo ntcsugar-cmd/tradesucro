@@ -9,8 +9,8 @@ interface StepProps {
 export function StepDocuments({ data, onChange }: StepProps) {
   return (
     <div>
-      <h2 className="font-display text-xl font-medium text-charcoal">Upload documents</h2>
-      <p className="mt-1.5 text-[13.5px] text-ink-soft">
+      <h2 className="font-display text-xl font-medium text-charcoal dark:text-white">Upload documents</h2>
+      <p className="mt-1.5 text-[13.5px] text-ink-soft dark:text-white/50">
         These speed up verification. You can also add them later from your profile.
       </p>
 

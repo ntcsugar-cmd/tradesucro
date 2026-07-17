@@ -73,27 +73,27 @@ export function MobileSearchOverlay({ open, onClose, onSearch, placeholder = "Se
           transition={{ duration: 0.15 }}
           className="fixed inset-0 z-modal flex flex-col bg-white dark:bg-charcoal-soft"
         >
-          <div className="flex items-center gap-2 px-4 py-3 border-b border-line shrink-0" style={{ paddingTop: "calc(env(safe-area-inset-top) + 12px)" }}>
-            <button type="button" onClick={onClose} aria-label="Close search" className="flex h-9 w-9 items-center justify-center rounded-full text-ink-faint active:bg-charcoal/[0.06]">
+          <div className="flex items-center gap-2 px-4 py-3 border-b border-line dark:border-white/10 shrink-0" style={{ paddingTop: "calc(env(safe-area-inset-top) + 12px)" }}>
+            <button type="button" onClick={onClose} aria-label="Close search" className="flex h-9 w-9 items-center justify-center rounded-full text-ink-faint dark:text-white/40 active:bg-charcoal/[0.06]">
               <ArrowLeft size={19} />
             </button>
-            <div className="flex flex-1 items-center gap-2 rounded-sm border border-line px-3 h-11">
-              <Search size={16} className="text-ink-faint shrink-0" />
+            <div className="flex flex-1 items-center gap-2 rounded-sm border border-line dark:border-white/10 px-3 h-11">
+              <Search size={16} className="text-ink-faint dark:text-white/40 shrink-0" />
               <input
                 autoFocus
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && commitSearch(query)}
                 placeholder={placeholder}
-                className="flex-1 bg-transparent text-[14px] text-charcoal placeholder:text-ink-faint outline-none"
+                className="flex-1 bg-transparent text-[14px] text-charcoal dark:text-white placeholder:text-ink-faint dark:placeholder:text-white/40 outline-none"
               />
               {query && (
                 <button type="button" onClick={() => setQuery("")} aria-label="Clear">
-                  <X size={15} className="text-ink-faint" />
+                  <X size={15} className="text-ink-faint dark:text-white/40" />
                 </button>
               )}
             </div>
-            <button type="button" disabled title="Voice search — coming soon" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-ink-faint/40">
+            <button type="button" disabled title="Voice search — coming soon" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-ink-faint/40 dark:text-white/40">
               <Mic size={18} />
             </button>
           </div>
@@ -101,15 +101,15 @@ export function MobileSearchOverlay({ open, onClose, onSearch, placeholder = "Se
           <div className="flex-1 overflow-y-auto px-4 py-5">
             {saved.length > 0 && (
               <div className="mb-6">
-                <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-3">Saved Searches</p>
+                <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-3">Saved Searches</p>
                 <div className="space-y-1">
                   {saved.map((s) => (
                     <div key={s} className="flex items-center justify-between py-2.5">
-                      <button type="button" onClick={() => commitSearch(s)} className="flex items-center gap-3 text-[14px] text-charcoal">
+                      <button type="button" onClick={() => commitSearch(s)} className="flex items-center gap-3 text-[14px] text-charcoal dark:text-white">
                         <Bookmark size={15} className="text-gold-dim fill-gold-dim" /> {s}
                       </button>
                       <button type="button" onClick={() => toggleSaved(s)} aria-label={`Remove ${s} from saved`}>
-                        <X size={14} className="text-ink-faint" />
+                        <X size={14} className="text-ink-faint dark:text-white/40" />
                       </button>
                     </div>
                   ))}
@@ -118,18 +118,18 @@ export function MobileSearchOverlay({ open, onClose, onSearch, placeholder = "Se
             )}
 
             <div>
-              <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-3">Recent Searches</p>
+              <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-3">Recent Searches</p>
               {recent.length === 0 ? (
-                <p className="text-[13px] text-ink-faint italic">Your recent searches will appear here.</p>
+                <p className="text-[13px] text-ink-faint dark:text-white/40 italic">Your recent searches will appear here.</p>
               ) : (
                 <div className="space-y-1">
                   {recent.map((r) => (
                     <div key={r} className="flex items-center justify-between py-2.5">
-                      <button type="button" onClick={() => commitSearch(r)} className="flex items-center gap-3 text-[14px] text-charcoal">
-                        <Clock size={15} className="text-ink-faint" /> {r}
+                      <button type="button" onClick={() => commitSearch(r)} className="flex items-center gap-3 text-[14px] text-charcoal dark:text-white">
+                        <Clock size={15} className="text-ink-faint dark:text-white/40" /> {r}
                       </button>
                       <button type="button" onClick={() => toggleSaved(r)} aria-label={`Save ${r}`}>
-                        <Bookmark size={14} className={saved.includes(r) ? "text-gold-dim fill-gold-dim" : "text-ink-faint"} />
+                        <Bookmark size={14} className={saved.includes(r) ? "text-gold-dim fill-gold-dim" : "text-ink-faint dark:text-white/40"} />
                       </button>
                     </div>
                   ))}

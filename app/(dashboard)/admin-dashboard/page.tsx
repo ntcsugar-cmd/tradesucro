@@ -23,8 +23,8 @@ export default function AdminDashboardPage() {
                 <span className="flex h-9 w-9 items-center justify-center rounded-sm bg-gold/10 text-gold-dim">
                   <Icon size={17} />
                 </span>
-                <p className="mt-3 text-[14px] font-semibold text-charcoal">{label}</p>
-                <p className="mt-1 text-[13px] text-ink-soft leading-relaxed flex-1">{description}</p>
+                <p className="mt-3 text-[14px] font-semibold text-charcoal dark:text-white">{label}</p>
+                <p className="mt-1 text-[13px] text-ink-soft dark:text-white/50 leading-relaxed flex-1">{description}</p>
                 <span className="mt-3 flex items-center gap-1 text-xs font-medium text-gold-dim">
                   Manage <ArrowRight size={12} />
                 </span>

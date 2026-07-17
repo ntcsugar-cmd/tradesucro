@@ -54,7 +54,7 @@ export default function DealsBoardPage() {
           <DealFilterPanel onApply={setFilters} />
         </GridItem>
         <GridItem span={3}>
-          <p className="text-[13px] text-ink-faint mb-4">{loading ? "Loading…" : `${deals.length} deals`}</p>
+          <p className="text-[13px] text-ink-faint dark:text-white/40 mb-4">{loading ? "Loading…" : `${deals.length} deals`}</p>
           <DealTable deals={deals} loading={loading} />
         </GridItem>
       </Grid>

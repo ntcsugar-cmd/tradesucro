@@ -33,7 +33,7 @@ export function LiveListingsPanel<T>({ title, items, loading = false, renderItem
           ))}
         </div>
       ) : items.length === 0 ? (
-        <p className="text-[13px] text-ink-faint italic py-2">{emptyText}</p>
+        <p className="text-[13px] text-ink-faint dark:text-white/40 italic py-2">{emptyText}</p>
       ) : (
         <ul className="divide-y divide-line -my-1">
           {items.map((item, i) => (

@@ -85,7 +85,7 @@ export function TenderForm() {
           <TextInput label="Bid Deadline" type="date" value={data.bidDeadline} onChange={(e) => set("bidDeadline", e.target.value)} />
         </div>
 
-        <div className="mt-8 pt-6 border-t border-line flex flex-wrap items-center justify-end gap-3">
+        <div className="mt-8 pt-6 border-t border-line dark:border-white/10 flex flex-wrap items-center justify-end gap-3">
           <Button variant="ghost" size="md" loading={saving === "draft"} onClick={() => handleSave("draft")}>
             <Save size={15} /> Save Draft
           </Button>

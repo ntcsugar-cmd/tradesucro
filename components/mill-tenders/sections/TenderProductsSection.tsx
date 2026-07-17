@@ -48,7 +48,7 @@ export function TenderProductsSection({ rows, onChange, readOnly = false }: Tend
   return (
     <div>
       <div className="flex items-center justify-between">
-        <h2 className="font-display text-lg font-medium text-charcoal">Products</h2>
+        <h2 className="font-display text-lg font-medium text-charcoal dark:text-white">Products</h2>
         {!readOnly && (
           <Button variant="outline" size="sm" onClick={addRow}>
             <Plus size={14} /> Add product
@@ -58,9 +58,9 @@ export function TenderProductsSection({ rows, onChange, readOnly = false }: Tend
 
       <div className="mt-5 space-y-5">
         {rows.map((row, i) => (
-          <div key={row.id} className="rounded-sm border border-line p-5">
+          <div key={row.id} className="rounded-sm border border-line dark:border-white/10 p-5">
             <div className="flex items-center justify-between mb-4">
-              <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint">Row {i + 1}</p>
+              <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40">Row {i + 1}</p>
               {!readOnly && rows.length > 1 && (
                 <IconButton variant="ghost" size="sm" aria-label={`Remove row ${i + 1}`} onClick={() => removeRow(row.id)}>
                   <Trash2 size={14} />

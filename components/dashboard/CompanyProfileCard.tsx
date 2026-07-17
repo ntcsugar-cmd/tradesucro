@@ -48,12 +48,12 @@ export function CompanyProfileCard() {
           <div className="flex items-center gap-3">
             <CompanyLogoPlaceholder name={profile.companyName || "Company"} size="md" />
             <div className="min-w-0">
-              <p className="text-[13.5px] font-medium text-charcoal truncate">{profile.companyName || "Unnamed company"}</p>
-              <p className="text-xs text-ink-faint mt-0.5">{getCompanyTypeLabel(profile.businessType)}</p>
+              <p className="text-[13.5px] font-medium text-charcoal dark:text-white truncate">{profile.companyName || "Unnamed company"}</p>
+              <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">{getCompanyTypeLabel(profile.businessType)}</p>
             </div>
           </div>
         ) : (
-          <p className="text-[13px] text-ink-faint italic">Complete onboarding to set up your profile.</p>
+          <p className="text-[13px] text-ink-faint dark:text-white/40 italic">Complete onboarding to set up your profile.</p>
         )}
       </CardBody>
     </Card>

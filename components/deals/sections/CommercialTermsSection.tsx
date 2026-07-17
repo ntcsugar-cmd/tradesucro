@@ -12,7 +12,7 @@ interface CommercialTermsSectionProps {
 export function CommercialTermsSection({ data, onChange, readOnly = false }: CommercialTermsSectionProps) {
   return (
     <div>
-      <h2 className="font-display text-lg font-medium text-charcoal">Commercial Terms</h2>
+      <h2 className="font-display text-lg font-medium text-charcoal dark:text-white">Commercial Terms</h2>
       <div className="mt-5 space-y-5">
         <div className="grid sm:grid-cols-2 gap-5">
           <PaymentTermSelect label="Payment Type" defaultValue={data.paymentType} disabled={readOnly} onChange={(e) => onChange({ paymentType: e.target.value })} />

@@ -53,11 +53,11 @@ export function TopMoversWidget() {
             return (
               <div key={g.id} className="flex items-center justify-between py-2.5">
                 <div className="min-w-0">
-                  <p className="text-[13px] text-charcoal truncate">{g.millName}</p>
-                  <p className="text-[11px] text-ink-faint">{getProductLabel(g.product)} · {getMasterStateLabel(g.state)}</p>
+                  <p className="text-[13px] text-charcoal dark:text-white truncate">{g.millName}</p>
+                  <p className="text-[11px] text-ink-faint dark:text-white/40">{getProductLabel(g.product)} · {getMasterStateLabel(g.state)}</p>
                 </div>
                 <div className="text-right shrink-0">
-                  <p className="font-mono text-[13px] text-charcoal">{formatINR(g.todaysPrice)}</p>
+                  <p className="font-mono text-[13px] text-charcoal dark:text-white">{formatINR(g.todaysPrice)}</p>
                   <PriceDelta change={change} direction={direction} className="justify-end" />
                 </div>
               </div>
@@ -77,11 +77,11 @@ export function TopMoversWidget() {
             return (
               <div key={l.id} className="flex items-center justify-between py-2.5">
                 <div className="min-w-0">
-                  <p className="text-[13px] text-charcoal truncate">{l.millName}</p>
-                  <p className="text-[11px] text-ink-faint">{getProductLabel(l.product)} · {getMasterStateLabel(l.state)}</p>
+                  <p className="text-[13px] text-charcoal dark:text-white truncate">{l.millName}</p>
+                  <p className="text-[11px] text-ink-faint dark:text-white/40">{getProductLabel(l.product)} · {getMasterStateLabel(l.state)}</p>
                 </div>
                 <div className="text-right shrink-0">
-                  <p className="font-mono text-[13px] text-charcoal">{formatINR(l.todaysPrice)}</p>
+                  <p className="font-mono text-[13px] text-charcoal dark:text-white">{formatINR(l.todaysPrice)}</p>
                   <PriceDelta change={change} direction={direction} className="justify-end" />
                 </div>
               </div>

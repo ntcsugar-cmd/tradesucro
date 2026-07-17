@@ -19,7 +19,7 @@ export function Hero() {
   const headline = marketIndices[0];
 
   return (
-    <section id="top" className="relative border-b border-line grain-surface">
+    <section id="top" className="relative border-b border-line dark:border-white/10 grain-surface">
       <div className="container-page grid lg:grid-cols-[1.15fr_0.85fr] gap-14 py-20 lg:py-28 items-center">
         <div>
           <motion.p
@@ -37,7 +37,7 @@ export function Hero() {
             initial="hidden"
             animate="show"
             variants={fadeUp}
-            className="font-display text-[2.6rem] leading-[1.06] sm:text-[3.4rem] lg:text-[4rem] font-medium text-charcoal tracking-tight"
+            className="font-display text-[2.6rem] leading-[1.06] sm:text-[3.4rem] lg:text-[4rem] font-medium text-charcoal dark:text-white tracking-tight"
           >
             India&rsquo;s Trusted
             <br />
@@ -49,7 +49,7 @@ export function Hero() {
             initial="hidden"
             animate="show"
             variants={fadeUp}
-            className="mt-7 max-w-lg text-[15.5px] leading-relaxed text-ink-soft"
+            className="mt-7 max-w-lg text-[15.5px] leading-relaxed text-ink-soft dark:text-white/50"
           >
             Buy and sell sugar directly with verified mills and buyers across India.
             Live mandi-linked pricing, transparent offers, and settlement you can
@@ -76,7 +76,7 @@ export function Hero() {
             initial="hidden"
             animate="show"
             variants={fadeUp}
-            className="mt-10 flex items-center gap-2 text-xs text-ink-faint"
+            className="mt-10 flex items-center gap-2 text-xs text-ink-faint dark:text-white/40"
           >
             <ShieldCheck size={15} className="text-gold-dim" />
             Every mill and buyer on TradeSucro passes a documented KYC and quality audit.

@@ -30,7 +30,7 @@ export function Tabs({ tabs, defaultValue, value, onChange, children }: TabsProp
 
   return (
     <div>
-      <div role="tablist" className="flex items-center gap-1 border-b border-line overflow-x-auto scrollbar-none">
+      <div role="tablist" className="flex items-center gap-1 border-b border-line dark:border-white/10 overflow-x-auto scrollbar-none">
         {tabs.map((tab) => (
           <button
             key={tab.value}
@@ -40,7 +40,7 @@ export function Tabs({ tabs, defaultValue, value, onChange, children }: TabsProp
             onClick={() => select(tab.value)}
             className={clsx(
               "relative flex items-center gap-1.5 px-4 py-3 text-[13.5px] font-medium whitespace-nowrap transition-colors disabled:opacity-40 disabled:cursor-not-allowed",
-              active === tab.value ? "text-charcoal" : "text-ink-faint hover:text-charcoal"
+              active === tab.value ? "text-charcoal dark:text-white" : "text-ink-faint dark:text-white/40 hover:text-charcoal dark:hover:text-white"
             )}
           >
             {tab.icon}

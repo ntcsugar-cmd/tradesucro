@@ -93,7 +93,7 @@ export function OfferTable({ offers, loading = false }: OfferTableProps) {
       key: "updatedAt",
       header: "Updated Time",
       sortable: true,
-      render: (o) => <span className="text-ink-faint">{relativeTime(o.updatedAt)}</span>,
+      render: (o) => <span className="text-ink-faint dark:text-white/40">{relativeTime(o.updatedAt)}</span>,
       exportValue: (o) => o.updatedAt,
     },
     { key: "status", header: "Status", render: (o) => <OfferStatusBadge offer={o} /> },

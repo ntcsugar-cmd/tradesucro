@@ -20,8 +20,8 @@ import type { InventoryLot, ResaleOfferDraft } from "@/lib/types/traderResale";
 function SummaryRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-center justify-between py-1.5">
-      <span className="text-xs text-ink-faint">{label}</span>
-      <span className="font-mono text-[13px] text-charcoal">{value}</span>
+      <span className="text-xs text-ink-faint dark:text-white/40">{label}</span>
+      <span className="font-mono text-[13px] text-charcoal dark:text-white">{value}</span>
     </div>
   );
 }
@@ -100,7 +100,7 @@ export function ResaleOfferForm() {
     <div className="grid lg:grid-cols-3 gap-6 items-start">
       <div className="lg:col-span-2 space-y-6">
         <div>
-          <h2 className="font-display text-lg font-medium text-charcoal mb-4">Select Inventory Lot</h2>
+          <h2 className="font-display text-lg font-medium text-charcoal dark:text-white mb-4">Select Inventory Lot</h2>
 
           <div className="mb-5 max-w-xs">
             <NumberInput
@@ -129,24 +129,24 @@ export function ResaleOfferForm() {
             )}
 
             {lot && (
-              <div className="mb-6 rounded-sm border border-line bg-charcoal/[0.02] p-4">
-                <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-3">Lot Details (Auto-filled)</p>
+              <div className="mb-6 rounded-sm border border-line dark:border-white/10 bg-charcoal/[0.02] p-4">
+                <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-3">Lot Details (Auto-filled)</p>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-[13px]">
                   <div>
-                    <p className="text-ink-faint text-xs">Available Qty</p>
-                    <p className="font-mono text-charcoal mt-0.5">{formatQuantityMt(lot.availableQuantity)}</p>
+                    <p className="text-ink-faint dark:text-white/40 text-xs">Available Qty</p>
+                    <p className="font-mono text-charcoal dark:text-white mt-0.5">{formatQuantityMt(lot.availableQuantity)}</p>
                   </div>
                   <div>
-                    <p className="text-ink-faint text-xs">Purchase Rate</p>
-                    <p className="font-mono text-charcoal mt-0.5">{formatINR(lot.purchaseRate)}</p>
+                    <p className="text-ink-faint dark:text-white/40 text-xs">Purchase Rate</p>
+                    <p className="font-mono text-charcoal dark:text-white mt-0.5">{formatINR(lot.purchaseRate)}</p>
                   </div>
                   <div>
-                    <p className="text-ink-faint text-xs">Average Cost</p>
-                    <p className="font-mono text-charcoal mt-0.5">{formatINR(lot.averageCost)}</p>
+                    <p className="text-ink-faint dark:text-white/40 text-xs">Average Cost</p>
+                    <p className="font-mono text-charcoal dark:text-white mt-0.5">{formatINR(lot.averageCost)}</p>
                   </div>
                   <div>
-                    <p className="text-ink-faint text-xs">Grade</p>
-                    <p className="font-mono text-charcoal mt-0.5">{getProductLabel(lot.product)} · {lot.grade}</p>
+                    <p className="text-ink-faint dark:text-white/40 text-xs">Grade</p>
+                    <p className="font-mono text-charcoal dark:text-white mt-0.5">{getProductLabel(lot.product)} · {lot.grade}</p>
                   </div>
                 </div>
               </div>
@@ -167,7 +167,7 @@ export function ResaleOfferForm() {
               <Textarea label="Remarks" rows={2} value={remarks} onChange={(e) => setRemarks(e.target.value)} />
             </div>
 
-            <div className="mt-8 pt-6 border-t border-line flex flex-wrap items-center justify-end gap-3">
+            <div className="mt-8 pt-6 border-t border-line dark:border-white/10 flex flex-wrap items-center justify-end gap-3">
               <Button variant="ghost" size="md" loading={saving === "draft"} onClick={() => handleSave("draft")}>
                 <Save size={15} /> Save Draft
               </Button>
@@ -182,21 +182,21 @@ export function ResaleOfferForm() {
       <div className="lg:sticky lg:top-24">
         <Card padding="lg" className={marginPositive ? "ring-1 ring-rise/20" : "ring-1 ring-fall/20"}>
           <CardBody>
-            <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-4">Economics</p>
+            <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-4">Economics</p>
 
             <SummaryRow label="Selling Price" value={formatINR(sellingPrice)} />
             <SummaryRow label="Average Cost" value={formatINR(lot?.averageCost ?? 0)} />
             <SummaryRow label="Quantity" value={formatQuantityMt(offeredQuantity)} />
 
-            <div className="my-3 border-t border-line" />
+            <div className="my-3 border-t border-line dark:border-white/10" />
 
             <div className={`rounded-sm border p-4 ${marginPositive ? "border-rise/30 bg-rise/[0.05]" : "border-fall/30 bg-fall/[0.05]"}`}>
               <div className="flex items-center justify-between">
-                <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint">Expected Profit</p>
+                <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint dark:text-white/40">Expected Profit</p>
                 {marginPositive ? <TrendingUp size={14} className="text-rise" /> : <TrendingDown size={14} className="text-fall" />}
               </div>
               <p className={`font-mono text-2xl mt-1 ${marginPositive ? "text-rise" : "text-fall"}`}>{formatINR(expectedProfit)}</p>
-              <p className="text-[11px] text-ink-faint mt-1">{expectedMarginPercent.toFixed(1)}% expected margin</p>
+              <p className="text-[11px] text-ink-faint dark:text-white/40 mt-1">{expectedMarginPercent.toFixed(1)}% expected margin</p>
             </div>
           </CardBody>
         </Card>

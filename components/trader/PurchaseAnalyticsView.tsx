@@ -11,7 +11,7 @@ import { traderPurchaseService } from "@/services/traderPurchase.service";
 import { formatINR, formatQuantityMt } from "@/lib/utils/format";
 import type { PurchaseAnalyticsSummary } from "@/lib/types/traderWorkspace";
 
-const MEDAL_TONE = ["text-gold-bright", "text-ink-soft", "text-gold-dim"];
+const MEDAL_TONE = ["text-gold-bright", "text-ink-soft dark:text-white/50", "text-gold-dim dark:text-gold-bright"];
 
 /** BarRow — a labelled progress bar against the group's maximum, with an explicit share-of-total percentage so the visual isn't the only signal. */
 function BarRow({ label, value, maxValue, totalValue, formatValue }: { label: string; value: number; maxValue: number; totalValue: number; formatValue: (n: number) => string }) {
@@ -20,10 +20,10 @@ function BarRow({ label, value, maxValue, totalValue, formatValue }: { label: st
   return (
     <div className="py-2.5">
       <div className="flex items-center justify-between text-[13px] mb-1.5">
-        <span className="text-charcoal">{label}</span>
+        <span className="text-charcoal dark:text-white">{label}</span>
         <span className="flex items-baseline gap-1.5">
-          <span className="font-mono text-charcoal">{formatValue(value)}</span>
-          <span className="font-mono text-[11px] text-ink-faint">{share}%</span>
+          <span className="font-mono text-charcoal dark:text-white">{formatValue(value)}</span>
+          <span className="font-mono text-[11px] text-ink-faint dark:text-white/40">{share}%</span>
         </span>
       </div>
       <div className="h-1.5 rounded-full bg-charcoal/[0.06] overflow-hidden">
@@ -76,7 +76,7 @@ export function PurchaseAnalyticsView() {
       <Card padding="lg">
         <CardHeader>
           <CardTitle>Purchase Trend (Monthly)</CardTitle>
-          <span className="flex items-center gap-1.5 text-xs text-ink-faint">
+          <span className="flex items-center gap-1.5 text-xs text-ink-faint dark:text-white/40">
             <LineChart size={13} /> Total purchase value
           </span>
         </CardHeader>
@@ -116,10 +116,10 @@ export function PurchaseAnalyticsView() {
                 <div key={s.supplier} className="py-2.5">
                   <div className="flex items-center justify-between text-[13px] mb-1.5">
                     <span className="flex items-center gap-2">
-                      <Trophy size={13} className={i < 3 ? MEDAL_TONE[i] : "text-charcoal/20"} />
-                      <span className="text-charcoal">{s.supplier}</span>
+                      <Trophy size={13} className={i < 3 ? MEDAL_TONE[i] : "text-charcoal/20 dark:text-white"} />
+                      <span className="text-charcoal dark:text-white">{s.supplier}</span>
                     </span>
-                    <span className="font-mono text-charcoal">{formatINR(s.totalValue)}</span>
+                    <span className="font-mono text-charcoal dark:text-white">{formatINR(s.totalValue)}</span>
                   </div>
                   <div className="h-1.5 rounded-full bg-charcoal/[0.06] overflow-hidden ml-[21px]">
                     <div className="h-full bg-gold/70 rounded-full" style={{ width: `${Math.max(4, Math.round((s.totalValue / maxTopSupplierValue) * 100))}%` }} />

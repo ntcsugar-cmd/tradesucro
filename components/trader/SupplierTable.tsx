@@ -19,10 +19,10 @@ function RatingStars({ rating }: { rating: number }) {
     <span className="flex items-center gap-1">
       <span className="flex">
         {Array.from({ length: 5 }).map((_, i) => (
-          <Star key={i} size={11} className={i < Math.round(rating) ? "text-gold-dim fill-gold-dim" : "text-charcoal/15 fill-charcoal/15"} />
+          <Star key={i} size={11} className={i < Math.round(rating) ? "text-gold-dim fill-gold-dim" : "text-charcoal/15 dark:text-white fill-charcoal/15"} />
         ))}
       </span>
-      <span className="font-mono text-xs text-ink-soft">{rating.toFixed(1)}</span>
+      <span className="font-mono text-xs text-ink-soft dark:text-white/50">{rating.toFixed(1)}</span>
     </span>
   );
 }
@@ -35,7 +35,7 @@ export function SupplierTable({ suppliers, loading = false, onTogglePreferred }:
       render: (s) => (
         <div className="flex items-center gap-2">
           <div>
-            <span className="flex items-center gap-1.5 font-medium text-charcoal">
+            <span className="flex items-center gap-1.5 font-medium text-charcoal dark:text-white">
               {s.name}
               {s.verified && (
                 <span title="Verified mill">
@@ -54,14 +54,14 @@ export function SupplierTable({ suppliers, loading = false, onTogglePreferred }:
       key: "lastPurchaseDate",
       header: "Last Purchase",
       sortable: true,
-      render: (s) => (s.lastPurchaseDate ? new Date(s.lastPurchaseDate).toLocaleDateString("en-IN", { day: "2-digit", month: "short" }) : <span className="text-ink-faint">Never</span>),
+      render: (s) => (s.lastPurchaseDate ? new Date(s.lastPurchaseDate).toLocaleDateString("en-IN", { day: "2-digit", month: "short" }) : <span className="text-ink-faint dark:text-white/40">Never</span>),
     },
     {
       key: "outstanding",
       header: "Outstanding",
       align: "right",
       sortable: true,
-      render: (s) => <span className={`font-mono ${s.outstanding > 0 ? "text-charcoal" : "text-ink-faint"}`}>{formatINR(s.outstanding)}</span>,
+      render: (s) => <span className={`font-mono ${s.outstanding > 0 ? "text-charcoal dark:text-white" : "text-ink-faint dark:text-white/40"}`}>{formatINR(s.outstanding)}</span>,
     },
     { key: "purchaseVolume", header: "Purchase Volume", align: "right", sortable: true, render: (s) => <span className="font-mono">{formatQuantityMt(s.purchaseVolume)}</span> },
     {
@@ -70,7 +70,7 @@ export function SupplierTable({ suppliers, loading = false, onTogglePreferred }:
       align: "right",
       render: (s) => (
         <IconButton variant="ghost" size="sm" aria-label={s.preferred ? `Remove ${s.name} from preferred` : `Mark ${s.name} preferred`} onClick={() => onTogglePreferred(s.id)}>
-          <Heart size={15} className={s.preferred ? "text-fall fill-fall" : "text-ink-faint"} />
+          <Heart size={15} className={s.preferred ? "text-fall fill-fall" : "text-ink-faint dark:text-white/40"} />
         </IconButton>
       ),
     },

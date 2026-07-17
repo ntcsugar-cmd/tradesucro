@@ -18,7 +18,7 @@ interface BidConditionsSectionProps {
 export function BidConditionsSection({ data, onChange, readOnly = false }: BidConditionsSectionProps) {
   return (
     <div>
-      <h2 className="font-display text-lg font-medium text-charcoal">Bid Conditions</h2>
+      <h2 className="font-display text-lg font-medium text-charcoal dark:text-white">Bid Conditions</h2>
       <div className="mt-5 space-y-5">
         <div className="grid sm:grid-cols-2 gap-5">
           <NumberInput label="Minimum Quantity" unit="MT" value={data.minimumQuantity || ""} disabled={readOnly} onChange={(e) => onChange({ minimumQuantity: Number(e.target.value) || 0 })} />

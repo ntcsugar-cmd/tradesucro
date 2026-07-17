@@ -14,8 +14,8 @@ interface StepProps {
 export function StepAddress({ data, onChange, errors = {} }: StepProps) {
   return (
     <div>
-      <h2 className="font-display text-xl font-medium text-charcoal">Business address</h2>
-      <p className="mt-1.5 text-[13.5px] text-ink-soft">Where your business is registered and operates from.</p>
+      <h2 className="font-display text-xl font-medium text-charcoal dark:text-white">Business address</h2>
+      <p className="mt-1.5 text-[13.5px] text-ink-soft dark:text-white/50">Where your business is registered and operates from.</p>
 
       <div className="mt-6 space-y-5">
         <div className="grid sm:grid-cols-2 gap-5">

@@ -42,18 +42,18 @@ export function DealInfoSection({
 }: DealInfoSectionProps) {
   return (
     <div>
-      <h2 className="font-display text-lg font-medium text-charcoal">Deal Information</h2>
+      <h2 className="font-display text-lg font-medium text-charcoal dark:text-white">Deal Information</h2>
       <div className="mt-5 grid sm:grid-cols-2 gap-5">
         <div>
-          <p className="text-[13px] font-medium text-charcoal mb-1.5">Deal Number</p>
-          <p className="h-11 flex items-center px-3.5 rounded-sm border border-line bg-charcoal/[0.02] font-mono text-sm text-ink-soft">
+          <p className="text-[13px] font-medium text-charcoal dark:text-white mb-1.5">Deal Number</p>
+          <p className="h-11 flex items-center px-3.5 rounded-sm border border-line dark:border-white/10 bg-charcoal/[0.02] font-mono text-sm text-ink-soft dark:text-white/50">
             {dealNumber ?? "Assigned automatically on save"}
           </p>
         </div>
         {status && (
           <div>
-            <p className="text-[13px] font-medium text-charcoal mb-1.5">Status</p>
-            <div className="h-11 flex items-center px-3.5 rounded-sm border border-line bg-charcoal/[0.02]">
+            <p className="text-[13px] font-medium text-charcoal dark:text-white mb-1.5">Status</p>
+            <div className="h-11 flex items-center px-3.5 rounded-sm border border-line dark:border-white/10 bg-charcoal/[0.02]">
               <Badge tone="charcoal">{status.replace(/_/g, " ")}</Badge>
             </div>
           </div>
@@ -76,8 +76,8 @@ export function DealInfoSection({
         <NumberInput label="Rate" unit="₹" value={rate || ""} disabled={readOnly} onChange={(e) => onChange({ rate: Number(e.target.value) || 0 })} />
 
         <div>
-          <p className="text-[13px] font-medium text-charcoal mb-1.5">Total Value</p>
-          <p className="h-11 flex items-center px-3.5 rounded-sm border border-line bg-charcoal/[0.02] font-mono text-sm text-charcoal">
+          <p className="text-[13px] font-medium text-charcoal dark:text-white mb-1.5">Total Value</p>
+          <p className="h-11 flex items-center px-3.5 rounded-sm border border-line dark:border-white/10 bg-charcoal/[0.02] font-mono text-sm text-charcoal dark:text-white">
             {formatINR(quantity * rate)}
           </p>
         </div>

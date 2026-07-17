@@ -6,7 +6,7 @@ import { getProductLabel, getMasterStateLabel } from "@/lib/utils/marketplaceLab
 import { formatINR } from "@/lib/utils/format";
 import type { SupplierComparisonRow } from "@/lib/types/commercial";
 
-const RANK_TONE = ["text-gold-bright", "text-ink-soft", "text-gold-dim"];
+const RANK_TONE = ["text-gold-bright", "text-ink-soft dark:text-white/50", "text-gold-dim dark:text-gold-bright"];
 
 interface SupplierComparisonTableProps {
   rows: SupplierComparisonRow[];
@@ -38,10 +38,10 @@ export function SupplierComparisonTable({ rows, loading = false }: SupplierCompa
     { key: "state", header: "State", render: (r) => getMasterStateLabel(r.state) },
     { key: "grade", header: "Grade", render: (r) => <span className="font-mono">{getProductLabel(r.product)} · {r.grade}</span> },
     { key: "exMillPrice", header: "Ex-Mill", align: "right", render: (r) => <span className="font-mono">{formatINR(r.exMillPrice)}</span> },
-    { key: "freight", header: "Freight", align: "right", render: (r) => <span className="font-mono text-ink-soft">{formatINR(r.freight)}</span> },
-    { key: "insurance", header: "Insurance", align: "right", render: (r) => <span className="font-mono text-ink-soft">{formatINR(r.insurance)}</span> },
-    { key: "brokerage", header: "Brokerage", align: "right", render: (r) => <span className="font-mono text-ink-soft">{formatINR(r.brokerage)}</span> },
-    { key: "totalLandedCost", header: "Landed Cost", align: "right", render: (r) => <span className="font-mono font-semibold text-charcoal">{formatINR(r.totalLandedCost)}</span> },
+    { key: "freight", header: "Freight", align: "right", render: (r) => <span className="font-mono text-ink-soft dark:text-white/50">{formatINR(r.freight)}</span> },
+    { key: "insurance", header: "Insurance", align: "right", render: (r) => <span className="font-mono text-ink-soft dark:text-white/50">{formatINR(r.insurance)}</span> },
+    { key: "brokerage", header: "Brokerage", align: "right", render: (r) => <span className="font-mono text-ink-soft dark:text-white/50">{formatINR(r.brokerage)}</span> },
+    { key: "totalLandedCost", header: "Landed Cost", align: "right", render: (r) => <span className="font-mono font-semibold text-charcoal dark:text-white">{formatINR(r.totalLandedCost)}</span> },
     { key: "dispatchDays", header: "Dispatch", align: "right", render: (r) => <span className="font-mono">{r.dispatchDays}d</span> },
     { key: "qualityRating", header: "Quality", render: (r) => <span className="flex items-center gap-1 font-mono"><Star size={11} className="text-gold-dim fill-gold-dim" /> {r.qualityRating.toFixed(1)}</span> },
     { key: "trustScore", header: "Trust", render: (r) => <span className="font-mono">{r.trustScore.toFixed(1)}</span> },

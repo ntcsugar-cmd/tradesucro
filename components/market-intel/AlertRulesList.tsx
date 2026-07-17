@@ -27,8 +27,8 @@ export function AlertRulesList({ rules, onToggle, onDelete }: AlertRulesListProp
             {rules.map((rule) => (
               <li key={rule.id} className="flex items-center justify-between gap-4 py-3.5 first:pt-0 last:pb-0">
                 <div className="min-w-0">
-                  <p className="text-[13px] font-medium text-charcoal">{rule.label}</p>
-                  <p className="text-xs text-ink-faint mt-0.5">
+                  <p className="text-[13px] font-medium text-charcoal dark:text-white">{rule.label}</p>
+                  <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">
                     {[rule.state && getMasterStateLabel(rule.state), rule.grade, rule.targetPrice && formatINR(rule.targetPrice)].filter(Boolean).join(" · ") || "All states, all grades"}
                   </p>
                 </div>

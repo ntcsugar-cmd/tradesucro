@@ -46,8 +46,8 @@ export function DealReportsPanel() {
                 <FileBarChart size={18} />
               </span>
               <div className="min-w-0">
-                <p className="text-[14px] font-semibold text-charcoal">{report.label}</p>
-                <p className="text-xs text-ink-faint mt-0.5">{report.description}</p>
+                <p className="text-[14px] font-semibold text-charcoal dark:text-white">{report.label}</p>
+                <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">{report.description}</p>
               </div>
             </div>
             <div className="mt-5 flex flex-wrap items-center gap-2">

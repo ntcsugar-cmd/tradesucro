@@ -41,7 +41,7 @@ export function ProfileCompletionCard() {
         ) : (
           <>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs text-ink-faint">Profile completion</span>
+              <span className="text-xs text-ink-faint dark:text-white/40">Profile completion</span>
               <span className="font-mono text-xs text-gold-dim">{percent}%</span>
             </div>
             <div className="h-1.5 rounded-full bg-charcoal/[0.06] overflow-hidden">
@@ -54,9 +54,9 @@ export function ProfileCompletionCard() {
                   {item.complete ? (
                     <Check size={14} className="text-success shrink-0" />
                   ) : (
-                    <Circle size={14} className="text-ink-faint shrink-0" />
+                    <Circle size={14} className="text-ink-faint dark:text-white/40 shrink-0" />
                   )}
-                  <span className={`text-[13px] ${item.complete ? "text-charcoal" : "text-ink-faint"}`}>
+                  <span className={`text-[13px] ${item.complete ? "text-charcoal dark:text-white" : "text-ink-faint dark:text-white/40"}`}>
                     {item.label}
                   </span>
                 </li>

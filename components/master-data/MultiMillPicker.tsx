@@ -97,7 +97,7 @@ export function MultiMillPicker({ label = "Sugar Mill", value, onChange }: Multi
           onClick={selectAllMills}
           className="flex w-full items-center gap-3 rounded-sm px-3 py-3 text-left hover:bg-charcoal/[0.04] dark:hover:bg-white/5 transition-colors"
         >
-          <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${isAllMills ? "bg-gold text-charcoal" : "bg-gold/10 text-gold-dim"}`}>
+          <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${isAllMills ? "bg-gold text-charcoal dark:text-white" : "bg-gold/10 text-gold-dim"}`}>
             <Globe2 size={15} />
           </span>
           <div className="min-w-0 flex-1">

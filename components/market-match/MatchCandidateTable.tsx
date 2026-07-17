@@ -37,7 +37,7 @@ export function MatchCandidateTable({ candidates, loading = false }: MatchCandid
       header: "Supplier",
       render: (c) => (
         <div>
-          <span className="flex items-center gap-1.5 font-medium text-charcoal">
+          <span className="flex items-center gap-1.5 font-medium text-charcoal dark:text-white">
             {c.supplierName}
             {c.verified && <ShieldCheck size={12} className="text-success" />}
           </span>
@@ -55,7 +55,7 @@ export function MatchCandidateTable({ candidates, loading = false }: MatchCandid
       header: "Distance",
       align: "right",
       render: (c) => (
-        <span className="flex items-center justify-end gap-1 text-ink-soft">
+        <span className="flex items-center justify-end gap-1 text-ink-soft dark:text-white/50">
           <MapPin size={11} /> {c.distanceKm} km
         </span>
       ),
@@ -64,17 +64,17 @@ export function MatchCandidateTable({ candidates, loading = false }: MatchCandid
       key: "expectedDispatchDays",
       header: "Dispatch",
       render: (c) => (
-        <span className="flex items-center gap-1 text-ink-soft">
+        <span className="flex items-center gap-1 text-ink-soft dark:text-white/50">
           <Truck size={11} /> {dispatchSpeedLabel(c.expectedDispatchDays)}
         </span>
       ),
     },
-    { key: "paymentTerms", header: "Payment", render: (c) => <span className="text-ink-soft">{c.paymentTerms ? getPaymentTermLabel(c.paymentTerms) : "—"}</span> },
+    { key: "paymentTerms", header: "Payment", render: (c) => <span className="text-ink-soft dark:text-white/50">{c.paymentTerms ? getPaymentTermLabel(c.paymentTerms) : "—"}</span> },
     {
       key: "estimatedProfitPotential",
       header: "Profit Potential",
       align: "right",
-      render: (c) => (c.estimatedProfitPotential ? <span className="font-mono text-rise">{formatINR(c.estimatedProfitPotential)}</span> : <span className="text-ink-faint">—</span>),
+      render: (c) => (c.estimatedProfitPotential ? <span className="font-mono text-rise">{formatINR(c.estimatedProfitPotential)}</span> : <span className="text-ink-faint dark:text-white/40">—</span>),
     },
     { key: "matchReasons", header: "Why this match", render: (c) => <MatchReasonsList reasons={c.matchReasons} /> },
   ];

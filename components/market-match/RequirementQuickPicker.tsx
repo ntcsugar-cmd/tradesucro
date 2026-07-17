@@ -37,7 +37,7 @@ export function RequirementQuickPicker({ onPick, activeRequirementId }: Requirem
   }
 
   if (requirements.length === 0) {
-    return <p className="text-[13px] text-ink-faint italic">No open buy requirements right now.</p>;
+    return <p className="text-[13px] text-ink-faint dark:text-white/40 italic">No open buy requirements right now.</p>;
   }
 
   return (
@@ -61,10 +61,10 @@ export function RequirementQuickPicker({ onPick, activeRequirementId }: Requirem
                 <ClipboardList size={14} />
               </span>
               <div className="min-w-0 flex-1">
-                <p className="text-[13px] font-medium text-charcoal truncate">{r.company.name}</p>
-                <p className="text-[11px] text-ink-faint">{getProductLabel(r.product)} · {r.grade} · {formatQuantityMt(r.quantity)}</p>
+                <p className="text-[13px] font-medium text-charcoal dark:text-white truncate">{r.company.name}</p>
+                <p className="text-[11px] text-ink-faint dark:text-white/40">{getProductLabel(r.product)} · {r.grade} · {formatQuantityMt(r.quantity)}</p>
               </div>
-              <span className="font-mono text-xs text-charcoal shrink-0">{formatINR(r.expectedPrice)}</span>
+              <span className="font-mono text-xs text-charcoal dark:text-white shrink-0">{formatINR(r.expectedPrice)}</span>
             </CardBody>
           </Card>
         );

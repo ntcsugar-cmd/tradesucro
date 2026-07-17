@@ -10,7 +10,7 @@ interface ConditionsSectionProps {
 export function ConditionsSection({ data, onChange, readOnly = false }: ConditionsSectionProps) {
   return (
     <div>
-      <h2 className="font-display text-lg font-medium text-charcoal">Conditions</h2>
+      <h2 className="font-display text-lg font-medium text-charcoal dark:text-white">Conditions</h2>
       <div className="mt-5 space-y-5">
         <Textarea
           label="Special Terms"

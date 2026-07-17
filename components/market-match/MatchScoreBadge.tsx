@@ -29,7 +29,7 @@ export function MatchReasonsList({ reasons }: { reasons: string[] }) {
           {reason}
         </Badge>
       ))}
-      {reasons.length > 3 && <span className="text-[11px] text-ink-faint">+{reasons.length - 3} more</span>}
+      {reasons.length > 3 && <span className="text-[11px] text-ink-faint dark:text-white/40">+{reasons.length - 3} more</span>}
     </div>
   );
 }

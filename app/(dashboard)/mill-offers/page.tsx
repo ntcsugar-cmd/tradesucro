@@ -60,7 +60,7 @@ export default function MillOfferBoardPage() {
         </GridItem>
 
         <GridItem span={3}>
-          <p className="text-[13px] text-ink-faint mb-4">{loading ? "Loading…" : `${offers.length} offers`}</p>
+          <p className="text-[13px] text-ink-faint dark:text-white/40 mb-4">{loading ? "Loading…" : `${offers.length} offers`}</p>
           <OfferTable offers={offers} loading={loading} />
         </GridItem>
       </Grid>

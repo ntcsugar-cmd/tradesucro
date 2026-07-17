@@ -18,7 +18,7 @@ interface QuickActionsBarProps {
 const TONE_CLASSES: Record<NonNullable<QuickAction["tone"]>, string> = {
   gold: "bg-gold text-charcoal",
   rise: "bg-rise text-white",
-  default: "bg-charcoal/[0.04] text-charcoal border border-line",
+  default: "bg-charcoal/[0.04] dark:bg-white/10 text-charcoal dark:text-white border border-line dark:border-white/10",
 };
 
 /**

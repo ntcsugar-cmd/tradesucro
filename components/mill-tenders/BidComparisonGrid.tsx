@@ -18,7 +18,7 @@ function scoreBid(bid: MillTenderBid, maxPrice: number, maxQty: number): number 
 /** BidComparisonGrid — a side-by-side comparison, not a submission list (see BidTable for that). */
 export function BidComparisonGrid({ bids }: BidComparisonGridProps) {
   if (bids.length === 0) {
-    return <p className="text-[13px] text-ink-faint italic">No bids to compare yet.</p>;
+    return <p className="text-[13px] text-ink-faint dark:text-white/40 italic">No bids to compare yet.</p>;
   }
 
   const maxPrice = Math.max(...bids.map((b) => b.price));
@@ -29,7 +29,7 @@ export function BidComparisonGrid({ bids }: BidComparisonGridProps) {
     {
       label: "Company",
       render: (b) => (
-        <span className="flex items-center gap-1.5 font-medium text-charcoal">
+        <span className="flex items-center gap-1.5 font-medium text-charcoal dark:text-white">
           {b.companyName}
           {b.verified && <ShieldCheck size={12} className="text-success" />}
         </span>
@@ -38,18 +38,18 @@ export function BidComparisonGrid({ bids }: BidComparisonGridProps) {
     {
       label: "Price",
       render: (b) => (
-        <span className={`font-mono ${b.price === maxPrice ? "text-gold-dim font-semibold" : "text-charcoal"}`}>{formatINR(b.price)}</span>
+        <span className={`font-mono ${b.price === maxPrice ? "text-gold-dim font-semibold" : "text-charcoal dark:text-white"}`}>{formatINR(b.price)}</span>
       ),
     },
     {
       label: "Quantity",
       render: (b) => (
-        <span className={`font-mono ${b.quantity === maxQty ? "text-gold-dim font-semibold" : "text-charcoal"}`}>{formatQuantityMt(b.quantity)}</span>
+        <span className={`font-mono ${b.quantity === maxQty ? "text-gold-dim font-semibold" : "text-charcoal dark:text-white"}`}>{formatQuantityMt(b.quantity)}</span>
       ),
     },
-    { label: "EMD", render: (b) => <span className="capitalize text-charcoal">{b.emdStatus.replace("_", " ")}</span> },
-    { label: "Delivery", render: (b) => <span className="text-charcoal">{b.deliveryPreference}</span> },
-    { label: "Payment", render: (b) => <span className="text-charcoal">{b.paymentPreference}</span> },
+    { label: "EMD", render: (b) => <span className="capitalize text-charcoal dark:text-white">{b.emdStatus.replace("_", " ")}</span> },
+    { label: "Delivery", render: (b) => <span className="text-charcoal dark:text-white">{b.deliveryPreference}</span> },
+    { label: "Payment", render: (b) => <span className="text-charcoal dark:text-white">{b.paymentPreference}</span> },
   ];
 
   return (
@@ -57,16 +57,16 @@ export function BidComparisonGrid({ bids }: BidComparisonGridProps) {
       <table className="w-full border-collapse min-w-[600px]">
         <thead>
           <tr>
-            <th className="text-left py-2.5 pr-4 text-[11px] font-mono uppercase tracking-widest2 text-ink-faint w-32">Metric</th>
+            <th className="text-left py-2.5 pr-4 text-[11px] font-mono uppercase tracking-widest2 text-ink-faint dark:text-white/40 w-32">Metric</th>
             {bids.map((b) => (
-              <th key={b.id} className="text-left py-2.5 px-4 border-l border-line">
+              <th key={b.id} className="text-left py-2.5 px-4 border-l border-line dark:border-white/10">
                 <div className="flex items-center gap-1.5">
                   {b.id === bestOverallId && (
                     <span title="Best overall">
                       <Trophy size={13} className="text-gold-dim" />
                     </span>
                   )}
-                  <span className="font-mono text-[11px] text-ink-faint">{b.bidNumber}</span>
+                  <span className="font-mono text-[11px] text-ink-faint dark:text-white/40">{b.bidNumber}</span>
                 </div>
               </th>
             ))}
@@ -74,19 +74,19 @@ export function BidComparisonGrid({ bids }: BidComparisonGridProps) {
         </thead>
         <tbody>
           {rows.map((row) => (
-            <tr key={row.label} className="border-t border-line">
-              <td className="py-2.5 pr-4 text-xs text-ink-faint">{row.label}</td>
+            <tr key={row.label} className="border-t border-line dark:border-white/10">
+              <td className="py-2.5 pr-4 text-xs text-ink-faint dark:text-white/40">{row.label}</td>
               {bids.map((b) => (
-                <td key={b.id} className="py-2.5 px-4 border-l border-line text-[13px]">
+                <td key={b.id} className="py-2.5 px-4 border-l border-line dark:border-white/10 text-[13px]">
                   {row.render(b)}
                 </td>
               ))}
             </tr>
           ))}
-          <tr className="border-t border-line">
-            <td className="py-2.5 pr-4 text-xs text-ink-faint">Highlights</td>
+          <tr className="border-t border-line dark:border-white/10">
+            <td className="py-2.5 pr-4 text-xs text-ink-faint dark:text-white/40">Highlights</td>
             {bids.map((b) => (
-              <td key={b.id} className="py-2.5 px-4 border-l border-line">
+              <td key={b.id} className="py-2.5 px-4 border-l border-line dark:border-white/10">
                 <div className="flex flex-wrap gap-1">
                   {b.price === maxPrice && <Badge tone="gold">Highest Price</Badge>}
                   {b.quantity === maxQty && <Badge tone="charcoal">Largest Quantity</Badge>}

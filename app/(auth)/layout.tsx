@@ -12,7 +12,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       <header className="py-6">
         <div className="container-page">
           <Link href="/" className="inline-flex items-baseline gap-2">
-            <span className="font-display text-[20px] font-semibold tracking-tight text-charcoal">
+            <span className="font-display text-[20px] font-semibold tracking-tight text-charcoal dark:text-white">
               TradeSucro
             </span>
             <span className="hidden sm:inline font-mono text-[10px] uppercase tracking-widest2 text-gold-dim">
@@ -25,7 +25,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       <main className="flex-1 flex items-center justify-center px-6 py-10">{children}</main>
 
       <footer className="py-6 text-center">
-        <p className="text-xs text-ink-faint">
+        <p className="text-xs text-ink-faint dark:text-white/40">
           © {new Date().getFullYear()} TradeSucro Technologies Pvt. Ltd.
         </p>
       </footer>

@@ -22,9 +22,9 @@ import type { Purchase } from "@/lib/types/traderWorkspace";
 
 function Row({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-center justify-between py-2.5 border-b border-line last:border-b-0">
-      <span className="text-xs text-ink-faint">{label}</span>
-      <span className="text-[13.5px] text-charcoal font-medium text-right">{value || "—"}</span>
+    <div className="flex items-center justify-between py-2.5 border-b border-line dark:border-white/10 last:border-b-0">
+      <span className="text-xs text-ink-faint dark:text-white/40">{label}</span>
+      <span className="text-[13.5px] text-charcoal dark:text-white font-medium text-right">{value || "—"}</span>
     </div>
   );
 }
@@ -130,11 +130,11 @@ export default function PurchaseDetailsPage() {
       <Card padding="lg" className="mb-6">
         <CardBody className="flex flex-wrap items-center gap-x-10 gap-y-4">
           <div className="flex items-center gap-3">
-            <span className="flex h-11 w-11 items-center justify-center rounded-sm bg-charcoal/[0.04] text-ink-faint">
+            <span className="flex h-11 w-11 items-center justify-center rounded-sm bg-charcoal/[0.04] text-ink-faint dark:text-white/40">
               <Package size={20} />
             </span>
             <div>
-              <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint">Status</p>
+              <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint dark:text-white/40">Status</p>
               <div className="mt-1">
                 <PurchaseStatusBadge status={purchase.status} />
               </div>
@@ -142,17 +142,17 @@ export default function PurchaseDetailsPage() {
           </div>
 
           <div>
-            <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint">Quantity</p>
-            <p className="font-mono text-lg text-charcoal mt-1">{formatQuantityMt(purchase.quantity)}</p>
+            <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint dark:text-white/40">Quantity</p>
+            <p className="font-mono text-lg text-charcoal dark:text-white mt-1">{formatQuantityMt(purchase.quantity)}</p>
           </div>
 
           <div>
-            <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint">Total Cost</p>
-            <p className="font-mono text-lg text-charcoal mt-1">{formatINR(purchase.totalCost)}</p>
+            <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint dark:text-white/40">Total Cost</p>
+            <p className="font-mono text-lg text-charcoal dark:text-white mt-1">{formatINR(purchase.totalCost)}</p>
           </div>
 
           <div className="ml-auto">
-            <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint">Expected Margin</p>
+            <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint dark:text-white/40">Expected Margin</p>
             <p className={`flex items-center gap-1 font-mono text-lg mt-1 ${marginPositive ? "text-rise" : "text-fall"}`}>
               {marginPositive ? <ArrowUpRight size={16} /> : <ArrowDownRight size={16} />}
               {formatINR(purchase.expectedMargin)}
@@ -177,7 +177,7 @@ export default function PurchaseDetailsPage() {
               <Row label="Rate" value={formatINR(purchase.rate)} />
               {purchase.dealReference && (
                 <div className="flex items-center justify-between py-2.5">
-                  <span className="text-xs text-ink-faint">Deal Reference</span>
+                  <span className="text-xs text-ink-faint dark:text-white/40">Deal Reference</span>
                   <Link href={`/deals/${purchase.dealReference}`} className="text-[13.5px] font-mono text-gold-dim hover:text-gold-bright flex items-center gap-1">
                     {dealNumber ?? purchase.dealReference} <ExternalLink size={12} />
                   </Link>
@@ -200,7 +200,7 @@ export default function PurchaseDetailsPage() {
               <Row label="Total Cost" value={formatINR(purchase.totalCost)} />
               <Row label="Expected Selling Price" value={formatINR(purchase.expectedSellingPrice)} />
               <div className="flex items-center justify-between py-2.5">
-                <span className="text-xs text-ink-faint">Expected Margin</span>
+                <span className="text-xs text-ink-faint dark:text-white/40">Expected Margin</span>
                 <span className={`font-mono text-sm font-semibold ${marginPositive ? "text-rise" : "text-fall"}`}>{formatINR(purchase.expectedMargin)}</span>
               </div>
             </CardBody>

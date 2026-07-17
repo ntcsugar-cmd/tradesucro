@@ -25,7 +25,7 @@ export function OnboardingStepper({ steps, currentStep }: OnboardingStepperProps
                     "flex h-8 w-8 shrink-0 items-center justify-center rounded-full font-mono text-xs transition-colors",
                     isComplete && "bg-gold text-white",
                     isActive && "bg-charcoal text-white",
-                    !isComplete && !isActive && "bg-charcoal/[0.06] text-ink-faint"
+                    !isComplete && !isActive && "bg-charcoal/[0.06] dark:bg-white/10 text-ink-faint dark:text-white/40"
                   )}
                 >
                   {isComplete ? <Check size={14} /> : stepNumber}
@@ -33,7 +33,7 @@ export function OnboardingStepper({ steps, currentStep }: OnboardingStepperProps
                 <span
                   className={clsx(
                     "text-[11px] text-center font-medium leading-tight",
-                    isActive ? "text-charcoal" : "text-ink-faint"
+                    isActive ? "text-charcoal dark:text-white" : "text-ink-faint dark:text-white/40"
                   )}
                 >
                   {label}
@@ -50,8 +50,8 @@ export function OnboardingStepper({ steps, currentStep }: OnboardingStepperProps
       {/* Mobile */}
       <div className="md:hidden">
         <div className="flex items-center justify-between mb-2">
-          <p className="text-[13px] font-medium text-charcoal">{steps[currentStep - 1]}</p>
-          <p className="font-mono text-xs text-ink-faint">
+          <p className="text-[13px] font-medium text-charcoal dark:text-white">{steps[currentStep - 1]}</p>
+          <p className="font-mono text-xs text-ink-faint dark:text-white/40">
             Step {currentStep} of {steps.length}
           </p>
         </div>

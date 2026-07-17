@@ -49,18 +49,18 @@ export default function DealsLayout({ children }: { children: React.ReactNode })
 
   if (!checked) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-paper">
+      <div className="flex min-h-screen items-center justify-center bg-paper dark:bg-charcoal">
         <Spinner size="lg" label="Loading Deal Management…" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-paper grain-surface flex flex-col">
-      <header className="border-b border-line">
+    <div className="min-h-screen bg-paper dark:bg-charcoal grain-surface flex flex-col">
+      <header className="border-b border-line dark:border-white/10">
         <div className="container-page flex items-center justify-between py-5">
           <Link href="/" className="inline-flex items-baseline gap-2">
-            <span className="font-display text-[20px] font-semibold tracking-tight text-charcoal">TradeSucro</span>
+            <span className="font-display text-[20px] font-semibold tracking-tight text-charcoal dark:text-white">TradeSucro</span>
             <span className="hidden sm:inline font-mono text-[10px] uppercase tracking-widest2 text-gold-dim">Deal Management</span>
           </Link>
           <div className="flex items-center gap-2">
@@ -82,7 +82,7 @@ export default function DealsLayout({ children }: { children: React.ReactNode })
                   key={href}
                   href={href}
                   className={`flex items-center gap-1.5 px-3.5 py-2.5 text-[13px] font-medium border-b-2 whitespace-nowrap transition-colors ${
-                    active ? "border-gold text-charcoal" : "border-transparent text-ink-faint hover:text-charcoal"
+                    active ? "border-gold text-charcoal dark:text-white" : "border-transparent text-ink-faint dark:text-white/40 hover:text-charcoal dark:hover:text-white"
                   }`}
                 >
                   <Icon size={14} /> {label}

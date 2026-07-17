@@ -21,7 +21,7 @@ export function PasswordStrengthMeter({ password }: PasswordStrengthMeterProps) 
           />
         ))}
       </div>
-      <p className="mt-1.5 text-xs text-ink-faint">{label}</p>
+      <p className="mt-1.5 text-xs text-ink-faint dark:text-white/40">{label}</p>
     </div>
   );
 }

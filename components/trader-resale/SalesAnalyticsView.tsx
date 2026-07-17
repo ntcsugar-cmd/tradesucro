@@ -10,7 +10,7 @@ import { traderResaleService } from "@/services/traderResale.service";
 import { formatINR, formatQuantityMt } from "@/lib/utils/format";
 import type { SalesAnalyticsSummary } from "@/lib/types/traderResale";
 
-const MEDAL_TONE = ["text-gold-bright", "text-ink-soft", "text-gold-dim"];
+const MEDAL_TONE = ["text-gold-bright", "text-ink-soft dark:text-white/50", "text-gold-dim dark:text-gold-bright"];
 
 function BarRow({ label, value, maxValue, totalValue, formatValue }: { label: string; value: number; maxValue: number; totalValue: number; formatValue: (n: number) => string }) {
   const pct = maxValue > 0 ? Math.max(4, Math.round((value / maxValue) * 100)) : 0;
@@ -18,10 +18,10 @@ function BarRow({ label, value, maxValue, totalValue, formatValue }: { label: st
   return (
     <div className="py-2.5">
       <div className="flex items-center justify-between text-[13px] mb-1.5">
-        <span className="text-charcoal">{label}</span>
+        <span className="text-charcoal dark:text-white">{label}</span>
         <span className="flex items-baseline gap-1.5">
-          <span className="font-mono text-charcoal">{formatValue(value)}</span>
-          <span className="font-mono text-[11px] text-ink-faint">{share}%</span>
+          <span className="font-mono text-charcoal dark:text-white">{formatValue(value)}</span>
+          <span className="font-mono text-[11px] text-ink-faint dark:text-white/40">{share}%</span>
         </span>
       </div>
       <div className="h-1.5 rounded-full bg-charcoal/[0.06] overflow-hidden">
@@ -75,15 +75,15 @@ export function SalesAnalyticsView() {
       <Card padding="lg">
         <CardHeader>
           <CardTitle>Profit Analysis</CardTitle>
-          <span className="text-xs text-ink-faint">Revenue − cost of goods sold, by month</span>
+          <span className="text-xs text-ink-faint dark:text-white/40">Revenue − cost of goods sold, by month</span>
         </CardHeader>
         <CardBody className="divide-y divide-line">
           {summary.profitAnalysis.map((p) => (
             <div key={p.month} className="flex items-center justify-between py-2.5">
-              <span className="text-[13px] text-charcoal">{p.month}</span>
+              <span className="text-[13px] text-charcoal dark:text-white">{p.month}</span>
               <div className="flex items-center gap-4 font-mono text-xs">
-                <span className="text-ink-faint">Rev {formatINR(p.revenue)}</span>
-                <span className="text-ink-faint">Cost {formatINR(p.cost)}</span>
+                <span className="text-ink-faint dark:text-white/40">Rev {formatINR(p.revenue)}</span>
+                <span className="text-ink-faint dark:text-white/40">Cost {formatINR(p.cost)}</span>
                 <span className={p.profit >= 0 ? "text-rise font-semibold" : "text-fall font-semibold"}>{formatINR(p.profit)}</span>
               </div>
             </div>
@@ -115,10 +115,10 @@ export function SalesAnalyticsView() {
                 <div key={c.customer} className="py-2.5">
                   <div className="flex items-center justify-between text-[13px] mb-1.5">
                     <span className="flex items-center gap-2">
-                      <Trophy size={13} className={i < 3 ? MEDAL_TONE[i] : "text-charcoal/20"} />
-                      <span className="text-charcoal">{c.customer}</span>
+                      <Trophy size={13} className={i < 3 ? MEDAL_TONE[i] : "text-charcoal/20 dark:text-white"} />
+                      <span className="text-charcoal dark:text-white">{c.customer}</span>
                     </span>
-                    <span className="font-mono text-charcoal">{formatINR(c.totalValue)}</span>
+                    <span className="font-mono text-charcoal dark:text-white">{formatINR(c.totalValue)}</span>
                   </div>
                   <div className="h-1.5 rounded-full bg-charcoal/[0.06] overflow-hidden ml-[21px]">
                     <div className="h-full bg-gold/70 rounded-full" style={{ width: `${Math.max(4, Math.round((c.totalValue / maxTopCustomer) * 100))}%` }} />

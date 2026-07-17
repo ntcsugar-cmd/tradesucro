@@ -66,16 +66,16 @@ export function InventoryLotPicker({ selectedPurchaseId, onSelect }: InventoryLo
             <div className="p-4">
               <div className="flex items-start justify-between">
                 <div>
-                  <p className="font-mono text-[11px] text-ink-faint">{lot.lotNumber}</p>
-                  <p className="text-[13.5px] font-medium text-charcoal mt-0.5">{getProductLabel(lot.product)} · {lot.grade}</p>
+                  <p className="font-mono text-[11px] text-ink-faint dark:text-white/40">{lot.lotNumber}</p>
+                  <p className="text-[13.5px] font-medium text-charcoal dark:text-white mt-0.5">{getProductLabel(lot.product)} · {lot.grade}</p>
                 </div>
                 <p className="font-mono text-sm text-gold-dim">{formatQuantityMt(lot.availableQuantity)}</p>
               </div>
-              <div className="mt-3 pt-3 border-t border-line grid grid-cols-2 gap-y-1.5 text-xs">
-                <span className="text-ink-faint flex items-center gap-1"><MapPin size={11} /> Warehouse</span>
-                <span className="text-right text-ink-soft truncate">{lot.warehouse}</span>
-                <span className="text-ink-faint">Avg. cost</span>
-                <span className="text-right font-mono text-charcoal">{formatINR(lot.averageCost)}</span>
+              <div className="mt-3 pt-3 border-t border-line dark:border-white/10 grid grid-cols-2 gap-y-1.5 text-xs">
+                <span className="text-ink-faint dark:text-white/40 flex items-center gap-1"><MapPin size={11} /> Warehouse</span>
+                <span className="text-right text-ink-soft dark:text-white/50 truncate">{lot.warehouse}</span>
+                <span className="text-ink-faint dark:text-white/40">Avg. cost</span>
+                <span className="text-right font-mono text-charcoal dark:text-white">{formatINR(lot.averageCost)}</span>
               </div>
             </div>
           </Card>

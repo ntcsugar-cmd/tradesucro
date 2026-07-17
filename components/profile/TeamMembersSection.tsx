@@ -18,10 +18,10 @@ export function TeamMembersSection({ profile }: TeamMembersSectionProps) {
           <div key={member.id} className="flex items-center gap-3 py-3 first:pt-0 last:pb-0">
             <Avatar name={member.name} size="md" />
             <div className="min-w-0 flex-1">
-              <p className="text-[13.5px] font-medium text-charcoal">{member.name}</p>
-              <p className="text-xs text-ink-faint">{member.designation}</p>
+              <p className="text-[13.5px] font-medium text-charcoal dark:text-white">{member.name}</p>
+              <p className="text-xs text-ink-faint dark:text-white/40">{member.designation}</p>
             </div>
-            <div className="hidden sm:flex flex-col items-end gap-0.5 text-xs text-ink-faint">
+            <div className="hidden sm:flex flex-col items-end gap-0.5 text-xs text-ink-faint dark:text-white/40">
               <span className="flex items-center gap-1.5">
                 <Mail size={11} /> {member.email}
               </span>

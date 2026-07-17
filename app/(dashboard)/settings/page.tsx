@@ -26,15 +26,15 @@ export default function SettingsPage() {
           </CardHeader>
           <CardBody className="space-y-5">
             <div className="flex items-center gap-3">
-              <Bell size={16} className="text-ink-faint shrink-0" />
+              <Bell size={16} className="text-ink-faint dark:text-white/40 shrink-0" />
               <ToggleSwitch checked={priceAlerts} onChange={setPriceAlerts} label="Price alerts" description="Notify when today's price changes" />
             </div>
             <div className="flex items-center gap-3">
-              <Bell size={16} className="text-ink-faint shrink-0" />
+              <Bell size={16} className="text-ink-faint dark:text-white/40 shrink-0" />
               <ToggleSwitch checked={tenderAlerts} onChange={setTenderAlerts} label="Tender alerts" description="Notify when a tender is closing soon" />
             </div>
             <div className="flex items-center gap-3">
-              <Bell size={16} className="text-ink-faint shrink-0" />
+              <Bell size={16} className="text-ink-faint dark:text-white/40 shrink-0" />
               <ToggleSwitch checked={dispatchAlerts} onChange={setDispatchAlerts} label="Dispatch alerts" description="Notify on dispatch delays" />
             </div>
           </CardBody>
@@ -46,7 +46,7 @@ export default function SettingsPage() {
           </CardHeader>
           <CardBody>
             <div className="flex items-center gap-3">
-              <Moon size={16} className="text-ink-faint shrink-0" />
+              <Moon size={16} className="text-ink-faint dark:text-white/40 shrink-0" />
               <ToggleSwitch checked={theme === "dark"} onChange={toggleTheme} label="Dark mode" description="Applies to the dashboard shell" />
             </div>
           </CardBody>
@@ -57,8 +57,8 @@ export default function SettingsPage() {
             <CardTitle>Region</CardTitle>
           </CardHeader>
           <CardBody>
-            <div className="flex items-center gap-3 text-[13px] text-ink-soft">
-              <Globe size={16} className="text-ink-faint shrink-0" />
+            <div className="flex items-center gap-3 text-[13px] text-ink-soft dark:text-white/50">
+              <Globe size={16} className="text-ink-faint dark:text-white/40 shrink-0" />
               India · English · INR (₹)
             </div>
           </CardBody>

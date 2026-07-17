@@ -31,21 +31,21 @@ export function WorkspaceCard({ workspace, onEnter, entering = false }: Workspac
           <StatusBadge status={statusMeta.badgeStatus}>{statusMeta.label}</StatusBadge>
         </div>
 
-        <p className="mt-4 font-display text-lg text-charcoal">{meta.label}</p>
-        <p className="text-[13px] text-ink-soft mt-0.5">{workspace.companyName}</p>
+        <p className="mt-4 font-display text-lg text-charcoal dark:text-white">{meta.label}</p>
+        <p className="text-[13px] text-ink-soft dark:text-white/50 mt-0.5">{workspace.companyName}</p>
 
-        <div className="mt-4 pt-4 border-t border-line space-y-2.5 flex-1">
+        <div className="mt-4 pt-4 border-t border-line dark:border-white/10 space-y-2.5 flex-1">
           <div className="flex items-center justify-between text-xs">
-            <span className="text-ink-faint">Role</span>
-            <span className="text-charcoal font-medium capitalize">{workspace.role}</span>
+            <span className="text-ink-faint dark:text-white/40">Role</span>
+            <span className="text-charcoal dark:text-white font-medium capitalize">{workspace.role}</span>
           </div>
           <div className="flex items-center justify-between text-xs">
-            <span className="text-ink-faint">Verification</span>
+            <span className="text-ink-faint dark:text-white/40">Verification</span>
             <VerificationBadge status={workspace.verificationStatus} />
           </div>
           <div className="flex items-center justify-between text-xs">
-            <span className="text-ink-faint">Last login</span>
-            <span className="text-charcoal">
+            <span className="text-ink-faint dark:text-white/40">Last login</span>
+            <span className="text-charcoal dark:text-white">
               {workspace.lastLogin ? new Date(workspace.lastLogin).toLocaleDateString("en-IN", { dateStyle: "medium" }) : "Never"}
             </span>
           </div>

@@ -46,7 +46,7 @@ export function ContactActionsBar({ phone, whatsapp, email, shareText, shareUrl 
     <div className="grid grid-cols-5 gap-2">
       {actions.map(({ label, icon: Icon, href, onClick, disabled }) => {
         const body = (
-          <span className={`flex flex-col items-center gap-1.5 rounded-sm py-3 min-h-[64px] justify-center ${disabled ? "text-ink-faint/50" : "text-charcoal active:bg-charcoal/[0.04]"}`}>
+          <span className={`flex flex-col items-center gap-1.5 rounded-sm py-3 min-h-[64px] justify-center ${disabled ? "text-ink-faint/50 dark:text-white/40" : "text-charcoal dark:text-white active:bg-charcoal/[0.04]"}`}>
             <Icon size={18} />
             <span className="text-[10px] font-medium">{label}</span>
           </span>

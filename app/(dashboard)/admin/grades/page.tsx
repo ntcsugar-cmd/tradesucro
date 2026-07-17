@@ -76,7 +76,7 @@ export default function GradeMasterAdminPage() {
     {
       key: "applicableProducts",
       header: "Applicable Products",
-      render: (g) => <span className="text-xs text-ink-faint">{g.applicableProducts.length === 0 ? "All products" : `${g.applicableProducts.length} product(s)`}</span>,
+      render: (g) => <span className="text-xs text-ink-faint dark:text-white/40">{g.applicableProducts.length === 0 ? "All products" : `${g.applicableProducts.length} product(s)`}</span>,
     },
   ];
 

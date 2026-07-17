@@ -8,7 +8,7 @@ interface MiniAreaChartProps {
 /** MiniAreaChart — a lightweight SVG area/line chart, built from the same theme tokens as the rest of the app. Presentational only: it renders whatever points it's given, it doesn't fetch or compute anything. */
 export function MiniAreaChart({ points, height = 140 }: MiniAreaChartProps) {
   if (points.length < 2) {
-    return <p className="text-[13px] text-ink-faint italic">Not enough data to chart yet.</p>;
+    return <p className="text-[13px] text-ink-faint dark:text-white/40 italic">Not enough data to chart yet.</p>;
   }
 
   const width = 100;
@@ -43,7 +43,7 @@ export function MiniAreaChart({ points, height = 140 }: MiniAreaChartProps) {
       </svg>
       <div className="flex justify-between mt-2">
         {points.map((p) => (
-          <span key={p.label} className="font-mono text-[10px] text-ink-faint">
+          <span key={p.label} className="font-mono text-[10px] text-ink-faint dark:text-white/40">
             {p.label}
           </span>
         ))}

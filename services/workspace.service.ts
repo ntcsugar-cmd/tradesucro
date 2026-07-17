@@ -28,6 +28,7 @@ function seedWorkspaces(): Workspace[] {
     { role: "mill", companyName: primaryCompany, status: "active", verificationStatus: "verified" },
     { role: "trader", companyName: `${primaryCompany.replace(/ Mills| Ltd\.?/g, "")} Trading Co.`, status: "active", verificationStatus: "verified" },
     { role: "buyer", companyName: `${primaryCompany.replace(/ Mills| Ltd\.?/g, "")} Procurement Desk`, status: "pending", verificationStatus: "pending" },
+    { role: "transporter", companyName: `${primaryCompany.replace(/ Mills| Ltd\.?/g, "")} Logistics`, status: "active", verificationStatus: "verified" },
   ];
 
   return seeds.map((s, i) => ({

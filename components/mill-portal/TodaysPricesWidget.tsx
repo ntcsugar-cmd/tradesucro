@@ -42,10 +42,10 @@ export function TodaysPricesWidget() {
             const diff = q.todaysPrice - q.yesterdayPrice;
             return (
               <li key={q.id} className="flex items-center justify-between">
-                <span className="text-[13px] text-charcoal">{getProductLabel(q.product)} <span className="text-ink-faint">· {q.grade}</span></span>
+                <span className="text-[13px] text-charcoal dark:text-white">{getProductLabel(q.product)} <span className="text-ink-faint dark:text-white/40">· {q.grade}</span></span>
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-[13px] text-charcoal">{formatINR(q.todaysPrice)}</span>
-                  <span className={`flex items-center font-mono text-[11px] ${diff > 0 ? "text-rise" : diff < 0 ? "text-fall" : "text-ink-faint"}`}>
+                  <span className="font-mono text-[13px] text-charcoal dark:text-white">{formatINR(q.todaysPrice)}</span>
+                  <span className={`flex items-center font-mono text-[11px] ${diff > 0 ? "text-rise" : diff < 0 ? "text-fall" : "text-ink-faint dark:text-white/40"}`}>
                     {diff > 0 ? <ArrowUpRight size={12} /> : diff < 0 ? <ArrowDownRight size={12} /> : <Minus size={12} />}
                   </span>
                 </div>

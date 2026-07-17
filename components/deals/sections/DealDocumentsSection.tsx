@@ -21,8 +21,8 @@ const DOC_FIELDS: { key: keyof DealDocuments; label: string; mockFileName: strin
 export function DealDocumentsSection({ data, onChange }: DocumentsSectionProps) {
   return (
     <div>
-      <h2 className="font-display text-lg font-medium text-charcoal">Documents</h2>
-      <p className="mt-1.5 text-[13.5px] text-ink-soft">Placeholder uploads only — no real file storage.</p>
+      <h2 className="font-display text-lg font-medium text-charcoal dark:text-white">Documents</h2>
+      <p className="mt-1.5 text-[13.5px] text-ink-soft dark:text-white/50">Placeholder uploads only — no real file storage.</p>
 
       <div className="mt-5 space-y-4">
         {DOC_FIELDS.map(({ key, label, mockFileName }) => (

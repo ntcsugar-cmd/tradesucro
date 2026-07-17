@@ -58,7 +58,7 @@ export function AddWatchForm({ onAdded }: AddWatchFormProps) {
   return (
     <Card padding="lg">
       <CardBody>
-        <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-4">Follow Something New</p>
+        <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-4">Follow Something New</p>
         <div className="grid sm:grid-cols-3 gap-4 items-end">
           <Select label="Type" defaultValue={type} options={TYPE_OPTIONS} onChange={(e) => setType(e.target.value as WatchTargetType)} />
 

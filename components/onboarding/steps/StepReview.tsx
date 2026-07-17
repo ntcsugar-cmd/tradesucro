@@ -15,8 +15,8 @@ interface StepProps {
 function ReviewRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-start justify-between gap-4 py-2">
-      <span className="text-xs text-ink-faint shrink-0 w-40">{label}</span>
-      <span className="text-[13.5px] text-charcoal text-right">{value || "—"}</span>
+      <span className="text-xs text-ink-faint dark:text-white/40 shrink-0 w-40">{label}</span>
+      <span className="text-[13.5px] text-charcoal dark:text-white text-right">{value || "—"}</span>
     </div>
   );
 }
@@ -33,9 +33,9 @@ function ReviewSection({
   children: React.ReactNode;
 }) {
   return (
-    <div className="border border-line rounded-sm p-5">
+    <div className="border border-line dark:border-white/10 rounded-sm p-5">
       <div className="flex items-center justify-between mb-1">
-        <p className="text-[13px] font-semibold text-charcoal">{title}</p>
+        <p className="text-[13px] font-semibold text-charcoal dark:text-white">{title}</p>
         <IconButton variant="ghost" size="sm" aria-label={`Edit ${title}`} onClick={() => onEditStep(step)}>
           <Pencil size={14} />
         </IconButton>
@@ -62,8 +62,8 @@ export function StepReview({ data, onEditStep }: StepProps) {
 
   return (
     <div>
-      <h2 className="font-display text-xl font-medium text-charcoal">Review your details</h2>
-      <p className="mt-1.5 text-[13.5px] text-ink-soft">Make sure everything looks right before you submit.</p>
+      <h2 className="font-display text-xl font-medium text-charcoal dark:text-white">Review your details</h2>
+      <p className="mt-1.5 text-[13.5px] text-ink-soft dark:text-white/50">Make sure everything looks right before you submit.</p>
 
       <div className="mt-6 space-y-4">
         <ReviewSection title="Business Type" step={1} onEditStep={onEditStep}>
@@ -102,7 +102,7 @@ export function StepReview({ data, onEditStep }: StepProps) {
                 </Badge>
               ))
             ) : (
-              <span className="text-[13.5px] text-ink-faint">None selected</span>
+              <span className="text-[13.5px] text-ink-faint dark:text-white/40">None selected</span>
             )}
           </div>
         </ReviewSection>

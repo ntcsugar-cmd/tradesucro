@@ -43,8 +43,8 @@ export function BuyingOpportunitiesPanel() {
             </span>
           )}
           <div className="min-w-0">
-            <p className="font-medium text-charcoal truncate">{o.millName}</p>
-            <p className="flex items-center gap-1 text-[11px] text-ink-faint">
+            <p className="font-medium text-charcoal dark:text-white truncate">{o.millName}</p>
+            <p className="flex items-center gap-1 text-[11px] text-ink-faint dark:text-white/40">
               <MapPin size={10} /> {getMasterStateLabel(o.state)}
             </p>
           </div>
@@ -54,8 +54,8 @@ export function BuyingOpportunitiesPanel() {
     { key: "grade", header: "Grade", render: (o) => <span className="font-mono">{o.grade}</span> },
     { key: "quantity", header: "Quantity", align: "right", render: (o) => <span className="font-mono">{formatQuantityMt(o.quantity)}</span> },
     { key: "rate", header: "Rate", align: "right", render: (o) => <span className="font-mono">{formatINR(o.rate)}</span> },
-    { key: "distanceKm", header: "Distance", align: "right", render: (o) => <span className="text-ink-soft">{o.distanceKm} km</span> },
-    { key: "paymentTerms", header: "Payment Terms", render: (o) => <span className="text-ink-soft">{getPaymentTermLabel(o.paymentTerms)}</span> },
+    { key: "distanceKm", header: "Distance", align: "right", render: (o) => <span className="text-ink-soft dark:text-white/50">{o.distanceKm} km</span> },
+    { key: "paymentTerms", header: "Payment Terms", render: (o) => <span className="text-ink-soft dark:text-white/50">{getPaymentTermLabel(o.paymentTerms)}</span> },
     {
       key: "expectedMargin",
       header: "Expected Margin",

@@ -28,9 +28,9 @@ export function SwipeableKPICards({ items }: SwipeableKPICardsProps) {
             item.tone === "dark" ? "bg-charcoal text-white" : "border border-line dark:border-white/10 bg-white dark:bg-charcoal-soft text-charcoal dark:text-white"
           }`}
         >
-          {item.icon && <div className={`mb-2 ${item.tone === "dark" ? "text-white/60" : "text-ink-faint"}`}>{item.icon}</div>}
-          <p className={`text-[11px] ${item.tone === "dark" ? "text-white/60" : "text-ink-faint"}`}>{item.label}</p>
-          <p className={`font-mono text-[17px] font-semibold mt-1 ${item.tone === "dark" ? "text-white" : "text-charcoal"}`}>{item.value}</p>
+          {item.icon && <div className={`mb-2 ${item.tone === "dark" ? "text-white/60" : "text-ink-faint dark:text-white/40"}`}>{item.icon}</div>}
+          <p className={`text-[11px] ${item.tone === "dark" ? "text-white/60" : "text-ink-faint dark:text-white/40"}`}>{item.label}</p>
+          <p className={`font-mono text-[17px] font-semibold mt-1 ${item.tone === "dark" ? "text-white" : "text-charcoal dark:text-white"}`}>{item.value}</p>
         </div>
       ))}
     </div>

@@ -34,7 +34,7 @@ export default function MarketOverviewPage() {
           <GridItem key={href}>
             <Link href={href} className="flex flex-col items-center gap-2 rounded-sm border border-line dark:border-white/10 bg-white dark:bg-charcoal-soft p-4 text-center hover:border-gold/40 dark:hover:border-gold/40 hover:shadow-card transition-all">
               <Icon size={18} className="text-gold-dim" />
-              <span className="text-[12px] font-medium text-charcoal leading-tight">{label}</span>
+              <span className="text-[12px] font-medium text-charcoal dark:text-white leading-tight">{label}</span>
             </Link>
           </GridItem>
         ))}
@@ -64,7 +64,7 @@ export default function MarketOverviewPage() {
               </Link>
             </CardHeader>
             <CardBody>
-              <p className="text-[13px] text-ink-soft">
+              <p className="text-[13px] text-ink-soft dark:text-white/50">
                 Government notifications, export/import policy, weather, production, and ethanol updates that move the sugar market — all in one feed.
               </p>
               <Link href="/market/news" className="mt-4 inline-block text-sm font-medium text-gold-dim hover:text-gold-bright transition-colors">

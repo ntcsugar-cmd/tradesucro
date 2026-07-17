@@ -55,7 +55,7 @@ export function SmartAllocationPanel({ requiredQuantity, grade, onSelectLot }: S
 
   return (
     <div>
-      <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-3">Smart Inventory Allocation</p>
+      <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-3">Smart Inventory Allocation</p>
 
       {result.insufficientStock && (
         <Alert variant="danger" className="mb-4">
@@ -81,15 +81,15 @@ export function SmartAllocationPanel({ requiredQuantity, grade, onSelectLot }: S
               </p>
               {lot ? (
                 <>
-                  <p className="text-[13px] font-medium text-charcoal">{lot.lotNumber}</p>
-                  <p className="text-xs text-ink-faint mt-0.5">{getProductLabel(lot.product)} · {lot.grade} · {lot.warehouse}</p>
+                  <p className="text-[13px] font-medium text-charcoal dark:text-white">{lot.lotNumber}</p>
+                  <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">{getProductLabel(lot.product)} · {lot.grade} · {lot.warehouse}</p>
                   <div className="flex items-center justify-between mt-2">
-                    <span className="font-mono text-xs text-ink-soft">{formatQuantityMt(lot.availableQuantity)} available</span>
-                    <span className="font-mono text-xs text-charcoal">{formatPricePerUnit(lot.averageCost)}</span>
+                    <span className="font-mono text-xs text-ink-soft dark:text-white/50">{formatQuantityMt(lot.availableQuantity)} available</span>
+                    <span className="font-mono text-xs text-charcoal dark:text-white">{formatPricePerUnit(lot.averageCost)}</span>
                   </div>
                 </>
               ) : (
-                <p className="text-[13px] text-ink-faint italic">No matching lot</p>
+                <p className="text-[13px] text-ink-faint dark:text-white/40 italic">No matching lot</p>
               )}
             </CardBody>
           </Card>

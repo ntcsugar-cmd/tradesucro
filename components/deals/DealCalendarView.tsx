@@ -28,28 +28,28 @@ export function DealCalendarView({ deals, kind }: DealCalendarViewProps) {
   const Icon = ICON[kind];
 
   if (sorted.length === 0) {
-    return <p className="text-[13px] text-ink-faint italic">Nothing scheduled here right now.</p>;
+    return <p className="text-[13px] text-ink-faint dark:text-white/40 italic">Nothing scheduled here right now.</p>;
   }
 
   return (
     <div className="space-y-2.5">
       {sorted.map((deal) => (
-        <div key={deal.id} className="flex items-center justify-between gap-4 rounded-sm border border-line p-4">
+        <div key={deal.id} className="flex items-center justify-between gap-4 rounded-sm border border-line dark:border-white/10 p-4">
           <div className="flex items-center gap-3 min-w-0">
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-sm bg-charcoal/[0.04] text-ink-faint">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-sm bg-charcoal/[0.04] text-ink-faint dark:text-white/40">
               <Icon size={16} />
             </span>
             <div className="min-w-0">
-              <p className="text-[13.5px] font-medium text-charcoal">
+              <p className="text-[13.5px] font-medium text-charcoal dark:text-white">
                 {deal.dealNumber} · {deal.mill} → {deal.buyer}
               </p>
-              <p className="text-xs text-ink-faint mt-0.5">
+              <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">
                 {getProductLabel(deal.product)} · {formatQuantityMt(deal.quantity)}
                 {kind === "payment" && ` · ${formatINR(deal.totalValue)}`}
               </p>
             </div>
           </div>
-          <p className="font-mono text-xs text-ink-faint shrink-0">
+          <p className="font-mono text-xs text-ink-faint dark:text-white/40 shrink-0">
             {new Date(getDateFor(deal, kind)).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" })}
           </p>
         </div>

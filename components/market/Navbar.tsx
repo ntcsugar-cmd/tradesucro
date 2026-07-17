@@ -15,7 +15,7 @@ export function Navbar() {
       <div className="container-page flex h-[72px] items-center justify-between">
         {/* Logo */}
         <a href="#top" className="flex items-baseline gap-2 shrink-0">
-          <span className="font-display text-[22px] font-semibold tracking-tight text-charcoal">
+          <span className="font-display text-[22px] font-semibold tracking-tight text-charcoal dark:text-white">
             TradeSucro
           </span>
           <span className="hidden sm:inline font-mono text-[10px] uppercase tracking-widest2 text-gold-dim">
@@ -29,7 +29,7 @@ export function Navbar() {
             <a
               key={link.label}
               href={link.href}
-              className="text-[13.5px] font-medium text-charcoal/75 hover:text-charcoal transition-colors"
+              className="text-[13.5px] font-medium text-charcoal/75 dark:text-white hover:text-charcoal dark:hover:text-white transition-colors"
             >
               {link.label}
             </a>
@@ -40,12 +40,12 @@ export function Navbar() {
         <div className="hidden lg:flex items-center gap-5">
           <Button variant="subtle" size="sm" aria-label="Search TradeSucro">
             <Search size={15} />
-            <span className="text-xs font-mono text-ink-faint">Search offers…</span>
+            <span className="text-xs font-mono text-ink-faint dark:text-white/40">Search offers…</span>
           </Button>
-          <a href="#login" className="text-[13.5px] font-medium text-charcoal/75 hover:text-charcoal transition-colors">
+          <a href="#login" className="text-[13.5px] font-medium text-charcoal/75 dark:text-white hover:text-charcoal dark:hover:text-white transition-colors">
             Log in
           </a>
-          <a href="#register" className="text-[13.5px] font-medium text-charcoal/75 hover:text-charcoal transition-colors">
+          <a href="#register" className="text-[13.5px] font-medium text-charcoal/75 dark:text-white hover:text-charcoal dark:hover:text-white transition-colors">
             Register
           </a>
           <Button variant="gold" size="sm">
@@ -68,23 +68,23 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden bg-paper border-b border-line">
+        <div className="lg:hidden bg-paper border-b border-line dark:border-white/10">
           <div className="container-page flex flex-col gap-1 py-4">
             {MARKETING_NAV_LINKS.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="py-2.5 text-sm font-medium text-charcoal/80"
+                className="py-2.5 text-sm font-medium text-charcoal/80 dark:text-white"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
               </a>
             ))}
-            <div className="flex items-center gap-3 pt-3 mt-2 border-t border-line">
-              <a href="#login" className="text-sm font-medium text-charcoal/75">
+            <div className="flex items-center gap-3 pt-3 mt-2 border-t border-line dark:border-white/10">
+              <a href="#login" className="text-sm font-medium text-charcoal/75 dark:text-white">
                 Log in
               </a>
-              <a href="#register" className="text-sm font-medium text-charcoal/75">
+              <a href="#register" className="text-sm font-medium text-charcoal/75 dark:text-white">
                 Register
               </a>
             </div>

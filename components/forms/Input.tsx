@@ -120,7 +120,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, BaseInputProps>((props
           type="button"
           onClick={() => setVisible((v) => !v)}
           aria-label={visible ? "Hide password" : "Show password"}
-          className="pointer-events-auto text-ink-faint hover:text-charcoal transition-colors"
+          className="pointer-events-auto text-ink-faint dark:text-white/40 hover:text-charcoal dark:hover:text-white transition-colors"
         >
           {visible ? <EyeOff size={16} /> : <Eye size={16} />}
         </button>
@@ -153,7 +153,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
       ref={ref}
       type="number"
       inputMode="numeric"
-      trailingIcon={unit ? <span className="font-mono text-xs text-ink-faint">{unit}</span> : undefined}
+      trailingIcon={unit ? <span className="font-mono text-xs text-ink-faint dark:text-white/40">{unit}</span> : undefined}
       {...props}
     />
   )

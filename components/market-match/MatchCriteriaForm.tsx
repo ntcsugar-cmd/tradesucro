@@ -37,7 +37,7 @@ export function MatchCriteriaForm({ onRun, running = false }: MatchCriteriaFormP
   return (
     <Card padding="lg">
       <CardBody>
-        <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-4">Match Criteria</p>
+        <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-4">Match Criteria</p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
           <Select label="Grade" size="sm" placeholder="Any grade" options={GRADE_OPTIONS} onChange={(e) => setGrade(e.target.value)} />
           <StateSelect label="State" size="sm" onChange={(e) => setState(e.target.value)} />

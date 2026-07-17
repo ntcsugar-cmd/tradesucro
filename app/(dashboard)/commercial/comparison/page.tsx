@@ -34,7 +34,7 @@ export default function SupplierComparisonPage() {
         <ComparisonFilterBar onApply={runComparison} />
       </div>
 
-      <p className="text-[13px] text-ink-faint mb-4">{loading ? "Ranking suppliers…" : `${rows.length} offers ranked`}</p>
+      <p className="text-[13px] text-ink-faint dark:text-white/40 mb-4">{loading ? "Ranking suppliers…" : `${rows.length} offers ranked`}</p>
       <SupplierComparisonTable rows={rows} loading={loading} />
     </>
   );

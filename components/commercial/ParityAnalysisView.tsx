@@ -16,9 +16,9 @@ import type { ParityInputs } from "@/lib/types/commercial";
 
 function StatRow({ label, value, emphasis = false }: { label: string; value: string; emphasis?: boolean }) {
   return (
-    <div className="flex items-center justify-between py-2.5 border-b border-line last:border-b-0">
-      <span className="text-xs text-ink-faint">{label}</span>
-      <span className={`font-mono ${emphasis ? "text-[15px] font-semibold text-charcoal" : "text-[13.5px] text-charcoal"}`}>{value}</span>
+    <div className="flex items-center justify-between py-2.5 border-b border-line dark:border-white/10 last:border-b-0">
+      <span className="text-xs text-ink-faint dark:text-white/40">{label}</span>
+      <span className={`font-mono ${emphasis ? "text-[15px] font-semibold text-charcoal dark:text-white" : "text-[13.5px] text-charcoal dark:text-white"}`}>{value}</span>
     </div>
   );
 }
@@ -68,7 +68,7 @@ export function ParityAnalysisView() {
       <div className="lg:col-span-2 space-y-6">
         <Card padding="lg">
           <CardBody>
-            <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-4">Reference Offer (optional)</p>
+            <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-4">Reference Offer (optional)</p>
             <Select
               label="Mill Offer"
               placeholder="Select an offer to auto-fill purchase price"
@@ -81,7 +81,7 @@ export function ParityAnalysisView() {
 
         <Card padding="lg">
           <CardBody>
-            <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-5">Parity Inputs</p>
+            <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-5">Parity Inputs</p>
             <div className="grid sm:grid-cols-2 gap-5">
               <NumberInput label="Purchase Price" unit="₹/QTL" value={inputs.purchasePrice || ""} onChange={(e) => set("purchasePrice", Number(e.target.value) || 0)} />
               <NumberInput label="Current Market Price" unit="₹/QTL" helperText={`India average: ${formatINR(marketAverage)}`} value={inputs.currentMarketPrice || ""} onChange={(e) => set("currentMarketPrice", Number(e.target.value) || 0)} />
@@ -108,7 +108,7 @@ export function ParityAnalysisView() {
         <Card padding="lg" className={isProfit ? "ring-1 ring-rise/20" : "ring-1 ring-fall/20"}>
           <CardBody>
             <div className="flex items-center justify-between mb-4">
-              <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint">Parity Analysis</p>
+              <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40">Parity Analysis</p>
               {isProfit ? <TrendingUp size={14} className="text-rise" /> : <TrendingDown size={14} className="text-fall" />}
             </div>
 
@@ -121,7 +121,7 @@ export function ParityAnalysisView() {
             <StatRow label="Margin %" value={`${analysis.marginPercent.toFixed(1)}%`} emphasis />
 
             <div className={`mt-4 rounded-sm border p-4 ${isProfit ? "border-rise/30 bg-rise/[0.05]" : "border-fall/30 bg-fall/[0.05]"}`}>
-              <p className="flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-widest2 text-ink-faint">
+              <p className="flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-widest2 text-ink-faint dark:text-white/40">
                 <Scale size={11} /> {isProfit ? "Profit" : "Loss"}
               </p>
               <p className={`font-mono text-2xl mt-1 ${isProfit ? "text-rise" : "text-fall"}`}>{formatINR(Math.abs(analysis.profitOrLoss))}</p>

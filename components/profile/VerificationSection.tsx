@@ -24,8 +24,8 @@ export function VerificationSection({ profile }: VerificationSectionProps) {
       <CardBody>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
           {LABELS.map(({ key, label }) => (
-            <div key={key} className="flex items-center justify-between rounded-sm border border-line p-3">
-              <span className="text-[13px] font-medium text-charcoal">{label}</span>
+            <div key={key} className="flex items-center justify-between rounded-sm border border-line dark:border-white/10 p-3">
+              <span className="text-[13px] font-medium text-charcoal dark:text-white">{label}</span>
               <VerificationBadge status={profile.verification[key]} />
             </div>
           ))}

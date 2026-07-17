@@ -34,47 +34,47 @@ export function MarketSearchBar() {
       {query.trim().length >= 2 && (
         <Card padding="none" className="absolute z-dropdown mt-2 w-full shadow-modal">
           <CardBody className="p-4 max-h-96 overflow-y-auto">
-            {searching && <p className="text-[13px] text-ink-faint">Searching…</p>}
-            {!searching && !hasResults && <p className="text-[13px] text-ink-faint">No matches for &ldquo;{query}&rdquo;.</p>}
+            {searching && <p className="text-[13px] text-ink-faint dark:text-white/40">Searching…</p>}
+            {!searching && !hasResults && <p className="text-[13px] text-ink-faint dark:text-white/40">No matches for &ldquo;{query}&rdquo;.</p>}
             {!searching && results && (
               <div className="space-y-4">
                 {results.mills.length > 0 && (
                   <div>
-                    <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint mb-1.5 flex items-center gap-1.5"><Factory size={11} /> Mills</p>
+                    <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-1.5 flex items-center gap-1.5"><Factory size={11} /> Mills</p>
                     {results.mills.map((m) => (
-                      <p key={m.id} className="text-[13px] text-charcoal py-1">{m.label}</p>
+                      <p key={m.id} className="text-[13px] text-charcoal dark:text-white py-1">{m.label}</p>
                     ))}
                   </div>
                 )}
                 {results.states.length > 0 && (
                   <div>
-                    <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint mb-1.5 flex items-center gap-1.5"><MapPin size={11} /> States</p>
+                    <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-1.5 flex items-center gap-1.5"><MapPin size={11} /> States</p>
                     {results.states.map((s) => (
-                      <p key={s.value} className="text-[13px] text-charcoal py-1">{s.label}</p>
+                      <p key={s.value} className="text-[13px] text-charcoal dark:text-white py-1">{s.label}</p>
                     ))}
                   </div>
                 )}
                 {results.grades.length > 0 && (
                   <div>
-                    <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint mb-1.5 flex items-center gap-1.5"><Tag size={11} /> Grades</p>
+                    <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-1.5 flex items-center gap-1.5"><Tag size={11} /> Grades</p>
                     {results.grades.map((g) => (
-                      <p key={g} className="text-[13px] font-mono text-charcoal py-1">{g}</p>
+                      <p key={g} className="text-[13px] font-mono text-charcoal dark:text-white py-1">{g}</p>
                     ))}
                   </div>
                 )}
                 {results.tenders.length > 0 && (
                   <div>
-                    <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint mb-1.5 flex items-center gap-1.5"><Gavel size={11} /> Tenders</p>
+                    <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-1.5 flex items-center gap-1.5"><Gavel size={11} /> Tenders</p>
                     {results.tenders.map((t) => (
-                      <p key={t.number} className="text-[13px] text-charcoal py-1 font-mono">{t.number} <span className="font-sans text-ink-faint">· {t.millName}</span></p>
+                      <p key={t.number} className="text-[13px] text-charcoal dark:text-white py-1 font-mono">{t.number} <span className="font-sans text-ink-faint dark:text-white/40">· {t.millName}</span></p>
                     ))}
                   </div>
                 )}
                 {results.offers.length > 0 && (
                   <div>
-                    <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint mb-1.5 flex items-center gap-1.5"><Package size={11} /> Offers</p>
+                    <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-1.5 flex items-center gap-1.5"><Package size={11} /> Offers</p>
                     {results.offers.map((o) => (
-                      <p key={o.number} className="text-[13px] text-charcoal py-1 font-mono">{o.number} <span className="font-sans text-ink-faint">· {o.millName}</span></p>
+                      <p key={o.number} className="text-[13px] text-charcoal dark:text-white py-1 font-mono">{o.number} <span className="font-sans text-ink-faint dark:text-white/40">· {o.millName}</span></p>
                     ))}
                   </div>
                 )}

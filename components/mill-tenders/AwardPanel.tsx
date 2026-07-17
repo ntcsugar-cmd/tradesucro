@@ -65,8 +65,8 @@ export function AwardPanel({ tender, bids, canAward, onAward }: AwardPanelProps)
               <Trophy size={18} />
             </span>
             <div>
-              <p className="text-[14px] font-semibold text-charcoal">{awardedBid?.companyName ?? "Winner"}</p>
-              <p className="text-xs text-ink-faint mt-0.5">
+              <p className="text-[14px] font-semibold text-charcoal dark:text-white">{awardedBid?.companyName ?? "Winner"}</p>
+              <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">
                 Awarded {formatQuantityMt(awardedBid?.quantity ?? 0)} at {formatPricePerUnit(awardedBid?.price ?? 0)} on{" "}
                 {new Date(tender.awardDate).toLocaleDateString("en-IN", { dateStyle: "medium" })}
               </p>

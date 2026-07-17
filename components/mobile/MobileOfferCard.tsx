@@ -28,32 +28,32 @@ export function MobileOfferCard({ millName, grade, productLabel, price, freight,
             <div className="min-w-0 flex-1">
               <MillNameScroll
                 name={millName}
-                className="text-[14px] font-semibold text-charcoal"
+                className="text-[14px] font-semibold text-charcoal dark:text-white"
                 prefix={verified ? <ShieldCheck size={13} className="order-last shrink-0 text-success" /> : undefined}
               />
-              <p className="text-[12px] text-ink-faint mt-0.5">
+              <p className="text-[12px] text-ink-faint dark:text-white/40 mt-0.5">
                 {productLabel} · {grade}
               </p>
             </div>
-            <p className="font-mono text-[16px] font-semibold text-charcoal shrink-0">{formatINR(price)}</p>
+            <p className="font-mono text-[16px] font-semibold text-charcoal dark:text-white shrink-0">{formatINR(price)}</p>
           </div>
 
           <div className="mt-3 grid grid-cols-3 gap-2 rounded-sm bg-charcoal/[0.03] p-2.5">
             {freight !== undefined && (
               <div>
-                <p className="text-[10px] text-ink-faint">Freight</p>
-                <p className="font-mono text-[12.5px] text-charcoal mt-0.5">{formatINR(freight)}</p>
+                <p className="text-[10px] text-ink-faint dark:text-white/40">Freight</p>
+                <p className="font-mono text-[12.5px] text-charcoal dark:text-white mt-0.5">{formatINR(freight)}</p>
               </div>
             )}
             {landedCost !== undefined && (
               <div>
-                <p className="text-[10px] text-ink-faint">Landed Cost</p>
-                <p className="font-mono text-[12.5px] font-semibold text-charcoal mt-0.5">{formatINR(landedCost)}</p>
+                <p className="text-[10px] text-ink-faint dark:text-white/40">Landed Cost</p>
+                <p className="font-mono text-[12.5px] font-semibold text-charcoal dark:text-white mt-0.5">{formatINR(landedCost)}</p>
               </div>
             )}
             <div>
-              <p className="text-[10px] text-ink-faint">Dispatch</p>
-              <p className="flex items-center gap-1 font-mono text-[12.5px] text-charcoal mt-0.5">
+              <p className="text-[10px] text-ink-faint dark:text-white/40">Dispatch</p>
+              <p className="flex items-center gap-1 font-mono text-[12.5px] text-charcoal dark:text-white mt-0.5">
                 <Truck size={11} /> {dispatchDays}d
               </p>
             </div>
@@ -62,7 +62,7 @@ export function MobileOfferCard({ millName, grade, productLabel, price, freight,
 
         <div className="mt-3 grid grid-cols-3 gap-2">
           {phone && (
-            <a href={`tel:${phone}`} className="flex items-center justify-center gap-1.5 rounded-sm border border-line py-2.5 min-h-[44px] text-[12.5px] font-medium text-charcoal active:bg-charcoal/[0.04]">
+            <a href={`tel:${phone}`} className="flex items-center justify-center gap-1.5 rounded-sm border border-line dark:border-white/10 py-2.5 min-h-[44px] text-[12.5px] font-medium text-charcoal dark:text-white active:bg-charcoal/[0.04]">
               <Phone size={14} /> Call
             </a>
           )}

@@ -25,14 +25,14 @@ export function StepPreferences({ data, onChange, error }: StepProps) {
 
   return (
     <div>
-      <h2 className="font-display text-xl font-medium text-charcoal">Business preference</h2>
-      <p className="mt-1.5 text-[13.5px] text-ink-soft">Select everything that applies — you can change this later.</p>
+      <h2 className="font-display text-xl font-medium text-charcoal dark:text-white">Business preference</h2>
+      <p className="mt-1.5 text-[13.5px] text-ink-soft dark:text-white/50">Select everything that applies — you can change this later.</p>
 
       <div className="mt-6 space-y-3">
         {PREFERENCE_OPTIONS.map((opt) => (
           <div
             key={opt.key}
-            className="rounded-sm border border-line p-4 hover:border-gold/40 transition-colors"
+            className="rounded-sm border border-line dark:border-white/10 p-4 hover:border-gold/40 transition-colors"
           >
             <Checkbox
               checked={data.preferences[opt.key]}

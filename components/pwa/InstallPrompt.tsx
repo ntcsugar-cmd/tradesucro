@@ -67,12 +67,12 @@ export function InstallPrompt() {
       </span>
       <div className="min-w-0 flex-1">
         <p className="text-[13px] font-semibold text-charcoal dark:text-white">Install TradeSucro</p>
-        <p className="text-[11.5px] text-ink-faint">Add to your home screen for instant, one-tap access.</p>
+        <p className="text-[11.5px] text-ink-faint dark:text-white/40">Add to your home screen for instant, one-tap access.</p>
       </div>
       <button type="button" onClick={handleInstall} className="shrink-0 rounded-sm bg-charcoal px-3.5 py-2 text-[12.5px] font-semibold text-white active:opacity-90">
         Install
       </button>
-      <button type="button" onClick={handleDismiss} aria-label="Dismiss" className="shrink-0 text-ink-faint p-1">
+      <button type="button" onClick={handleDismiss} aria-label="Dismiss" className="shrink-0 text-ink-faint dark:text-white/40 p-1">
         <X size={16} />
       </button>
     </div>

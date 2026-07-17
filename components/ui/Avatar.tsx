@@ -34,7 +34,7 @@ export function Avatar({ src, name, size = "md", status, className }: AvatarProp
         <img
           src={src}
           alt={name}
-          className={clsx("h-full w-full rounded-full object-cover border border-line", sizeStyles[size])}
+          className={clsx("h-full w-full rounded-full object-cover border border-line dark:border-white/10", sizeStyles[size])}
         />
       ) : (
         <span

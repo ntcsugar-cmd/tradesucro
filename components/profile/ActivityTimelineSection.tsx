@@ -19,7 +19,7 @@ export function ActivityTimelineSection({ profile }: ActivityTimelineSectionProp
         <CardTitle>Activity Timeline</CardTitle>
       </CardHeader>
       <CardBody>
-        <ol className="relative border-l border-line ml-1.5 space-y-6">
+        <ol className="relative border-l border-line dark:border-white/10 ml-1.5 space-y-6">
           {items.map((item, i) => (
             <li key={item.id} className="pl-5 relative">
               <span
@@ -29,8 +29,8 @@ export function ActivityTimelineSection({ profile }: ActivityTimelineSectionProp
               >
                 <Circle size={6} fill="white" className="text-white" />
               </span>
-              <p className="text-[13.5px] font-medium text-charcoal">{item.title}</p>
-              <p className="text-xs text-ink-faint mt-0.5">{formatTimestamp(item.timestamp)}</p>
+              <p className="text-[13.5px] font-medium text-charcoal dark:text-white">{item.title}</p>
+              <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">{formatTimestamp(item.timestamp)}</p>
             </li>
           ))}
         </ol>

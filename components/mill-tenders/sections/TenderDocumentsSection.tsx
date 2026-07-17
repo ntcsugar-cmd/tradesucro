@@ -29,8 +29,8 @@ export function TenderDocumentsSection({ data, onChange, readOnly = false }: Ten
 
   return (
     <div>
-      <h2 className="font-display text-lg font-medium text-charcoal">Tender Documents</h2>
-      <p className="mt-1.5 text-[13.5px] text-ink-soft">Placeholder uploads only — no real file storage.</p>
+      <h2 className="font-display text-lg font-medium text-charcoal dark:text-white">Tender Documents</h2>
+      <p className="mt-1.5 text-[13.5px] text-ink-soft dark:text-white/50">Placeholder uploads only — no real file storage.</p>
 
       <div className="mt-5 space-y-4">
         <FileUpload label="Tender Notice" mockFileName="tender_notice.pdf" value={data.tenderNotice} onChange={(v) => onChange({ tenderNotice: v })} />
@@ -40,7 +40,7 @@ export function TenderDocumentsSection({ data, onChange, readOnly = false }: Ten
 
         <div>
           <div className="flex items-center justify-between mb-2">
-            <p className="text-[13px] font-medium text-charcoal">Other Documents</p>
+            <p className="text-[13px] font-medium text-charcoal dark:text-white">Other Documents</p>
             {!readOnly && (
               <Button variant="outline" size="sm" onClick={addOther}>
                 <Plus size={14} /> Add document

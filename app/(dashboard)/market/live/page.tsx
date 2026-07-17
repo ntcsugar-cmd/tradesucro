@@ -74,7 +74,7 @@ export default function LivePriceBoardPage() {
         title="Live Trading Terminal"
         description={`${entries.length} mills reporting today's price — the flagship view of TradeSucro's market.`}
         actions={
-          <span className="flex items-center gap-1.5 text-[11px] text-ink-faint">
+          <span className="flex items-center gap-1.5 text-[11px] text-ink-faint dark:text-white/40">
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-rise opacity-60" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-rise" />
@@ -85,7 +85,7 @@ export default function LivePriceBoardPage() {
       />
 
       <div className="mb-8">
-        <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-3">Market Dashboard</p>
+        <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-3">Market Dashboard</p>
         <div className="space-y-4">
           <MarketStatsGrid />
           <MarketDashboardExtras />
@@ -93,12 +93,12 @@ export default function LivePriceBoardPage() {
       </div>
 
       <div className="mb-8">
-        <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-3">Top Gainers &amp; Losers</p>
+        <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-3">Top Gainers &amp; Losers</p>
         <TopMoversWidget />
       </div>
 
       <div className="mb-8">
-        <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-3">Market Activity</p>
+        <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-3">Market Activity</p>
         <Grid cols={1} colsMd={2} gap="md">
           <LiveListingsPanel
             title="New Mill Offers"
@@ -110,11 +110,11 @@ export default function LivePriceBoardPage() {
             renderItem={(o) => (
               <Link href={`/mill-offers/${o.id}`} className="flex items-center justify-between gap-3 hover:opacity-70 transition-opacity">
                 <div className="min-w-0">
-                  <p className="text-[13px] text-charcoal truncate">{o.millName}</p>
-                  <p className="text-[11px] text-ink-faint">{o.products.map((p) => getProductLabel(p.product)).join(", ")}</p>
+                  <p className="text-[13px] text-charcoal dark:text-white truncate">{o.millName}</p>
+                  <p className="text-[11px] text-ink-faint dark:text-white/40">{o.products.map((p) => getProductLabel(p.product)).join(", ")}</p>
                 </div>
-                <span className="flex items-center gap-1 font-mono text-[13px] text-charcoal shrink-0">
-                  {formatQuantityMt(o.products.reduce((s, p) => s + p.availableQuantity, 0))} <ArrowUpRight size={11} className="text-ink-faint" />
+                <span className="flex items-center gap-1 font-mono text-[13px] text-charcoal dark:text-white shrink-0">
+                  {formatQuantityMt(o.products.reduce((s, p) => s + p.availableQuantity, 0))} <ArrowUpRight size={11} className="text-ink-faint dark:text-white/40" />
                 </span>
               </Link>
             )}
@@ -132,11 +132,11 @@ export default function LivePriceBoardPage() {
                 <div className="min-w-0 flex items-center gap-2">
                   <Gavel size={12} className="text-gold-dim shrink-0" />
                   <div className="min-w-0">
-                    <p className="text-[13px] text-charcoal truncate">{t.tenderNumber}</p>
-                    <p className="text-[11px] text-ink-faint truncate">{t.title}</p>
+                    <p className="text-[13px] text-charcoal dark:text-white truncate">{t.tenderNumber}</p>
+                    <p className="text-[11px] text-ink-faint dark:text-white/40 truncate">{t.title}</p>
                   </div>
                 </div>
-                <span className="font-mono text-[13px] text-charcoal shrink-0">{formatINR(t.products[0]?.reservePrice ?? 0)}</span>
+                <span className="font-mono text-[13px] text-charcoal dark:text-white shrink-0">{formatINR(t.products[0]?.reservePrice ?? 0)}</span>
               </Link>
             )}
           />
@@ -153,11 +153,11 @@ export default function LivePriceBoardPage() {
                 <div className="min-w-0 flex items-center gap-2">
                   <ClipboardList size={12} className="text-gold-dim shrink-0" />
                   <div className="min-w-0">
-                    <p className="text-[13px] text-charcoal truncate">{r.company.name}</p>
-                    <p className="text-[11px] text-ink-faint">{getProductLabel(r.product)} · {formatQuantityMt(r.quantity)}</p>
+                    <p className="text-[13px] text-charcoal dark:text-white truncate">{r.company.name}</p>
+                    <p className="text-[11px] text-ink-faint dark:text-white/40">{getProductLabel(r.product)} · {formatQuantityMt(r.quantity)}</p>
                   </div>
                 </div>
-                <span className="font-mono text-[13px] text-charcoal shrink-0">{formatINR(r.expectedPrice)}</span>
+                <span className="font-mono text-[13px] text-charcoal dark:text-white shrink-0">{formatINR(r.expectedPrice)}</span>
               </Link>
             )}
           />
@@ -174,11 +174,11 @@ export default function LivePriceBoardPage() {
                 <div className="min-w-0 flex items-center gap-2">
                   <Package size={12} className="text-gold-dim shrink-0" />
                   <div className="min-w-0">
-                    <p className="text-[13px] text-charcoal truncate">{o.company.name}</p>
-                    <p className="text-[11px] text-ink-faint">{getProductLabel(o.product)} · {formatQuantityMt(o.quantity)}</p>
+                    <p className="text-[13px] text-charcoal dark:text-white truncate">{o.company.name}</p>
+                    <p className="text-[11px] text-ink-faint dark:text-white/40">{getProductLabel(o.product)} · {formatQuantityMt(o.quantity)}</p>
                   </div>
                 </div>
-                <span className="font-mono text-[13px] text-charcoal shrink-0">{formatINR(o.price)}</span>
+                <span className="font-mono text-[13px] text-charcoal dark:text-white shrink-0">{formatINR(o.price)}</span>
               </Link>
             )}
           />
@@ -201,19 +201,19 @@ export default function LivePriceBoardPage() {
               <Grid cols={1} colsLg={2} gap="md">
                 <GridItem>
                   <div>
-                    <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-3">Market Activity Timeline</p>
+                    <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-3">Market Activity Timeline</p>
                     <MarketFeedTimeline limit={15} />
                   </div>
                 </GridItem>
                 <GridItem>
                   <div>
-                    <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-3">Market News</p>
+                    <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-3">Market News</p>
                     <MarketNewsGrid />
                   </div>
                 </GridItem>
               </Grid>
               <div>
-                <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-3">Market Heat Map</p>
+                <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-3">Market Heat Map</p>
                 <PriceHeatMapGrid />
               </div>
             </div>

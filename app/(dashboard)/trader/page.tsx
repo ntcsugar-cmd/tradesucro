@@ -48,14 +48,14 @@ export default function TraderTradingDeskPage() {
 
             <div>
               <div className="flex items-baseline justify-between mb-3">
-                <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint">Buying Opportunities</p>
-                <span className="text-xs text-ink-faint">Ranked by expected margin</span>
+                <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40">Buying Opportunities</p>
+                <span className="text-xs text-ink-faint dark:text-white/40">Ranked by expected margin</span>
               </div>
               <BuyingOpportunitiesPanel />
             </div>
 
             <div>
-              <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-3">Trader KPI</p>
+              <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-3">Trader KPI</p>
               <TraderKPIWidget />
             </div>
           </div>

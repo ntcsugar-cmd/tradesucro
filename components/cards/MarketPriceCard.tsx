@@ -29,16 +29,16 @@ export function MarketPriceCard({
     <div className={clsx("bg-white dark:bg-charcoal-soft border border-line dark:border-white/10 p-6 hover:border-gold/40 dark:hover:border-gold/40 transition-colors", className)}>
       <div className="flex items-start justify-between">
         <div>
-          <p className="font-body font-medium text-[15px] text-charcoal">{grade}</p>
-          <p className="text-xs text-ink-faint mt-0.5">{region}</p>
+          <p className="font-body font-medium text-[15px] text-charcoal dark:text-white">{grade}</p>
+          <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">{region}</p>
         </div>
         <PriceDelta change={change} direction={direction} />
       </div>
 
-      <p className="mt-5 font-mono text-[28px] leading-none text-charcoal">
+      <p className="mt-5 font-mono text-[28px] leading-none text-charcoal dark:text-white">
         {formatINR(price)}
       </p>
-      <p className="text-[11px] text-ink-faint mt-1">{unit}</p>
+      <p className="text-[11px] text-ink-faint dark:text-white/40 mt-1">{unit}</p>
 
       {sparkline && (
         <div className="mt-5">

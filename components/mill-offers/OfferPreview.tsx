@@ -18,15 +18,15 @@ interface OfferPreviewProps {
 function Row({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-start justify-between gap-4 py-1.5">
-      <span className="text-xs text-ink-faint shrink-0">{label}</span>
-      <span className="text-[13px] text-charcoal text-right">{value || "—"}</span>
+      <span className="text-xs text-ink-faint dark:text-white/40 shrink-0">{label}</span>
+      <span className="text-[13px] text-charcoal dark:text-white text-right">{value || "—"}</span>
     </div>
   );
 }
 
 function Block({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="border-t border-line pt-4 mt-4 first:border-t-0 first:pt-0 first:mt-0 print:break-inside-avoid">
+    <div className="border-t border-line dark:border-white/10 pt-4 mt-4 first:border-t-0 first:pt-0 first:mt-0 print:break-inside-avoid">
       <p className="text-[11px] font-mono uppercase tracking-widest2 text-gold-dim mb-2">{title}</p>
       {children}
     </div>
@@ -39,14 +39,14 @@ export function OfferPreview({ data, offerNumber }: OfferPreviewProps) {
 
   return (
     <div className="print:p-8">
-      <div className="flex items-start justify-between pb-4 border-b border-line">
+      <div className="flex items-start justify-between pb-4 border-b border-line dark:border-white/10">
         <div>
-          <p className="font-display text-xl text-charcoal">{data.millName || "Sugar Mill"}</p>
-          <p className="text-xs text-ink-faint mt-0.5">{data.city}, {getMasterStateLabel(data.state)} · Factory Code: {data.factoryCode || "—"}</p>
+          <p className="font-display text-xl text-charcoal dark:text-white">{data.millName || "Sugar Mill"}</p>
+          <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">{data.city}, {getMasterStateLabel(data.state)} · Factory Code: {data.factoryCode || "—"}</p>
         </div>
         <div className="text-right">
-          <p className="font-mono text-xs text-ink-faint">Offer No.</p>
-          <p className="font-mono text-sm text-charcoal">{offerNumber ?? "To be assigned"}</p>
+          <p className="font-mono text-xs text-ink-faint dark:text-white/40">Offer No.</p>
+          <p className="font-mono text-sm text-charcoal dark:text-white">{offerNumber ?? "To be assigned"}</p>
         </div>
       </div>
 
@@ -60,12 +60,12 @@ export function OfferPreview({ data, offerNumber }: OfferPreviewProps) {
       <Block title={`Products (${formatQuantityMt(totalQuantity)} total)`}>
         <div className="space-y-3">
           {data.products.map((p, i) => (
-            <div key={p.id} className="flex items-center justify-between rounded-sm border border-line p-3">
+            <div key={p.id} className="flex items-center justify-between rounded-sm border border-line dark:border-white/10 p-3">
               <div>
-                <p className="text-[13px] font-medium text-charcoal">
+                <p className="text-[13px] font-medium text-charcoal dark:text-white">
                   {getProductLabel(p.product) || `Product ${i + 1}`} · <span className="font-mono">{p.grade}</span>
                 </p>
-                <p className="text-xs text-ink-faint mt-0.5">
+                <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">
                   {formatQuantityMt(p.availableQuantity)} · {getPackagingLabel(p.packaging)} · {p.gstIncluded ? "GST incl." : "GST excl."}
                 </p>
               </div>
@@ -100,12 +100,12 @@ export function OfferPreview({ data, offerNumber }: OfferPreviewProps) {
 
       {(data.conditions.specialTerms || data.conditions.qualityConditions || data.conditions.penaltyClause || data.conditions.cancellationPolicy || data.conditions.remarks) && (
         <Block title="Conditions">
-          <div className="space-y-2 text-[13px] text-ink-soft leading-relaxed">
-            {data.conditions.specialTerms && <p><span className="text-charcoal font-medium">Special terms: </span>{data.conditions.specialTerms}</p>}
-            {data.conditions.qualityConditions && <p><span className="text-charcoal font-medium">Quality: </span>{data.conditions.qualityConditions}</p>}
-            {data.conditions.penaltyClause && <p><span className="text-charcoal font-medium">Penalty: </span>{data.conditions.penaltyClause}</p>}
-            {data.conditions.cancellationPolicy && <p><span className="text-charcoal font-medium">Cancellation: </span>{data.conditions.cancellationPolicy}</p>}
-            {data.conditions.remarks && <p><span className="text-charcoal font-medium">Remarks: </span>{data.conditions.remarks}</p>}
+          <div className="space-y-2 text-[13px] text-ink-soft dark:text-white/50 leading-relaxed">
+            {data.conditions.specialTerms && <p><span className="text-charcoal dark:text-white font-medium">Special terms: </span>{data.conditions.specialTerms}</p>}
+            {data.conditions.qualityConditions && <p><span className="text-charcoal dark:text-white font-medium">Quality: </span>{data.conditions.qualityConditions}</p>}
+            {data.conditions.penaltyClause && <p><span className="text-charcoal dark:text-white font-medium">Penalty: </span>{data.conditions.penaltyClause}</p>}
+            {data.conditions.cancellationPolicy && <p><span className="text-charcoal dark:text-white font-medium">Cancellation: </span>{data.conditions.cancellationPolicy}</p>}
+            {data.conditions.remarks && <p><span className="text-charcoal dark:text-white font-medium">Remarks: </span>{data.conditions.remarks}</p>}
           </div>
         </Block>
       )}

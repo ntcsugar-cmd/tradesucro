@@ -21,8 +21,8 @@ export function StepBusinessInfo({ data, onChange, errors = {} }: StepProps) {
 
   return (
     <div>
-      <h2 className="font-display text-xl font-medium text-charcoal">Business information</h2>
-      <p className="mt-1.5 text-[13.5px] text-ink-soft">Helps us match you with the right offers and buyers.</p>
+      <h2 className="font-display text-xl font-medium text-charcoal dark:text-white">Business information</h2>
+      <p className="mt-1.5 text-[13.5px] text-ink-soft dark:text-white/50">Helps us match you with the right offers and buyers.</p>
 
       <div className="mt-6 space-y-5">
         <div className="grid sm:grid-cols-2 gap-5">
@@ -54,8 +54,8 @@ export function StepBusinessInfo({ data, onChange, errors = {} }: StepProps) {
         />
 
         <div>
-          <p className="block text-[13px] font-medium text-charcoal mb-2">States served</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-2.5 rounded-sm border border-line p-4">
+          <p className="block text-[13px] font-medium text-charcoal dark:text-white mb-2">States served</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-2.5 rounded-sm border border-line dark:border-white/10 p-4">
             {STATES.map((state) => (
               <Checkbox
                 key={state.value}

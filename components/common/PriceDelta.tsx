@@ -12,7 +12,7 @@ interface PriceDeltaProps {
 export function PriceDelta({ change, direction, className }: PriceDeltaProps) {
   const Icon = direction === "up" ? ArrowUpRight : direction === "down" ? ArrowDownRight : Minus;
   const color =
-    direction === "up" ? "text-rise" : direction === "down" ? "text-fall" : "text-ink-faint";
+    direction === "up" ? "text-rise" : direction === "down" ? "text-fall" : "text-ink-faint dark:text-white/40";
 
   return (
     <span className={clsx("inline-flex items-center gap-0.5 font-mono text-xs", color, className)}>

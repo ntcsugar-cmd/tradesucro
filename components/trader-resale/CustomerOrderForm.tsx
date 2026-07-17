@@ -19,8 +19,8 @@ import type { Customer, ResaleOffer, CustomerOrderDraft } from "@/lib/types/trad
 function SummaryRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-center justify-between py-1.5">
-      <span className="text-xs text-ink-faint">{label}</span>
-      <span className="font-mono text-[13px] text-charcoal">{value}</span>
+      <span className="text-xs text-ink-faint dark:text-white/40">{label}</span>
+      <span className="font-mono text-[13px] text-charcoal dark:text-white">{value}</span>
     </div>
   );
 }
@@ -133,10 +133,10 @@ export function CustomerOrderForm() {
               />
 
               {selectedOffer && (
-                <div className="rounded-sm border border-line bg-charcoal/[0.02] p-4 text-[13px] flex flex-wrap gap-x-8 gap-y-2">
-                  <span className="text-ink-faint">Lot <span className="font-mono text-charcoal">{selectedOffer.lotNumber}</span></span>
-                  <span className="text-ink-faint">Available <span className="font-mono text-charcoal">{formatQuantityMt(selectedOffer.offeredQuantity)}</span></span>
-                  <span className="text-ink-faint">Selling Price <span className="font-mono text-charcoal">{formatINR(sellingPrice)}</span></span>
+                <div className="rounded-sm border border-line dark:border-white/10 bg-charcoal/[0.02] p-4 text-[13px] flex flex-wrap gap-x-8 gap-y-2">
+                  <span className="text-ink-faint dark:text-white/40">Lot <span className="font-mono text-charcoal dark:text-white">{selectedOffer.lotNumber}</span></span>
+                  <span className="text-ink-faint dark:text-white/40">Available <span className="font-mono text-charcoal dark:text-white">{formatQuantityMt(selectedOffer.offeredQuantity)}</span></span>
+                  <span className="text-ink-faint dark:text-white/40">Selling Price <span className="font-mono text-charcoal dark:text-white">{formatINR(sellingPrice)}</span></span>
                 </div>
               )}
 
@@ -157,7 +157,7 @@ export function CustomerOrderForm() {
               </div>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-line flex flex-wrap items-center justify-end gap-3">
+            <div className="mt-8 pt-6 border-t border-line dark:border-white/10 flex flex-wrap items-center justify-end gap-3">
               <Button variant="ghost" size="md" loading={saving === "draft"} onClick={() => handleSave("draft")}>
                 <Save size={15} /> Save Draft
               </Button>
@@ -172,23 +172,23 @@ export function CustomerOrderForm() {
       <div className="lg:sticky lg:top-24">
         <Card padding="lg" className={marginPositive ? "ring-1 ring-rise/20" : "ring-1 ring-fall/20"}>
           <CardBody>
-            <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-4">Order Summary</p>
+            <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-4">Order Summary</p>
             <SummaryRow label="Quantity" value={formatQuantityMt(quantity)} />
             <SummaryRow label="Selling Price" value={formatINR(sellingPrice)} />
             <SummaryRow label="Taxes" value={formatINR(taxes)} />
             <SummaryRow label="Freight" value={formatINR(freight)} />
             <SummaryRow label="Brokerage" value={formatINR(brokerage)} />
             <SummaryRow label="Discount" value={`- ${formatINR(discount)}`} />
-            <div className="my-3 border-t border-line" />
+            <div className="my-3 border-t border-line dark:border-white/10" />
             <div className="flex items-center justify-between py-1.5">
-              <span className="text-[13px] font-medium text-charcoal">Total Value</span>
-              <span className="font-mono text-[15px] font-semibold text-charcoal">{formatINR(totalValue)}</span>
+              <span className="text-[13px] font-medium text-charcoal dark:text-white">Total Value</span>
+              <span className="font-mono text-[15px] font-semibold text-charcoal dark:text-white">{formatINR(totalValue)}</span>
             </div>
             <div className={`mt-4 rounded-sm border p-3.5 ${marginPositive ? "border-rise/30 bg-rise/[0.05]" : "border-fall/30 bg-fall/[0.05]"}`}>
-              <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint">Gross Margin</p>
+              <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint dark:text-white/40">Gross Margin</p>
               <p className={`font-mono text-lg mt-1 ${marginPositive ? "text-rise" : "text-fall"}`}>{formatINR(grossMargin)}</p>
             </div>
-            {paymentTerms && <p className="text-[11px] text-ink-faint mt-3">{getPaymentTermLabel(paymentTerms)}</p>}
+            {paymentTerms && <p className="text-[11px] text-ink-faint dark:text-white/40 mt-3">{getPaymentTermLabel(paymentTerms)}</p>}
           </CardBody>
         </Card>
       </div>

@@ -84,8 +84,8 @@ export function GradeFormModal({ open, onClose, onSubmit, editing }: GradeFormMo
         />
 
         <div>
-          <p className="text-[13px] font-medium text-charcoal mb-2">Applicable Products</p>
-          <p className="text-xs text-ink-faint mb-3">Leave all unchecked to make this grade available for every product.</p>
+          <p className="text-[13px] font-medium text-charcoal dark:text-white mb-2">Applicable Products</p>
+          <p className="text-xs text-ink-faint dark:text-white/40 mb-3">Leave all unchecked to make this grade available for every product.</p>
           <div className="grid sm:grid-cols-2 gap-2.5 max-h-48 overflow-y-auto pr-1">
             {products.map((p) => (
               <Checkbox key={p.id} label={p.displayName} checked={applicableProducts.includes(p.code)} onChange={() => toggleProduct(p.code)} />

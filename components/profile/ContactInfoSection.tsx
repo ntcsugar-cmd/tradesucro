@@ -11,12 +11,12 @@ interface ContactInfoSectionProps {
 function Row({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
     <div className="flex items-center gap-3 py-2.5">
-      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-charcoal/[0.04] text-ink-faint">
+      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-charcoal/[0.04] text-ink-faint dark:text-white/40">
         {icon}
       </span>
       <div className="min-w-0">
-        <p className="text-[11px] text-ink-faint">{label}</p>
-        <p className="text-[13.5px] text-charcoal truncate">{value || "—"}</p>
+        <p className="text-[11px] text-ink-faint dark:text-white/40">{label}</p>
+        <p className="text-[13.5px] text-charcoal dark:text-white truncate">{value || "—"}</p>
       </div>
     </div>
   );

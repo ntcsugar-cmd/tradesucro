@@ -21,9 +21,9 @@ const DEFAULT_INPUTS: LandedCostInputs = {
 
 function LineRow({ label, value, isTotal = false }: { label: string; value: number; isTotal?: boolean }) {
   return (
-    <div className={`flex items-center justify-between py-2.5 ${isTotal ? "" : "border-b border-line"}`}>
-      <span className={isTotal ? "text-[13.5px] font-semibold text-charcoal" : "text-[13px] text-ink-soft"}>{label}</span>
-      <span className={`font-mono ${isTotal ? "text-[16px] font-semibold text-charcoal" : "text-[13.5px] text-charcoal"}`}>{formatINR(value)}</span>
+    <div className={`flex items-center justify-between py-2.5 ${isTotal ? "" : "border-b border-line dark:border-white/10"}`}>
+      <span className={isTotal ? "text-[13.5px] font-semibold text-charcoal dark:text-white" : "text-[13px] text-ink-soft dark:text-white/50"}>{label}</span>
+      <span className={`font-mono ${isTotal ? "text-[16px] font-semibold text-charcoal dark:text-white" : "text-[13.5px] text-charcoal dark:text-white"}`}>{formatINR(value)}</span>
     </div>
   );
 }
@@ -42,7 +42,7 @@ export function LandedCostCalculator() {
       <div className="lg:col-span-2">
         <Card padding="lg">
           <CardBody>
-            <p className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-5">
+            <p className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-5">
               <Calculator size={13} /> Landed Cost Inputs
             </p>
             <div className="grid sm:grid-cols-2 gap-5">
@@ -68,7 +68,7 @@ export function LandedCostCalculator() {
       <div className="lg:sticky lg:top-24">
         <Card padding="lg" className="ring-1 ring-gold/25">
           <CardBody>
-            <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint mb-4">Detailed Calculation</p>
+            <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink-faint dark:text-white/40 mb-4">Detailed Calculation</p>
             <LineRow label="Ex-Mill Price" value={breakdown.exMillPrice} />
             <LineRow label="+ Freight" value={breakdown.freightPerUnit} />
             <LineRow label="+ Insurance" value={breakdown.insurancePerUnit} />
@@ -80,7 +80,7 @@ export function LandedCostCalculator() {
               <LineRow label="Total Landed Cost / MT" value={breakdown.totalLandedCostPerUnit} isTotal />
             </div>
             <div className="mt-4 rounded-sm border border-gold/25 bg-gold/[0.05] p-4">
-              <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint">Total for {formatQuantityMt(inputs.quantity)}</p>
+              <p className="text-[11px] font-mono uppercase tracking-widest2 text-ink-faint dark:text-white/40">Total for {formatQuantityMt(inputs.quantity)}</p>
               <p className="font-mono text-2xl text-gold-dim mt-1">{formatINR(breakdown.totalLandedCost)}</p>
             </div>
           </CardBody>

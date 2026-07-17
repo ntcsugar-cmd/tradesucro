@@ -36,9 +36,9 @@ function AgeingBar({ ageing }: { ageing: CustomerAgeing }) {
           <div key={b.label}>
             <div className="flex items-center gap-1.5">
               <span className={`h-2 w-2 rounded-full ${b.className}`} />
-              <span className="text-[11px] text-ink-faint">{b.label}</span>
+              <span className="text-[11px] text-ink-faint dark:text-white/40">{b.label}</span>
             </div>
-            <p className="font-mono text-[13px] text-charcoal mt-1">{formatINR(b.value)}</p>
+            <p className="font-mono text-[13px] text-charcoal dark:text-white mt-1">{formatINR(b.value)}</p>
           </div>
         ))}
       </div>
@@ -113,8 +113,8 @@ export function CustomerLedgerView({ customer }: CustomerLedgerViewProps) {
                       {e.amount >= 0 ? <ArrowUpRight size={14} /> : <ArrowDownLeft size={14} />}
                     </span>
                     <div>
-                      <p className="text-[13px] font-medium text-charcoal">{e.description}</p>
-                      <p className="text-[11px] text-ink-faint mt-0.5">
+                      <p className="text-[13px] font-medium text-charcoal dark:text-white">{e.description}</p>
+                      <p className="text-[11px] text-ink-faint dark:text-white/40 mt-0.5">
                         {e.reference} · {new Date(e.date).toLocaleDateString("en-IN", { dateStyle: "medium" })}
                       </p>
                     </div>
@@ -124,7 +124,7 @@ export function CustomerLedgerView({ customer }: CustomerLedgerViewProps) {
                       {e.amount >= 0 ? "+" : ""}
                       {formatINR(e.amount)}
                     </p>
-                    <p className="text-[11px] text-ink-faint mt-0.5">Bal: {formatINR(e.balanceAfter)}</p>
+                    <p className="text-[11px] text-ink-faint dark:text-white/40 mt-0.5">Bal: {formatINR(e.balanceAfter)}</p>
                   </div>
                 </li>
               ))}

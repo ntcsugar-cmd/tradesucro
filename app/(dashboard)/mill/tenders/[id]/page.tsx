@@ -23,9 +23,9 @@ import type { MillTender } from "@/lib/types/millTender";
 
 function Row({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-center justify-between py-2.5 border-b border-line last:border-b-0">
-      <span className="text-xs text-ink-faint">{label}</span>
-      <span className="text-[13.5px] text-charcoal font-medium">{value}</span>
+    <div className="flex items-center justify-between py-2.5 border-b border-line dark:border-white/10 last:border-b-0">
+      <span className="text-xs text-ink-faint dark:text-white/40">{label}</span>
+      <span className="text-[13.5px] text-charcoal dark:text-white font-medium">{value}</span>
     </div>
   );
 }
@@ -128,12 +128,12 @@ export default function MillTenderDetailsPage() {
               </CardHeader>
               <CardBody className="space-y-3">
                 {tender.products.map((p) => (
-                  <div key={p.id} className="flex items-center justify-between rounded-sm border border-line p-3">
+                  <div key={p.id} className="flex items-center justify-between rounded-sm border border-line dark:border-white/10 p-3">
                     <div>
-                      <p className="text-[13px] font-medium text-charcoal">
+                      <p className="text-[13px] font-medium text-charcoal dark:text-white">
                         {getProductLabel(p.product)} · <span className="font-mono">{p.grade}</span>
                       </p>
-                      <p className="text-xs text-ink-faint mt-0.5">
+                      <p className="text-xs text-ink-faint dark:text-white/40 mt-0.5">
                         {formatQuantityMt(p.quantity)} · {getPackagingLabel(p.packaging)} {p.emdRequired && `· EMD ${formatINR(p.emdAmount)}`}
                       </p>
                     </div>
