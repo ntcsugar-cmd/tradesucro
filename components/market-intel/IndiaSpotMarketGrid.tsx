@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ChevronDown, TrendingUp, TrendingDown, Minus } from "lucide-react";
+import { ChevronDown, TrendingUp, TrendingDown, Minus, Radio } from "lucide-react";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { EmptyState } from "@/components/ui/EmptyState";
-import { marketPhase3Service } from "@/services/marketPhase3.service";
+import { indiaSpotMarketAdapter } from "@/services/adapters/indiaSpotMarketAdapter";
 import { getMasterStateLabel } from "@/lib/utils/marketplaceLabels";
 import { formatPricePerUnit, formatQuantityMt } from "@/lib/utils/format";
 import type { StateSpotSummary } from "@/lib/types/marketIntelligence";
@@ -16,10 +16,12 @@ export function IndiaSpotMarketGrid() {
   const [states, setStates] = useState<StateSpotSummary[]>([]);
   const [loading, setLoading] = useState(true);
   const [expanded, setExpanded] = useState<string | null>(null);
+  const [lastUpdated, setLastUpdated] = useState<string | null>(null);
 
   useEffect(() => {
-    marketPhase3Service.getIndiaSpotMarket().then((result) => {
-      setStates(result);
+    indiaSpotMarketAdapter.fetch().then(([result]) => {
+      setStates(result.value ?? []);
+      setLastUpdated(result.meta.lastUpdated);
       setLoading(false);
     });
   }, []);
@@ -39,7 +41,12 @@ export function IndiaSpotMarketGrid() {
   }
 
   return (
-    <div className="border border-line dark:border-white/10 rounded-sm divide-y divide-line dark:divide-white/10">
+    <div>
+      <div className="flex items-center gap-1.5 mb-3 text-xs text-ink-faint dark:text-white/40">
+        <Radio size={12} className="text-rise" />
+        Live · TradeSucro Marketplace{lastUpdated && ` · Updated ${new Date(lastUpdated).toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" })}`}
+      </div>
+      <div className="border border-line dark:border-white/10 rounded-sm divide-y divide-line dark:divide-white/10">
       {states.map((s) => {
         const isOpen = expanded === s.state;
         return (
@@ -111,6 +118,7 @@ export function IndiaSpotMarketGrid() {
           </div>
         );
       })}
+      </div>
     </div>
   );
 }

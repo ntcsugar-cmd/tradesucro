@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, Activity, Map, LineChart, Columns3, BellRing, Newspaper, Globe2, Ship } from "lucide-react";
+import { ArrowUpRight, Activity, Map, LineChart, Columns3, BellRing, Newspaper, Globe2, Ship, Radio } from "lucide-react";
 import { Breadcrumb } from "@/components/navigation/Breadcrumb";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardHeader, CardTitle, CardBody } from "@/components/cards/Card";
@@ -10,6 +10,7 @@ const QUICK_LINKS = [
   { label: "Global Market", href: "/market/global", icon: Globe2 },
   { label: "International Market", href: "/market/international", icon: Ship },
   { label: "India Spot Market", href: "/market/prices", icon: Map },
+  { label: "TradeSucro Live Market", href: "/market/live-market", icon: Radio },
   { label: "Live Price Board", href: "/market/live", icon: Activity },
   { label: "Market Trends", href: "/market/trends", icon: LineChart },
   { label: "Compare Mills", href: "/market/compare", icon: Columns3 },

@@ -34,7 +34,11 @@ export interface SourcedValue<T> {
   meta: DataSourceMeta;
 }
 
-export type ProviderConnectionStatus = "connected" | "not_configured" | "error";
+export type ProviderConnectionStatus =
+  | "connected"
+  | "not_configured" // no credentials/API key set up yet
+  | "blocked_network_policy" // adapter is fully implemented and was actually invoked, but the runtime's network egress policy rejected the outbound request
+  | "error"; // adapter ran, reached the network, but the call itself failed (timeout, bad response, auth failure)
 
 /** What every market data provider (real or not-yet-connected) reports about itself, surfaced in the UI so it's always clear what's live and what isn't. */
 export interface ProviderStatus {
@@ -44,9 +48,22 @@ export interface ProviderStatus {
   connectionStatus: ProviderConnectionStatus;
   coverage: string;
   lastSyncedAt: string | null;
+  lastAttemptAt: string | null;
+  consecutiveFailures: number;
+  lastError: string | null;
 }
 
-/** Implemented by every data source — a real integration, or a registered-but-not-yet-connected placeholder that honestly reports not_configured instead of inventing numbers. */
+/** A single retained fetch attempt — this is what "detect failures" and "retry automatically" actually operate on. */
+export interface ProviderHistoryEntry {
+  providerId: string;
+  attemptedAt: string;
+  succeeded: boolean;
+  retryCount: number;
+  errorMessage: string | null;
+  recordCount: number;
+}
+
+/** Implemented by every data source — a real integration, or a registered-but-not-yet-connected placeholder that honestly reports its real status instead of inventing numbers. */
 export interface MarketDataProvider<T> {
   id: string;
   name: string;

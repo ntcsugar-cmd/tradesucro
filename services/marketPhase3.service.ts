@@ -1,6 +1,10 @@
 import { STATES } from "@/lib/master-data/states";
 import { marketplaceService } from "./marketplace.service";
-import type { GlobalInstrument, GlobalInstrumentCategory, InternationalPhysicalQuote, StateSpotSummary, CitySpotPrice } from "@/lib/types/marketIntelligence";
+import { millOfferService } from "./millOffer.service";
+import { dealService } from "./deal.service";
+import { freightService } from "./freight.service";
+import { getProductLabel } from "@/lib/utils/marketplaceLabels";
+import type { GlobalInstrument, GlobalInstrumentCategory, InternationalPhysicalQuote, StateSpotSummary, CitySpotPrice, LiveMarketFeed } from "@/lib/types/marketIntelligence";
 
 const NETWORK_DELAY_MS = 300;
 function delay<T>(value: T, ms = NETWORK_DELAY_MS): Promise<T> {
@@ -119,5 +123,43 @@ export const marketPhase3Service = {
         })
         .sort((a, b) => b.totalVolumeMt - a.totalVolumeMt)
     );
+  },
+
+  // ---- Section 4: TradeSucro Live Market (REAL — aggregated across every platform service) ----
+  /** Never external data — every field here is TradeSucro's own live activity. */
+  async getLiveMarketFeed(): Promise<LiveMarketFeed> {
+    const [millOffers, requirements, traderOffers, deals] = await Promise.all([
+      millOfferService.getOffers({ status: "published" }),
+      marketplaceService.getRequirements({ sort: "newest" }),
+      marketplaceService.getOffers({ sort: "newest" }),
+      dealService.getDeals(),
+    ]);
+    const transporters = freightService.getTransporterDirectory();
+
+    const stateActivity = new Map<string, number>();
+    millOffers.forEach((o) => stateActivity.set(o.state, (stateActivity.get(o.state) ?? 0) + 1));
+    requirements.forEach((r) => stateActivity.set(r.destination.state, (stateActivity.get(r.destination.state) ?? 0) + 1));
+    traderOffers.forEach((o) => stateActivity.set(o.dispatchFrom.state, (stateActivity.get(o.dispatchFrom.state) ?? 0) + 1));
+
+    return {
+      latestMillOffers: millOffers
+        .slice(0, 8)
+        .map((o) => ({ id: o.id, millName: o.millName, product: getProductLabel(o.products[0]?.product ?? ""), grade: o.products[0]?.grade ?? "", price: o.products[0]?.basePrice ?? 0, postedAt: o.offerDate })),
+      latestRequirements: requirements
+        .slice(0, 8)
+        .map((r) => ({ id: r.id, companyName: r.company.name, product: getProductLabel(r.product), grade: r.grade, quantity: r.quantity, postedAt: r.createdAt })),
+      latestTraderOffers: traderOffers
+        .slice(0, 8)
+        .map((o) => ({ id: o.id, companyName: o.company.name, product: getProductLabel(o.product), grade: o.grade, price: o.price, postedAt: o.dispatchDate })),
+      freightAvailability: transporters.map((t) => ({ transporterName: t.companyName, coverageStates: t.coverageStates, verified: t.verified })),
+      latestDeals: deals.slice(0, 8).map((d) => ({ id: d.id, dealNumber: d.dealNumber, product: getProductLabel(d.product), quantity: d.quantity, status: d.status })),
+      mostActiveStates: [...stateActivity.entries()]
+        .map(([state, activityCount]) => ({ state, activityCount }))
+        .sort((a, b) => b.activityCount - a.activityCount)
+        .slice(0, 5),
+      recentTransactions: deals
+        .slice(0, 10)
+        .map((d) => ({ id: d.id, label: `${d.dealNumber} · ${getProductLabel(d.product)}`, amount: d.quantity, timestamp: d.dealDate })),
+    };
   },
 };

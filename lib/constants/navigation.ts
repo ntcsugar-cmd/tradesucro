@@ -88,6 +88,7 @@ export const DASHBOARD_NAV: DashboardNavSection[] = [
       { label: "Global Market", href: "/market/global", icon: "Globe2" },
       { label: "International Market", href: "/market/international", icon: "Ship" },
       { label: "India Spot Market", href: "/market/prices", icon: "Map" },
+      { label: "TradeSucro Live Market", href: "/market/live-market", icon: "Radio" },
       { label: "Live Price Board", href: "/market/live", icon: "Activity" },
       { label: "Smart Match Engine", href: "/market/match-engine", icon: "Sparkles" },
       { label: "Market Opportunities", href: "/market/opportunities", icon: "Lightbulb" },

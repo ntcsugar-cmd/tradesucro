@@ -9,7 +9,7 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { Grid, GridItem } from "@/components/ui/Grid";
 import { Button } from "@/components/ui/Button";
 import { SearchInput } from "@/components/forms/Input";
-import { OfferTable, OfferFilterPanel } from "@/components/mill-offers";
+import { OfferTable, OfferFilterPanel, MillOffersLiveIndicator } from "@/components/mill-offers";
 import { FAB } from "@/components/mobile";
 import { useIsMobile } from "@/hooks/useMediaQuery";
 
@@ -45,6 +45,7 @@ export default function MillOfferBoardPage() {
           </Link>
         }
       />
+      <MillOffersLiveIndicator />
 
       <div className="mb-6 max-w-md">
         <SearchInput

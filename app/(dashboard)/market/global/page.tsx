@@ -1,16 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AlertCircle, TrendingUp, DollarSign, Fuel, Ship } from "lucide-react";
+import { AlertCircle, TrendingUp, DollarSign, Fuel, Ship, WifiOff } from "lucide-react";
 import { Breadcrumb } from "@/components/navigation/Breadcrumb";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardBody } from "@/components/cards/Card";
 import { Alert } from "@/components/ui/Alert";
 import { Grid, GridItem } from "@/components/ui/Grid";
 import { Skeleton } from "@/components/ui/Skeleton";
-import { marketPhase3Service } from "@/services/marketPhase3.service";
-import { marketDataProviderRegistry } from "@/services/marketDataProviders";
+import { iceFuturesAdapter } from "@/services/adapters/iceFuturesAdapter";
+import { fxEnergyFreightAdapter } from "@/services/adapters/fxEnergyFreightAdapter";
 import type { GlobalInstrument, GlobalInstrumentCategory } from "@/lib/types/marketIntelligence";
+import type { ProviderStatus } from "@/lib/types/marketDataProvider";
 
 const CATEGORY_META: Record<GlobalInstrumentCategory, { label: string; icon: typeof TrendingUp }> = {
   sugar_futures: { label: "Sugar Futures & Benchmarks", icon: TrendingUp },
@@ -19,36 +20,69 @@ const CATEGORY_META: Record<GlobalInstrumentCategory, { label: string; icon: typ
   freight: { label: "Freight Indices", icon: Ship },
 };
 
+/** Structural shell (symbol/name/category/unit) for every instrument this page displays, independent of whether the underlying provider succeeded — a failed fetch means blank price fields, never a missing card. */
+const INSTRUMENT_SHELLS: Omit<GlobalInstrument, "price" | "change" | "changePercent" | "dayHigh" | "dayLow" | "dailySeries" | "weeklySeries">[] = [
+  { id: "ice-sugar-11", symbol: "SB1", name: "ICE Sugar No.11", category: "sugar_futures", unit: "¢/lb" },
+  { id: "ice-white-5", symbol: "SW1", name: "ICE White Sugar No.5", category: "sugar_futures", unit: "$/MT" },
+  { id: "liffe-white", symbol: "LWS", name: "LIFFE London White Sugar", category: "sugar_futures", unit: "$/MT" },
+  { id: "usdinr", symbol: "USDINR", name: "USD/INR", category: "fx", unit: "₹" },
+  { id: "brlusd", symbol: "BRLUSD", name: "BRL/USD", category: "fx", unit: "$" },
+  { id: "wti", symbol: "WTI", name: "Crude Oil", category: "energy", unit: "$/bbl" },
+  { id: "eth", symbol: "ETH", name: "Ethanol", category: "energy", unit: "$/gal" },
+  { id: "bdi", symbol: "BDI", name: "Baltic Dry Index", category: "freight", unit: "pts" },
+  { id: "ofr", symbol: "OFR", name: "Ocean Freight", category: "freight", unit: "$/MT" },
+];
+
 export default function GlobalMarketPage() {
   const [instruments, setInstruments] = useState<GlobalInstrument[]>([]);
+  const [statuses, setStatuses] = useState<ProviderStatus[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    marketPhase3Service.getGlobalInstruments().then((result) => {
-      setInstruments(result);
+    // Both adapters run independently via allSettled — one failing (e.g. the ICE adapter blocked by network policy) never stops the other from reporting its own real result.
+    Promise.allSettled([iceFuturesAdapter.fetch(), fxEnergyFreightAdapter.fetch()]).then(([iceOutcome, fxOutcome]) => {
+      const iceData = iceOutcome.status === "fulfilled" ? iceOutcome.value[0]?.value ?? [] : [];
+      const fxData = fxOutcome.status === "fulfilled" ? fxOutcome.value[0]?.value ?? [] : [];
+      const liveBySymbol = new Map([...iceData, ...fxData].map((inst) => [inst.symbol, inst]));
+
+      const merged: GlobalInstrument[] = INSTRUMENT_SHELLS.map((shell) => {
+        const live = liveBySymbol.get(shell.symbol);
+        return live ?? { ...shell, price: null, change: null, changePercent: null, dayHigh: null, dayLow: null, dailySeries: [], weeklySeries: [] };
+      });
+
+      setInstruments(merged);
+      setStatuses([iceFuturesAdapter.getStatus(), fxEnergyFreightAdapter.getStatus()]);
       setLoading(false);
     });
   }, []);
+
 
   const grouped = instruments.reduce<Record<string, GlobalInstrument[]>>((acc, inst) => {
     (acc[inst.category] ??= []).push(inst);
     return acc;
   }, {});
 
-  const notConfiguredProviders = marketDataProviderRegistry
-    .getAll()
-    .filter((p) => ["ice-futures", "liffe-london", "isa-daily", "fx-rates", "energy-freight"].includes(p.id));
-
   return (
     <>
       <Breadcrumb items={[{ label: "Market Intelligence", href: "/market" }, { label: "Global Market" }]} className="mb-5" />
       <PageHeader title="Global Market" description="ICE and LIFFE sugar futures, FX, energy, and freight benchmarks that move the sugar trade." />
 
-      <Alert variant="warning" title="Awaiting live data provider" className="mb-6">
-        These instruments require a licensed market data subscription (ICE/LIFFE-class futures feed) or a public FX/commodity API — neither is connected in this environment.
-        The layout, refresh architecture, and provider registry below are fully built; connecting a real feed populates every card automatically. See{" "}
-        <a href="/market/providers" className="underline hover:no-underline">Data Provider Status</a> for what&apos;s registered.
-      </Alert>
+      {statuses
+        .filter((s) => s.connectionStatus !== "connected")
+        .map((s) => (
+          <Alert
+            key={s.id}
+            variant="warning"
+            title={s.connectionStatus === "blocked_network_policy" ? `${s.name} — blocked by network policy` : `${s.name} — awaiting credentials`}
+            className="mb-4"
+          >
+            <WifiOff size={13} className="inline mr-1" />
+            {s.connectionStatus === "blocked_network_policy"
+              ? `This adapter is fully implemented and was just attempted — the outbound request was rejected by this environment's network egress policy (${s.lastError ?? "host not in allowlist"}). Allowlisting the host connects it automatically, with no code changes.`
+              : `Needs an API key to connect. `}
+            {" "}See <a href="/market/providers" className="underline hover:no-underline">Data Provider Status</a>.
+          </Alert>
+        ))}
 
       {loading ? (
         <Grid cols={1} colsMd={2} colsLg={3} gap="md">
@@ -109,16 +143,11 @@ export default function GlobalMarketPage() {
       )}
 
       <Card padding="lg" className="mt-4">
-        <CardBody>
-          <p className="text-[13px] font-medium text-charcoal dark:text-white mb-3">Registered providers for this section</p>
-          <ul className="space-y-2">
-            {notConfiguredProviders.map((p) => (
-              <li key={p.id} className="flex items-center justify-between text-[13px]">
-                <span className="text-ink-soft dark:text-white/50">{p.name}</span>
-                <span className="text-xs font-mono text-ink-faint dark:text-white/40">not configured</span>
-              </li>
-            ))}
-          </ul>
+        <CardBody className="flex items-center justify-between">
+          <p className="text-[13px] text-ink-soft dark:text-white/50">See real-time connection status, retry history, and failure details for every provider.</p>
+          <a href="/market/providers" className="text-xs font-medium text-gold-dim hover:text-gold-bright transition-colors shrink-0">
+            View Data Provider Status →
+          </a>
         </CardBody>
       </Card>
     </>

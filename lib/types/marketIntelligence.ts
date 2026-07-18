@@ -194,6 +194,17 @@ export interface StateSpotSummary {
   cities: CitySpotPrice[];
 }
 
+/** Section 4 — TradeSucro Live Market: platform-native activity only, never external data. */
+export interface LiveMarketFeed {
+  latestMillOffers: { id: string; millName: string; product: string; grade: string; price: number; postedAt: string }[];
+  latestRequirements: { id: string; companyName: string; product: string; grade: string; quantity: number; postedAt: string }[];
+  latestTraderOffers: { id: string; companyName: string; product: string; grade: string; price: number; postedAt: string }[];
+  freightAvailability: { transporterName: string; coverageStates: string[]; verified: boolean }[];
+  latestDeals: { id: string; dealNumber: string; product: string; quantity: number; status: string }[];
+  mostActiveStates: { state: string; activityCount: number }[];
+  recentTransactions: { id: string; label: string; amount: number; timestamp: string }[];
+}
+
 /** Section 6 — Market Analytics: computed insights over TradeSucro's own data. */
 export interface MarketAnalyticsInsights {
   topRisingMarkets: { state: string; changePercent: number }[];
